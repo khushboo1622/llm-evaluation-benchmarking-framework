@@ -1,0 +1,30 @@
+{
+  "run_id": "176_M5_qwen_qwen3-32b_0p5",
+  "run_number": 176,
+  "prompt_id": "M5",
+  "category": "multilingual",
+  "difficulty": "hard",
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.5,
+  "prompt": "Translate this technical paragraph into simple Gujarati that a non-technical person can understand:\n\n'A neural network is a computational model inspired by the human brain. It consists of layers of interconnected nodes that process data and learn patterns through a training process called backpropagation.'",
+  "eval_criteria": "accurate Gujarati translation, simplified for non-technical audience, no jargon",
+  "timestamp": "2026-05-15T12:06:05.094829",
+  "success": true,
+  "response": "<think>\nOkay, the user wants me to translate a technical paragraph about neural networks into simple Gujarati. Let me start by understanding the original text. The key points are that a neural network is inspired by the human brain, has layers of interconnected nodes, processes data, and learns patterns through backpropagation.\n\nNow, I need to break this down into simpler terms. First, \"computational model\" can be translated as \"કમ્પ્યુટેશનલ મોડેલ\" but maybe \"ગણતરીનું મોડેલ\" is better for a non-technical audience. \"Inspired by the human brain\" – \"માનવ મગજ પર આધારિત\" seems straightforward.\n\nNext, \"layers of interconnected nodes\" – \"જોડાયેલા નોડ્સના પડ\" might be a bit technical. Maybe \"સંકળાયેલા નોડ્સના સ્તરો\" is clearer. \"Process data\" can be \"ડેટા પ્રક્રિયા\" and \"learn patterns\" as \"પ્રતિરૂપો શીખે\".\n\nThe term \"backpropagation\" is tricky. It's a training process, so maybe \"સામાન્ય પ્રક્રિયા\" or \"શિક્ષણ પ્રક્રિયા\" to keep it simple. Let me check if \"સામાન્ય પ્રક્રિયા\" is the right term here. Also, ensuring the sentence structure is easy to follow in Gujarati.\n\nPutting it all together, making sure the translation flows naturally and avoids technical jargon. Let me read it again to confirm it's understandable for someone without a technical background. Maybe replace \"કમ્પ્યુટેશનલ મોડેલ\" with \"ગણતરીનું મોડેલ\" for simplicity. Also, check if \"સામાન્ય પ્રક્રિયા\" accurately conveys backpropagation. Perhaps \"શિક્ષણ પ્રક્રિયા\" is better since it's a training process.\n\nFinalizing the translation now, ensuring clarity and simplicity. Let me verify each term again to make sure there are no errors. Looks good. The user should be happy with the simple and clear Gujarati explanation.\n</think>\n\n\"ન્યુરલ નેટવર્ક એ માનવ મગજ પર આધારિત ગણતરીનું મોડેલ છે. તેમાં ડેટા પ્રક્રિયા કરવા અને પ્રતિરૂપો શીખવા માટે જોડાયેલા નોડ્સના સ્તરો હોય છે. આ પ્રક્રિયા શિક્ષણ માટે પાછા પ્રસરણ (બેકપ્રોપેગેશન) નામની પ્રક્રિયા દ્વારા થાય છે.\"",
+  "ttft_ms": 102.15,
+  "latency_ms": 1901.02,
+  "tokens_per_second": 154.13,
+  "input_tokens": 44,
+  "output_tokens": 293,
+  "response_length": 1927,
+  "cost_usd": 0.00012703,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 8,
+    "instruction_following": 9,
+    "clarity": 9,
+    "completeness": 8,
+    "overall": 8
+  }
+}

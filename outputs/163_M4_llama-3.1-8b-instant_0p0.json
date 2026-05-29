@@ -1,0 +1,30 @@
+{
+  "run_id": "163_M4_llama-3.1-8b-instant_0p0",
+  "run_number": 163,
+  "prompt_id": "M4",
+  "category": "multilingual",
+  "difficulty": "hard",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.0,
+  "prompt": "A user writes to you in Hinglish (Hindi + English mix): 'Bhai, mujhe ek Python script chahiye jo CSV file read kare aur uska data clean kare — nulls remove karo aur duplicates bhi. Please help!'\n\nRespond naturally in Hinglish and provide the Python code.",
+  "eval_criteria": "natural Hinglish response, correct Python code for CSV cleaning, friendly tone",
+  "timestamp": "2026-05-15T12:05:28.288985",
+  "success": true,
+  "response": "Bhai, main tumhe ek Python script provide karunga jo CSV file ko padh sakega aur uska data clean kar sakega. \n\nYeh script pandas aur numpy libraries ka use karega. Pandas CSV file ko padhne aur uska data manipulate karne mein madad karta hai, jabki numpy array manipulation mein madad karta hai.\n\nYeh code yeh hai:\n\n```python\nimport pandas as pd\nimport numpy as np\n\n# CSV file ka path specify karo\nfile_path = 'your_file.csv'\n\n# CSV file ko padho\ndf = pd.read_csv(file_path)\n\n# Null values ko remove karo\ndf = df.dropna()\n\n# Duplicate rows ko remove karo\ndf = df.drop_duplicates()\n\n# CSV file mein data save karo\ndf.to_csv('cleaned_file.csv', index=False)\n```\n\nYeh code ka use yeh hai:\n\n1. Pandas ka use karke CSV file ko padhna.\n2. Null values ko remove karna.\n3. Duplicate rows ko remove karna.\n4. CSV file mein clean data save karna.\n\nBhai, tumhe yeh script ka use karke apne CSV file ko clean karne mein madad milegi.",
+  "ttft_ms": 129.36,
+  "latency_ms": 507.2,
+  "tokens_per_second": 317.43,
+  "input_tokens": 45,
+  "output_tokens": 161,
+  "response_length": 921,
+  "cost_usd": 1.513e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 9,
+    "clarity": 9,
+    "completeness": 9,
+    "overall": 9
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "run_id": "003_R1_llama-3.1-8b-instant_1p0",
+  "run_number": 3,
+  "prompt_id": "R1",
+  "category": "reasoning",
+  "difficulty": "medium",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 1.0,
+  "prompt": "A farmer has 17 sheep. All but 9 die. How many sheep are left? Explain your reasoning step by step.",
+  "eval_criteria": "correct answer (9), clear step-by-step explanation",
+  "timestamp": "2026-05-15T08:52:13.123872",
+  "success": true,
+  "response": "Here's a step-by-step approach to solve this problem:\n\n1. Initially, the farmer has 17 sheep.\n2. All but 9 sheep die, which means the farmer loses all except 9 sheep. 'All but 9' implies that 9 sheep survive and the rest die.\n3. To find the total number of sheep that die, we need to subtract the number of survivors (9) from the initial number of sheep (17).\n4. Since only 9 sheep survive, we subtract 9 from 17: 17 - 9 = 8\n5. Therefore, the farmer has 8 sheep left.\n\nSo, the correct answer is 8.",
+  "ttft_ms": 420.08,
+  "latency_ms": 468.97,
+  "tokens_per_second": 208.97,
+  "input_tokens": 20,
+  "output_tokens": 98,
+  "response_length": 497,
+  "cost_usd": 8.84e-06,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 0,
+    "instruction_following": 8,
+    "clarity": 9,
+    "completeness": 9,
+    "overall": 6
+  }
+}

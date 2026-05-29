@@ -1,0 +1,30 @@
+{
+  "run_id": "179_M5_openai_gpt-oss-120b_0p5",
+  "run_number": 179,
+  "prompt_id": "M5",
+  "category": "multilingual",
+  "difficulty": "hard",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.5,
+  "prompt": "Translate this technical paragraph into simple Gujarati that a non-technical person can understand:\n\n'A neural network is a computational model inspired by the human brain. It consists of layers of interconnected nodes that process data and learn patterns through a training process called backpropagation.'",
+  "eval_criteria": "accurate Gujarati translation, simplified for non-technical audience, no jargon",
+  "timestamp": "2026-05-15T12:06:11.169662",
+  "success": true,
+  "response": "ન્યુરલ નેટવર્ક એ કમ્પ્યુટરનું એક મોડેલ છે, જે માનવ મગજમાંથી પ્રેરિત છે. તેમાં ઘણા સ્તરોમાં જોડાયેલા નાના-નાના બિંદુઓ (નોડ્સ) હોય છે, જે માહિતી મેળવીને તેને સમજવા અને શીખવા માટે કામ કરે છે. આ શીખવાની પ્રક્રિયા \"બેકપ્રોપેગેશન\" નામની રીતથી થાય છે, જેમાં નેટવર્કને تدريجي રીતે સુધારીને યોગ્ય પેટર્ન્સ (મુદ્રાઓ) શોધવામાં આવે છે. આ રીતે ન્યુરલ નેટવર્ક ડેટા માંથી નિયમો અને સંબંધો શોધી લે છે, જેમ કે મગજ માહિતી પ્રોસેસ કરે છે.",
+  "ttft_ms": 203.36,
+  "latency_ms": 529.05,
+  "tokens_per_second": 132.31,
+  "input_tokens": 44,
+  "output_tokens": 70,
+  "response_length": 419,
+  "cost_usd": 0.000552,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 8,
+    "instruction_following": 9,
+    "clarity": 7,
+    "completeness": 8,
+    "overall": 8
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "run_id": "052_C1_openai_gpt-oss-120b_0p0",
+  "run_number": 52,
+  "prompt_id": "C1",
+  "category": "coding",
+  "difficulty": "easy",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.0,
+  "prompt": "Write a Python function that takes a list of integers and returns the two numbers that add up to a given target. Example: [2, 7, 11, 15], target=9 → [2, 7].",
+  "eval_criteria": "correct logic, handles edge cases, clean code",
+  "timestamp": "2026-05-15T08:55:04.912897",
+  "success": true,
+  "response": "Here’s a compact, well‑documented solution that runs in **O(n)** time and **O(n)** extra space by using a hash‑map (dictionary) to remember the numbers we have already seen.\n\n```python\nfrom typing import List, Optional, Tuple\n\ndef two_sum(nums: List[int], target: int) -> Optional[Tuple[int, int]]:\n    \"\"\"\n    Return the two numbers from *nums* that add up to *target*.\n\n    Parameters\n    ----------\n    nums : List[int]\n        The list of integers to search.\n    target : int\n        The desired sum of the two returned numbers.\n\n    Returns\n    -------\n    Optional[Tuple[int, int]]\n        A tuple (a, b) such that a + b == target, or ``None`` if no such\n        pair exists.  The order of the numbers in the tuple follows the\n        order they appear in *nums* (the first element is the one seen\n        earlier in the list).\n\n    Example\n    -------\n    >>> two_sum([2, 7, 11, 15], 9)\n    (2, 7)\n    >>> two_sum([1, 3, 5, 7], 12)\n    (5, 7)\n    >>> two_sum([1, 2, 3], 7) is None\n    True\n    \"\"\"\n    # This dictionary maps a number we have already visited to its index.\n    # We could store the index, but we only need the value later, so we\n    # keep the value itself for clarity.\n    seen = {}\n\n    for i, num in enumerate(nums):\n        complement = target - num          # The number we need to reach the target\n        if complement in seen:\n            # We have already seen the complement, so we can return the pair.\n            # `seen[complement]` is the earlier number, `num` is the current one.\n            return (complement, num)\n        # Record the current number so it can be used as a complement later.\n        seen[num] = i\n\n    # No pair found\n    return None\n\n\n# ----------------------------------------------------------------------\n# Simple sanity‑check / demo\nif __name__ == \"__main__\":\n    examples = [\n        ([2, 7, 11, 15], 9),\n        ([1, 3, 5, 7], 12),\n        ([1, 2, 3], 7),\n    ]\n\n    for arr, tgt in examples:\n        result = two_sum(arr, tgt)\n        print(f\"nums={arr}, target={tgt} → {result}\")\n```\n\n### How it works\n1. **Iterate once** over the list.\n2. For each element `num`, compute the *complement* `target - num`.\n3. If that complement has already been seen, we have found the required pair.\n4. Otherwise, store `num` in the `seen` dictionary and continue.\n\nBecause each element is processed only once and dictionary look‑ups are O(1) on average, the overall complexity is linear in the size of the input list. If no two numbers sum to the target, the function returns `None`. Feel free to adapt the return type (e.g., return a list instead of a tuple) to match the exact shape you need.",
+  "ttft_ms": 315.4,
+  "latency_ms": 1794.76,
+  "tokens_per_second": 228.44,
+  "input_tokens": 31,
+  "output_tokens": 410,
+  "response_length": 2643,
+  "cost_usd": 0.002553,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "run_id": "132_S5_qwen_qwen3-32b_1p0",
+  "run_number": 132,
+  "prompt_id": "S5",
+  "category": "structured_output",
+  "difficulty": "hard",
+  "model": "qwen/qwen3-32b",
+  "temperature": 1.0,
+  "prompt": "You are an API. A user sends: 'Book me a flight from Mumbai to Delhi on June 15th, morning preferred, economy class, 1 adult.'\n\nReturn ONLY a JSON booking request object with fields: origin, destination, date, time_preference, cabin_class, passengers, special_requests.",
+  "eval_criteria": "valid JSON, correct field extraction, no extra text, handles implicit fields",
+  "timestamp": "2026-05-15T10:18:18.920959",
+  "success": true,
+  "response": "<think>\nOkay, let's see. The user wants to book a flight from Mumbai to Delhi on June 15th, in the morning, economy class, 1 adult. I need to create a JSON object with the specified fields.\n\nFirst, origin is Mumbai, so I'll put \"Mumbai\" as a string. Destination is Delhi, same way. The date is June 15th. The user mentioned \"morning preferred,\" so time_preference should be \"morning.\" For cabin_class, it's economy, so \"economy.\" Passengers would be an object with adults set to 1. Special_requests isn't mentioned, so maybe leave that as an empty array or check if there's anything else. Wait, the user didn't specify any special requests, so it can be an empty array. Let me double-check the fields: origin, destination, date, time_preference, cabin_class, passengers, special_requests. All set. I think that's all. Need to make sure the date is in the right format, maybe \"YYYY-MM-DD\" so \"2024-06-15\" but the user didn't specify the year. Hmm, should I use the current year? Since it's not specified, maybe just use the date as given without the year, but the user might have intended this year. Alternatively, perhaps it's better to use the 15th of June in the current year, but since it's not clear, maybe the user expects the date as \"June 15th\" but in a format that the API can handle. JSON format for date is usually ISO 8601, so including the year. But since the user didn't mention the year, perhaps the example just uses \"2024\" as the current year. Wait, maybe the date can be written as \"2024-06-15\" but need to confirm if that's acceptable. However, the user might have input the date as June 15th without a year, so maybe the API expects the same. Wait, the problem says to return a JSON booking request object, so the date should be in a proper date format. Since the user didn't specify the year, but the current year is 2024 (assuming the current context), I'll put \"2024-06-15\".\n\nFor passengers, the user specified 1 adult, so \"passengers\": {\"adults\": 1}. Special requests is empty. Alright, putting it all together.\n</think>\n\n{\n  \"origin\": \"Mumbai\",\n  \"destination\": \"Delhi\",\n  \"date\": \"2024-06-15\",\n  \"time_preference\": \"morning\",\n  \"cabin_class\": \"economy\",\n  \"passengers\": {\n    \"adults\": 1\n  },\n  \"special_requests\": []\n}",
+  "ttft_ms": 380.55,
+  "latency_ms": 1976.3,
+  "tokens_per_second": 186.71,
+  "input_tokens": 40,
+  "output_tokens": 369,
+  "response_length": 2244,
+  "cost_usd": 0.00015551,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

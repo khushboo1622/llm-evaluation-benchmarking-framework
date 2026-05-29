@@ -1,0 +1,30 @@
+{
+  "run_id": "057_C2_llama-3.1-8b-instant_1p0",
+  "run_number": 57,
+  "prompt_id": "C2",
+  "category": "coding",
+  "difficulty": "medium",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 1.0,
+  "prompt": "Write a Python decorator that measures and prints the execution time of any function it wraps. Show an example usage.",
+  "eval_criteria": "correct decorator syntax, uses time module, example included",
+  "timestamp": "2026-05-15T08:55:15.370721",
+  "success": true,
+  "response": "**Timing Decorator**\n====================\n\nHere's a Python decorator that measures and prints the execution time of any function it wraps:\n\n```python\nimport time\nfrom functools import wraps\n\ndef timing_decorator(func):\n    \"\"\"\n    Decorator to measure and print the execution time of any function it wraps.\n    \"\"\"\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        start_time = time.time()\n        result = func(*args, **kwargs)\n        end_time = time.time()\n        execution_time = end_time - start_time\n        print(f\"Function '{func.__name__}' executed in {execution_time:.4f} seconds.\")\n        return result\n    return wrapper\n\n# Example usage:\n\n@timing_decorator\ndef example_function():\n    \"\"\"\n    An example function that simulates some work.\n    \"\"\"\n    time.sleep(2)  # Simulating some work\n    print(\"Example function executed.\")\n\n@timing_decorator\ndef another_example_function():\n    \"\"\"\n    Another example function that simulates some work.\n    \"\"\"\n    time.sleep(1)  # Simulating some work\n    print(\"Another example function executed.\")\n\n# Call the example functions\nexample_function()\nanother_example_function()\n```\n\nIn this code, the `timing_decorator` function is the decorator. It uses the `@wraps` decorator from the `functools` module to preserve the metadata (name, docstring, etc.) of the function being wrapped.\n\nThe `wrapper` function inside `timing_decorator` measures the execution time by recording the time before and after calling the original function. It then calculates and prints the execution time.\n\nThe example functions `example_function` and `another_example_function` are decorated with `timing_decorator`. When called, they will print their execution times.\n\n**Output:**\n\n```\nExample function executed.\nFunction 'example_function' executed in 2.0000 seconds.\nAnother example function executed.\nFunction 'another_example_function' executed in 1.0000 seconds.\n```\n\nThis output shows the execution times for each example function, demonstrating the usage of the `timing_decorator`.",
+  "ttft_ms": 132.32,
+  "latency_ms": 796.28,
+  "tokens_per_second": 298.89,
+  "input_tokens": 20,
+  "output_tokens": 238,
+  "response_length": 2031,
+  "cost_usd": 2.004e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

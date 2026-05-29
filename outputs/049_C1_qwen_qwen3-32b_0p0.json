@@ -1,0 +1,30 @@
+{
+  "run_id": "049_C1_qwen_qwen3-32b_0p0",
+  "run_number": 49,
+  "prompt_id": "C1",
+  "category": "coding",
+  "difficulty": "easy",
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.0,
+  "prompt": "Write a Python function that takes a list of integers and returns the two numbers that add up to a given target. Example: [2, 7, 11, 15], target=9 → [2, 7].",
+  "eval_criteria": "correct logic, handles edge cases, clean code",
+  "timestamp": "2026-05-15T08:54:43.522662",
+  "success": true,
+  "response": "<think>\nOkay, I need to write a Python function that takes a list of integers and a target value, then returns the two numbers that add up to the target. Let's think about how to approach this.\n\nThe example given is [2,7,11,15] with target 9. The answer is [2,7]. So the function needs to find two distinct elements whose sum is exactly the target.\n\nFirst, I remember that a common way to solve this problem is by using a hash map (dictionary in Python) to keep track of the values we've seen so far. For each element in the list, we check if the complement (target - current element) exists in the dictionary. If it does, we return those two numbers. Otherwise, we add the current element to the dictionary and continue.\n\nWait, but how do I handle cases where there are multiple possible pairs? The problem says to return the two numbers. But the example expects exactly one pair. So maybe the problem assumes there is exactly one solution? Like in the example. But what if there are multiple pairs? For instance, if the list is [3, 3, 4, 4] and target is 6, then there are two possible pairs. But according to the problem statement, should the function return the first pair found, any pair, or all possible pairs? The example returns one pair, so maybe the function is supposed to return the first pair found.\n\nThe problem says \"the two numbers\", implying there is exactly one solution. But perhaps the problem allows for multiple solutions and we can return any one of them. In that case, the hash map approach would work as it would find the first valid pair.\n\nLet me outline the steps:\n\n1. Initialize an empty dictionary.\n2. Iterate through each number in the list.\n3. For each number, calculate the complement (target - number).\n4. Check if the complement is already in the dictionary.\n   a. If yes, return [complement, number] as the result.\n   b. If no, add the current number to the dictionary with its index (or just the value? Wait, do we need the index? Or just the value? Well, the problem requires returning the two numbers, not their indices. So maybe we can just store the values. Wait, but what if there are duplicate numbers? For example, if the list is [3, 3] and target is 6. Then the complement of the first 3 is 3, which is not in the dictionary yet. Then we add it to the dictionary. When we process the second 3, the complement is 3, which is present. So we return [3,3]. So yes, this approach works even with duplicates.\n\nWait, but in this case, the two elements are the same value, but they are distinct elements in the list. So the code would work. So the hash map approach is suitable here.\n\nSo the steps would be:\n\nFor each element in the list:\n\nCheck if (target - element) is in the hash map. If it is, return the pair. Otherwise, add the current element to the hash map.\n\nBut how to implement this in Python?\n\nLet's think of the function signature. The function needs to take the list and the target. So:\n\ndef two_sum(nums, target):\n\nThen, create a dictionary, let's call it prev_map. Iterate through the list with both index and value? Or just the values. Well, since the problem allows for checking the same value again? Like, for example, in the case of [3, 3], target 6. The first 3 is added to the dictionary. Then when processing the second 3, the complement is 3, which is already in the dictionary, so return [3,3].\n\nSo the code would be:\n\nprev_map = {}\nfor i, num in enumerate(nums):\n    complement = target - num\n    if complement in prev_map:\n        return [complement, num]\n    prev_map[num] = i  # Or maybe store the value? Wait, in the previous example, when checking for complement, we need to know that the complement was actually present before the current num. Because in the for loop, when processing the second 3, the first 3 is already in the prev_map. So the code would return [complement (3), num (3)].\n\nYes, this works.\n\nWait, but in the code, the key in the dictionary is the number. The value stored is the index. But for our purposes, maybe we don't even need the index. Wait, in the original two sum problem, you need to return the indices? No, in this problem, the user wants the two numbers. So the code can just check if the complement exists in the dictionary (i.e., has been seen before). Then return [complement, current num]. But how to avoid returning the same element twice? Well, if the complement",
+  "ttft_ms": 103.58,
+  "latency_ms": 3355.99,
+  "tokens_per_second": 234.21,
+  "input_tokens": 31,
+  "output_tokens": 786,
+  "response_length": 4368,
+  "cost_usd": 0.00031553,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 8,
+    "instruction_following": 6,
+    "clarity": 4,
+    "completeness": 8,
+    "overall": 6
+  }
+}

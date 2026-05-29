@@ -1,0 +1,30 @@
+{
+  "run_id": "051_C1_qwen_qwen3-32b_1p0",
+  "run_number": 51,
+  "prompt_id": "C1",
+  "category": "coding",
+  "difficulty": "easy",
+  "model": "qwen/qwen3-32b",
+  "temperature": 1.0,
+  "prompt": "Write a Python function that takes a list of integers and returns the two numbers that add up to a given target. Example: [2, 7, 11, 15], target=9 → [2, 7].",
+  "eval_criteria": "correct logic, handles edge cases, clean code",
+  "timestamp": "2026-05-15T08:55:02.261374",
+  "success": true,
+  "response": "<think>\nOkay, I need to write a Python function that takes a list of integers and a target value, then returns the two numbers that add up to the target. Let's see. The example given is [2,7,11,15] with target 9, which should return [2,7]. \n\nFirst, I remember that a common approach for this problem is to use a hash map (dictionary in Python) to keep track of the numbers we've seen so far. For each number in the list, we check if the complement (target - current number) exists in the dictionary. If it does, we return those two numbers. Otherwise, we add the current number to the dictionary and continue.\n\nWait, but how do I handle cases where there are multiple pairs that add up to the target? Though the problem might assume there's exactly one pair. The example shows one, but maybe the problem expects us to return the first pair found? Or any pair? Well, according to the problem statement, maybe it's safe to assume that there is exactly one such pair. So the hash map approach should work.\n\nLet me outline the steps:\n\n1. Initialize an empty dictionary.\n2. Iterate over each number in the list.\n3. For each number, calculate the complement as target - num.\n4. Check if the complement is already in the dictionary.\n5. If yes, return [complement, num] as the result.\n6. If not, add the current number to the dictionary with its index (or just the value? Wait, do we need the index? No, because we just need to check if the complement exists. Wait, the dictionary would store the numbers we've seen so far. But if we store the numbers, but there's duplicates, maybe? Like if the target is 8 and the list has [3,5,3], target 6. Then the second 3's complement is 3. But if the first 3 is already in the dict, then when processing the second 3, we can find that 3 is present, so return [3,3]. But in that case, the code would work. \n\nSo for each element, compute the complement. If the complement is in the dictionary, return it. Otherwise, add current num to the dictionary. This way, we can find the pair in O(n) time.\n\nLet me test this logic with the example. The list is [2,7,11,15], target 9. Let's walk through:\n\nFirst num is 2. The complement is 9-2=7. The dictionary is empty, so add 2 to the dict. Next num is 7. Complement is 9-7=2. The dict has 2? Yes. So return [2,7]. Which matches the example.\n\nAnother example: if the list is [3,3], target 6. The first 3 is added to the dict. Then the second 3: complement is 3, which is present, returns [3,3].\n\nAnother case: [3,2,4], target 6. Let's see. First num 3, complement 3 not in dict. Add 3. Next num 2, complement 4. Not in dict. Add 2. Next num 4. Complement is 2, which is in the dict. So returns [2,4]. Correct.\n\nSo the approach seems valid.\n\nNow, coding this in Python. The function signature would be something like two_sum(nums, target). The function needs to return a list of the two numbers.\n\nImplement steps:\n\nInitialize a dictionary, seen = {}\n\nLoop through each num in nums:\n\nWait, but also, perhaps we need to track the indexes? Because in some cases, the same element can't be used twice. Wait, but the problem says two distinct numbers. Wait, the example uses two different elements. But what if the target is twice a single element? Like [3, 2, 4], target 6. The solution would be 2 and 4, but also if there's a [3,3], target 6. Then the solution is both 3's. So the code needs to handle that. The hash map approach works here because when processing the second 3, the first 3 is already in the hash map.\n\nSo, code:\n\ndef two_sum(nums, target):\n    seen = {}\n    for num in nums:\n        complement = target - num\n        if complement in seen:\n            return [complement, num]\n        seen[num] = True  # or store index, but since we just need to check presence, perhaps True is sufficient?\n        # Wait, but adding the num to the seen in each iteration. So for each num, check complement first, then add the num to seen. Because if we add after checking, then the current num is not in the seen when checking for complement. For example",
+  "ttft_ms": 7268.43,
+  "latency_ms": 9371.46,
+  "tokens_per_second": 78.0,
+  "input_tokens": 31,
+  "output_tokens": 731,
+  "response_length": 4025,
+  "cost_usd": 0.00029408,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 8,
+    "clarity": 7,
+    "completeness": 9,
+    "overall": 8
+  }
+}

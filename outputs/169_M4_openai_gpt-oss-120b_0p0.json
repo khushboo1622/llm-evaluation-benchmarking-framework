@@ -1,0 +1,30 @@
+{
+  "run_id": "169_M4_openai_gpt-oss-120b_0p0",
+  "run_number": 169,
+  "prompt_id": "M4",
+  "category": "multilingual",
+  "difficulty": "hard",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.0,
+  "prompt": "A user writes to you in Hinglish (Hindi + English mix): 'Bhai, mujhe ek Python script chahiye jo CSV file read kare aur uska data clean kare — nulls remove karo aur duplicates bhi. Please help!'\n\nRespond naturally in Hinglish and provide the Python code.",
+  "eval_criteria": "natural Hinglish response, correct Python code for CSV cleaning, friendly tone",
+  "timestamp": "2026-05-15T12:05:46.489424",
+  "success": true,
+  "response": "Sure bhai! 🙌  \nCSV ko read karne, null rows (ya specific columns ke nulls) aur duplicate rows hataane ke liye **pandas** library ka use karna sabse aasan hota hai.  \n\n---\n\n## Step‑by‑step\n\n1. **pandas install karo** (agar pehle se nahi hai)  \n   ```bash\n   pip install pandas\n   ```\n\n2. **Script likho** – `clean_csv.py`  \n\n```python\n#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n\n\"\"\"\nCSV Cleaner\n-----------\n- CSV file ko pandas DataFrame me load karta hai\n- NaN (null) rows ko drop karta hai\n- Duplicate rows ko drop karta hai\n- Cleaned file ko nayi CSV me save karta hai\n\"\"\"\n\nimport pandas as pd\nimport argparse\nimport sys\nimport os\n\ndef clean_csv(\n    input_path: str,\n    output_path: str = None,\n    dropna_subset: list = None,\n    keep: str = \"first\",\n    verbose: bool = True,\n):\n    \"\"\"\n    Parameters\n    ----------\n    input_path : str\n        Original CSV file ka path.\n    output_path : str, optional\n        Cleaned CSV ka path. Agar None ho, to `cleaned_<original>.csv` ban jayega.\n    dropna_subset : list, optional\n        Columns jinke liye null values check karni hain.\n        Agar None ho, to poori row ke liye NaN check hota hai.\n    keep : {\"first\", \"last\", False}, default \"first\"\n        Duplicates ko kaise handle karna hai.\n    verbose : bool, default True\n        Process ke steps print karna ya nahi.\n    \"\"\"\n    # 1️⃣ CSV read\n    if verbose:\n        print(f\"Reading CSV from: {input_path}\")\n    try:\n        df = pd.read_csv(input_path)\n    except Exception as e:\n        sys.exit(f\"❌ Error reading CSV: {e}\")\n\n    # 2️⃣ Null rows drop\n    initial_rows = len(df)\n    if dropna_subset:\n        df = df.dropna(subset=dropna_subset)\n        if verbose:\n            print(f\"Dropna on columns {dropna_subset}\")\n    else:\n        df = df.dropna()\n        if verbose:\n            print(\"Dropna on all columns\")\n    after_null_rows = len(df)\n\n    # 3️⃣ Duplicate rows drop\n    df = df.drop_duplicates(keep=keep)\n    after_dup_rows = len(df)\n\n    # 4️⃣ Output path decide\n    if not output_path:\n        base, ext = os.path.splitext(os.path.basename(input_path))\n        output_path = f\"cleaned_{base}{ext}\"\n\n    # 5️⃣ Save cleaned CSV\n    df.to_csv(output_path, index=False)\n    if verbose:\n        print(\"\\n✅ Cleaning complete!\")\n        print(f\"Original rows      : {initial_rows}\")\n        print(f\"After null removal : {after_null_rows}\")\n        print(f\"After dup removal  : {after_dup_rows}\")\n        print(f\"Cleaned file saved : {output_path}\")\n\n    return output_path\n\n\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(\n        description=\"CSV file ko read, nulls aur duplicates remove karke clean CSV generate kare.\"\n    )\n    parser.add_argument(\"input\", help=\"Input CSV file path\")\n    parser.add_argument(\n        \"-o\", \"--output\", help=\"Output (cleaned) CSV file path\", default=None\n    )\n    parser.add_argument(\n        \"-c\",\n        \"--columns\",\n        nargs=\"+\",\n        help=\"Columns jinke liye null check karni hai (default: all columns)\",\n        default=None,\n    )\n    parser.add_argument(\n        \"-k\",\n        \"--keep\",\n        choices=[\"first\", \"last\", \"False\"],\n        default=\"first\",\n        help=\"Duplicate rows keep karne ka rule (default: first)\",\n    )\n    parser.add_argument(\n        \"-q\", \"--quiet\", action=\"store_true\", help=\"Verbose output ko disable karo\"\n    )\n\n    args = parser.parse_args()\n    keep_opt = args.keep if args.keep != \"False\" else False\n\n    clean_csv(\n        input_path=args.input,\n        output_path=args.output,\n        dropna_subset=args.columns,\n        keep=keep_opt,\n        verbose=not args.quiet,\n    )\n```\n\n### Kaise chalaye?\n\n```bash\npython clean_csv.py data/raw_data.csv -o data/cleaned_data.csv -c column1 column2\n```\n\n- `-c column1 column2` → sir",
+  "ttft_ms": 231.73,
+  "latency_ms": 2277.52,
+  "tokens_per_second": 192.31,
+  "input_tokens": 45,
+  "output_tokens": 438,
+  "response_length": 3758,
+  "cost_usd": 0.002763,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 9,
+    "clarity": 8,
+    "completeness": 9,
+    "overall": 9
+  }
+}

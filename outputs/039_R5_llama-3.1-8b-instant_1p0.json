@@ -1,0 +1,30 @@
+{
+  "run_id": "039_R5_llama-3.1-8b-instant_1p0",
+  "run_number": 39,
+  "prompt_id": "R5",
+  "category": "reasoning",
+  "difficulty": "hard",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 1.0,
+  "prompt": "You are in a room with two doors. One leads to freedom, one to death. There are two guards — one always lies, one always tells the truth. You don't know which is which. You can ask ONE guard ONE question. What do you ask?",
+  "eval_criteria": "correct classic solution: ask either guard what the other would say, then take the opposite door",
+  "timestamp": "2026-05-15T08:54:07.889937",
+  "success": true,
+  "response": "This classic puzzle requires a clever approach. To solve this, I will ask one of the guards the following question:\n\n\"If I were to ask the other guard which door leads to freedom, what would they say?\"\n\nThink about the possibilities:\n\n1. You ask a truthful guard: If you ask a guard who always tells the truth, they will truthfully tell you that the other guard (the liar) would point to the door that leads to death, because the liar always lies and would point to the wrong door.\n2. You ask a lying guard: If you ask a guard who always lies, they will lie and say that the other guard (the truthful guard) would point to the door that leads to death. However, since the lying guard is answering, they will actually point to the wrong door, making the truthful guard point to the door that leads to death.\n\nIn either case, when you ask the guard which door leads to freedom, you can safely ignore their answer and do the opposite. If they point to one door, take the other; if they point to the opposite door, take theirs.\n\nIn reality, the question I asked the guard is not about getting a yes or no answer. Instead, I'm using their response to deduce the correct answer.",
+  "ttft_ms": 390.07,
+  "latency_ms": 769.39,
+  "tokens_per_second": 284.64,
+  "input_tokens": 45,
+  "output_tokens": 219,
+  "response_length": 1172,
+  "cost_usd": 1.977e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 9,
+    "completeness": 10,
+    "overall": 10
+  }
+}

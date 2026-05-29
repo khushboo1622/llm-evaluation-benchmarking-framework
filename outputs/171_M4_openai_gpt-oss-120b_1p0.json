@@ -1,0 +1,30 @@
+{
+  "run_id": "171_M4_openai_gpt-oss-120b_1p0",
+  "run_number": 171,
+  "prompt_id": "M4",
+  "category": "multilingual",
+  "difficulty": "hard",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 1.0,
+  "prompt": "A user writes to you in Hinglish (Hindi + English mix): 'Bhai, mujhe ek Python script chahiye jo CSV file read kare aur uska data clean kare — nulls remove karo aur duplicates bhi. Please help!'\n\nRespond naturally in Hinglish and provide the Python code.",
+  "eval_criteria": "natural Hinglish response, correct Python code for CSV cleaning, friendly tone",
+  "timestamp": "2026-05-15T12:05:52.446496",
+  "success": true,
+  "response": "**Sure, bhai!**  \nYahan ek simple Python script hai jo `pandas` library ka use karke CSV file ko read karta hai, null (NaN) rows hataata hai, aur duplicates bhi remove karta hai.  \n\n---\n\n### Step‑by‑step\n\n1. **Pandas install karo** (agar pehle se installed nahi hai):  \n\n```bash\npip install pandas\n```\n\n2. **Script** – `clean_csv.py`\n\n```python\n#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n\n\"\"\"\nclean_csv.py\n------------\nCSV file ko read karega, null rows aur duplicate rows hataega,\nphir cleaned data ko nayi CSV file me save karega.\n\nUsage:\n    python clean_csv.py input_file.csv output_file.csv\n\"\"\"\n\nimport sys\nimport pandas as pd\n\ndef clean_csv(input_path: str, output_path: str) -> None:\n    \"\"\"\n    CSV ko clean karta hai:\n        1. NaN (null) wali rows drop karta hai\n        2. Duplicate rows drop karta hai\n    \"\"\"\n    try:\n        # 1️⃣ CSV read karo\n        df = pd.read_csv(input_path)\n        print(f\"✅ {input_path} successfully read. Shape: {df.shape}\")\n\n        # 2️⃣ Null rows drop karo\n        before_null = df.shape[0]\n        df = df.dropna()\n        after_null = df.shape[0]\n        print(f\"🗑️ Dropped {before_null - after_null} rows containing null values.\")\n\n        # 3️⃣ Duplicate rows drop karo\n        before_dup = df.shape[0]\n        df = df.drop_duplicates()\n        after_dup = df.shape[0]\n        print(f\"🗑️ Dropped {before_dup - after_dup} duplicate rows.\")\n\n        # 4️⃣ Cleaned data ko nayi CSV me likho\n        df.to_csv(output_path, index=False)\n        print(f\"💾 Cleaned data saved to {output_path}. Final shape: {df.shape}\")\n\n    except FileNotFoundError:\n        print(f\"❌ Error: File '{input_path}' not found.\")\n    except pd.errors.EmptyDataError:\n        print(f\"❌ Error: '{input_path}' is empty or not a valid CSV.\")\n    except Exception as e:\n        print(f\"❌ Unexpected error: {e}\")\n\nif __name__ == \"__main__\":\n    # Command line se arguments lete hain\n    if len(sys.argv) != 3:\n        print(\"Usage: python clean_csv.py <input_csv> <output_csv>\")\n        sys.exit(1)\n\n    input_csv = sys.argv[1]\n    output_csv = sys.argv[2]\n\n    clean_csv(input_csv, output_csv)\n```\n\n---\n\n### Kaise chalaye?\n\n```bash\npython clean_csv.py my_data.csv my_data_cleaned.csv\n```\n\n- **`my_data.csv`** – original file  \n- **`my_data_cleaned.csv`** – cleaned output (null rows + duplicates removed)\n\n---\n\n### Thoda aur customization (optional)\n\n| Requirement | Code tweak |\n|-------------|------------|\n| **Specific columns ke liye null check** | `df = df.dropna(subset=['col1', 'col2'])` |\n| **Duplicates sirf ek column ke basis pe** | `df = df.drop_duplicates(subset='col_name')` |\n| **Missing values ko fill karna (e.g., 0)** | `df = df.fillna(0)` |\n| **Index reset karna** | `df = df.reset_index(drop=True)` |\n\nAgar koi aur cleaning step chahiye (like trimming whitespace, type conversion, etc.) to batana—main aur help kar dunga! 🚀",
+  "ttft_ms": 350.42,
+  "latency_ms": 1958.1,
+  "tokens_per_second": 188.45,
+  "input_tokens": 45,
+  "output_tokens": 369,
+  "response_length": 2862,
+  "cost_usd": 0.002349,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 10,
+    "clarity": 9,
+    "completeness": 10,
+    "overall": 9
+  }
+}

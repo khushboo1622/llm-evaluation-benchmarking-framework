@@ -1,0 +1,30 @@
+{
+  "run_id": "164_M4_llama-3.1-8b-instant_0p5",
+  "run_number": 164,
+  "prompt_id": "M4",
+  "category": "multilingual",
+  "difficulty": "hard",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.5,
+  "prompt": "A user writes to you in Hinglish (Hindi + English mix): 'Bhai, mujhe ek Python script chahiye jo CSV file read kare aur uska data clean kare — nulls remove karo aur duplicates bhi. Please help!'\n\nRespond naturally in Hinglish and provide the Python code.",
+  "eval_criteria": "natural Hinglish response, correct Python code for CSV cleaning, friendly tone",
+  "timestamp": "2026-05-15T12:05:29.725988",
+  "success": true,
+  "response": "Bhai, tukein kuch dhang se script chahiye? Okay, main aapko ek Python script de raha hoon jo CSV file ko padhega aur uska data saaf karega. \n\nYeh script pandas library ka use karta hai, jo ek powerful library hai data manipulation aur analysis ke liye. \n\n```python\n# Import pandas library\nimport pandas as pd\n\n# CSV file ka path de\ncsv_file_path = 'your_file.csv'  # replace 'your_file.csv' with your actual file path\n\n# CSV file ko padhein\ndf = pd.read_csv(csv_file_path)\n\n# Null values ko remove karo\ndf = df.dropna()\n\n# Duplicates ko remove karo\ndf = df.drop_duplicates()\n\n# CSV file me data ko saaf karo aur save karo\ndf.to_csv('cleaned_file.csv', index=False)\n```\n\nBhai, yeh script aapko CSV file ko padhne, null values aur duplicates ko remove karne, aur phir data ko saaf karne aur save karne mein madad karega. \n\nYeh script aapko apne file path ko replace karke use karna hoga. \n\nExample:\n- Yeh script aapko ek CSV file padhne aur saaf karne mein madad karega.\n- Yeh script aapko null values aur duplicates ko remove karne mein madad karega.\n- Yeh script aapko data ko saaf karne aur save karne mein madad karega.\n\nBhai, yeh script aapko apne data ko saaf karne mein madad karega.",
+  "ttft_ms": 131.74,
+  "latency_ms": 676.74,
+  "tokens_per_second": 301.45,
+  "input_tokens": 45,
+  "output_tokens": 204,
+  "response_length": 1188,
+  "cost_usd": 1.857e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 9,
+    "clarity": 8,
+    "completeness": 9,
+    "overall": 9
+  }
+}

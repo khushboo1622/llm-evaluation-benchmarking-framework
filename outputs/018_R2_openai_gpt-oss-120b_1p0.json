@@ -1,0 +1,30 @@
+{
+  "run_id": "018_R2_openai_gpt-oss-120b_1p0",
+  "run_number": 18,
+  "prompt_id": "R2",
+  "category": "reasoning",
+  "difficulty": "hard",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 1.0,
+  "prompt": "Five people are in a race. Alice finishes before Bob. Charlie finishes after Dave but before Alice. Eve finishes last. What is the finishing order? Think step by step.",
+  "eval_criteria": "correct order: Dave, Charlie, Alice, Bob, Eve",
+  "timestamp": "2026-05-15T08:53:04.400719",
+  "success": true,
+  "response": "**Step‑by‑step reasoning**\n\n1. **List the runners**  \n   Alice (A), Bob (B), Charlie (C), Dave (D), Eve (E).\n\n2. **Write the given constraints as inequalities (the lower the number, the earlier the finish)**  \n\n   * Alice finishes before Bob → **A < B**  \n   * Charlie finishes after Dave but before Alice → **D < C < A**  \n   * Eve finishes last → **E = 5th place**\n\n3. **Combine the inequalities**\n\n   From the second constraint we already have a chain: **D < C < A**.  \n   Adding the first constraint (A < B) extends the chain:\n\n   \\[\n   D \\;<\\; C \\;<\\; A \\;<\\; B\n   \\]\n\n   So among the four runners A, B, C, D there is a single possible relative order:  \n   **Dave → Charlie → Alice → Bob**.\n\n4. **Place Eve**\n\n   Eve must be 5th, leaving the first four positions for the chain above.\n\n5. **Assign the positions**\n\n   * 1st – Dave  \n   * 2nd – Charlie  \n   * 3rd – Alice  \n   * 4th – Bob  \n   * 5th – Eve  \n\n6. **Check the solution**\n\n   * Alice (3rd) is before Bob (4th) ✔︎  \n   * Charlie (2nd) is after Dave (1st) and before Alice (3rd) ✔︎  \n   * Eve is last (5th) ✔︎  \n\nAll conditions are satisfied.\n\n---\n\n**Finishing order:**  \n\n**1️⃣ Dave → 2️⃣ Charlie → 3️⃣ Alice → 4️⃣ Bob → 5️⃣ Eve**",
+  "ttft_ms": 765.67,
+  "latency_ms": 1574.66,
+  "tokens_per_second": 135.9,
+  "input_tokens": 29,
+  "output_tokens": 214,
+  "response_length": 1195,
+  "cost_usd": 0.001371,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

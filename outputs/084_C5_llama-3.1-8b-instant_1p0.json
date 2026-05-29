@@ -1,0 +1,30 @@
+{
+  "run_id": "084_C5_llama-3.1-8b-instant_1p0",
+  "run_number": 84,
+  "prompt_id": "C5",
+  "category": "coding",
+  "difficulty": "medium",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 1.0,
+  "prompt": "Write a FastAPI endpoint that accepts a JSON body with 'name' and 'age' fields, validates that age is between 0 and 120, and returns a greeting message.",
+  "eval_criteria": "correct FastAPI syntax, Pydantic validation, proper response",
+  "timestamp": "2026-05-15T08:57:02.284626",
+  "success": true,
+  "response": "Here's a FastAPI endpoint that fulfils the specified requirements:\n\n### Code\n\n```python\nfrom fastapi import FastAPI, Body, HTTPException\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\n# Define the Person model using Pydantic\nclass Person(BaseModel):\n    name: str\n    age: int\n\n# Endpoint to get a greeting with the given name and age\n@app.post(\"/greeting\")\nasync def get_greeting(person: Person = Body(..., embed=True)):\n    \"\"\"\n    Returns a greeting message with the person's name and age.\n\n    - **name**: The person's name\n    - **age**: The person's age (validated to be between 0 and 120)\n    \"\"\"\n    if not 0 <= person.age <= 120:\n        raise HTTPException(\n            status_code=400,\n            detail=\"Age must be between 0 and 120\"\n        )\n\n    return {\n        \"message\": f\"Hello, my name is {person.name} and I'm {person.age} years old.\"\n    }\n```\n\n### Explanation\n\n*   We define a FastAPI application instance with `app = FastAPI()`.\n*   We define a `Person` model using Pydantic's `BaseModel` class. This model represents the expected structure of the JSON body sent to the endpoint.\n*   We define the endpoint `/greeting` with the `@app.post(\"/greeting\")` decorator, indicating it accepts `POST` requests.\n*   Inside the endpoint function `get_greeting`, we use Pydantic's `Body` function to validate the input JSON body against the `Person` model. This embeds the model's fields within a nested dictionary called `person`.\n*   We validate the `age` field to ensure it's between 0 and 120. If it's not, we raise a `400 Bad Request` HTTP exception with a user-friendly error message.\n*   If validation succeeds, we return a greeting message as a dictionary.\n\n### Example Usage\n\nYou can test the endpoint using a tool like `curl` or a REST client:\n\n*   Valid input:\n\n    ```bash\ncurl -X POST -H \"Content-Type: application/json\" -d '{\"name\": \"John Doe\", \"age\": 30}' http://localhost:8000/greeting\n```\n\n    Expected response:\n\n    ```json\n{\n    \"message\": \"Hello, my name is John Doe and I'm 30 years old.\"\n}\n```\n\n*   Invalid input (age outside the allowed range):\n\n    ```bash\ncurl -X POST -H \"Content-Type: application/json\" -d '{\"name\": \"John Doe\", \"age\": 125}' http://localhost:8000/greeting\n```\n\n    Expected response:\n\n    ```json\n{\n    \"detail\": \"Age must be between 0 and 120\"\n}\n```\n\nThis code provides a simple and secure way to handle JSON body validation in a FastAPI endpoint.",
+  "ttft_ms": 210.01,
+  "latency_ms": 1242.44,
+  "tokens_per_second": 283.31,
+  "input_tokens": 27,
+  "output_tokens": 352,
+  "response_length": 2409,
+  "cost_usd": 2.951e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 9,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 9
+  }
+}

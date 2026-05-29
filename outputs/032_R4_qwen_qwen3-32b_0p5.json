@@ -1,0 +1,30 @@
+{
+  "run_id": "032_R4_qwen_qwen3-32b_0p5",
+  "run_number": 32,
+  "prompt_id": "R4",
+  "category": "reasoning",
+  "difficulty": "medium",
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.5,
+  "prompt": "A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost? Show your work.",
+  "eval_criteria": "correct answer ($0.05), not the intuitive wrong answer ($0.10)",
+  "timestamp": "2026-05-15T08:53:48.630652",
+  "success": true,
+  "response": "<think>\nOkay, let's see. The problem says that a bat and a ball together cost $1.10. Also, the bat costs $1.00 more than the ball. I need to find out how much the ball costs.\n\nHmm, let me start by setting up some variables. Let me call the cost of the ball \"x\" dollars. Then, since the bat is $1.00 more than the ball, the bat would cost \"x + 1.00\" dollars. \n\nSo, the total cost of both the bat and the ball is the sum of these two amounts. That would be x (for the ball) plus x + 1.00 (for the bat). According to the problem, this total is $1.10. So I can write the equation:\n\nx + (x + 1.00) = 1.10\n\nLet me simplify that. Combine like terms. The left side has two x terms and a 1.00. So adding the x terms together gives 2x + 1.00 = 1.10.\n\nNow, to solve for x, I can subtract 1.00 from both sides of the equation. That would give me:\n\n2x = 1.10 - 1.00\n2x = 0.10\n\nThen, divide both sides by 2 to get x by itself:\n\nx = 0.10 / 2\nx = 0.05\n\nSo, the ball costs $0.05. Let me check if that makes sense. If the ball is $0.05, then the bat is $1.00 more, which would make the bat cost $1.05. Adding them together: $0.05 + $1.05 = $1.10. That matches the total given in the problem. \n\nWait a second, but sometimes these problems have a trick. Let me double-check. The problem says the bat costs $1.00 more than the ball. If the ball is $0.05, then the bat is $1.05, which is indeed $1.00 more than $0.05. So the difference is correct. The total is also correct. \n\nI think that's right. Maybe the common mistake is to think the ball is $0.10 and the bat is $1.00, but then the bat is only $0.90 more than the ball, not $1.00. So yeah, the correct answer should be $0.05 for the ball.\n</think>\n\nLet the cost of the ball be $ x $ dollars. Since the bat costs $1.00 more than the ball, the bat's cost is $ x + 1.00 $. The total cost of both items is $1.10, leading to the equation:\n\n$$\nx + (x + 1.00) = 1.10\n$$\n\nSimplifying the equation:\n\n$$\n2x + 1.00 = 1.10\n$$\n\nSubtract $1.00 from both sides:\n\n$$\n2x = 0.10\n$$\n\nDivide by 2:\n\n$$\nx = 0.05\n$$\n\n**Verification**:  \n- Ball: $0.05  \n- Bat: $0.05 + $1.00 = $1.05  \n- Total: $0.05 + $1.05 = $1.10  \n\nThis satisfies both the total cost and the $1.00 difference. A common misconception is to assume the ball costs $0.10, but this would make the bat $1.10 (a $1.00 difference), leading to a total of $1.20, which contradicts the problem statement.\n\n**Answer**: The ball costs **$0.05**.",
+  "ttft_ms": 2379.16,
+  "latency_ms": 4574.69,
+  "tokens_per_second": 105.8,
+  "input_tokens": 26,
+  "output_tokens": 484,
+  "response_length": 2414,
+  "cost_usd": 0.0001963,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

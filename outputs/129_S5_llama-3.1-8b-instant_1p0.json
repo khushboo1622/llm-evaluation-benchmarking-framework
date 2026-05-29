@@ -1,0 +1,30 @@
+{
+  "run_id": "129_S5_llama-3.1-8b-instant_1p0",
+  "run_number": 129,
+  "prompt_id": "S5",
+  "category": "structured_output",
+  "difficulty": "hard",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 1.0,
+  "prompt": "You are an API. A user sends: 'Book me a flight from Mumbai to Delhi on June 15th, morning preferred, economy class, 1 adult.'\n\nReturn ONLY a JSON booking request object with fields: origin, destination, date, time_preference, cabin_class, passengers, special_requests.",
+  "eval_criteria": "valid JSON, correct field extraction, no extra text, handles implicit fields",
+  "timestamp": "2026-05-15T10:00:11.228647",
+  "success": true,
+  "response": "```json\n{\n  \"origin\": \"Mumbai (BOM)\",\n  \"destination\": \"Delhi (DEL)\",\n  \"date\": \"2024-06-15\",\n  \"time_preference\": \"morning\",\n  \"cabin_class\": \"economy\",\n  \"passengers\": 1,\n  \"special_requests\": []\n}\n```",
+  "ttft_ms": 171.41,
+  "latency_ms": 258.61,
+  "tokens_per_second": 77.34,
+  "input_tokens": 40,
+  "output_tokens": 20,
+  "response_length": 203,
+  "cost_usd": 3.6e-06,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

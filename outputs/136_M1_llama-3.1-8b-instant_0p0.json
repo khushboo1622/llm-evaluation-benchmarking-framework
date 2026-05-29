@@ -1,0 +1,30 @@
+{
+  "run_id": "136_M1_llama-3.1-8b-instant_0p0",
+  "run_number": 136,
+  "prompt_id": "M1",
+  "category": "multilingual",
+  "difficulty": "easy",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.0,
+  "prompt": "Translate the following English text to Hindi:\n\n'Artificial intelligence is transforming the way we work and live. It is important to understand both its benefits and its limitations.'",
+  "eval_criteria": "accurate Hindi translation, natural language, correct grammar",
+  "timestamp": "2026-05-15T10:19:03.058928",
+  "success": true,
+  "response": "मानवता की एक कल्पना है जो हमारे जीवन और काम को बदल रही है। इसके फायदे और नुकसान को समझना बहुत जरूरी है।",
+  "ttft_ms": 550.52,
+  "latency_ms": 648.58,
+  "tokens_per_second": 35.46,
+  "input_tokens": 28,
+  "output_tokens": 23,
+  "response_length": 103,
+  "cost_usd": 3.24e-06,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 6,
+    "instruction_following": 8,
+    "clarity": 9,
+    "completeness": 8,
+    "overall": 7
+  }
+}

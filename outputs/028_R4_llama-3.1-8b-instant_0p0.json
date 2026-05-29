@@ -1,0 +1,30 @@
+{
+  "run_id": "028_R4_llama-3.1-8b-instant_0p0",
+  "run_number": 28,
+  "prompt_id": "R4",
+  "category": "reasoning",
+  "difficulty": "medium",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.0,
+  "prompt": "A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost? Show your work.",
+  "eval_criteria": "correct answer ($0.05), not the intuitive wrong answer ($0.10)",
+  "timestamp": "2026-05-15T08:53:36.858564",
+  "success": true,
+  "response": "Let's denote the cost of the ball as 'x'. \n\nSince the bat costs $1.00 more than the ball, the cost of the bat is 'x + $1.00'.\n\nThe total cost of the bat and the ball is $1.10. We can write an equation to represent this:\n\nx + (x + $1.00) = $1.10\n\nCombine like terms:\n2x + $1.00 = $1.10\n\nSubtract $1.00 from both sides:\n2x = $0.10\n\nDivide both sides by 2:\nx = $0.05\n\nSo, the ball costs $0.05.",
+  "ttft_ms": 274.52,
+  "latency_ms": 493.23,
+  "tokens_per_second": 166.25,
+  "input_tokens": 26,
+  "output_tokens": 82,
+  "response_length": 390,
+  "cost_usd": 7.86e-06,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

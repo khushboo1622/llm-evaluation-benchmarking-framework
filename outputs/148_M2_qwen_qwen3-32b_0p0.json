@@ -1,0 +1,30 @@
+{
+  "run_id": "148_M2_qwen_qwen3-32b_0p0",
+  "run_number": 148,
+  "prompt_id": "M2",
+  "category": "multilingual",
+  "difficulty": "medium",
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.0,
+  "prompt": "નીચેના ગુજરાતી ટેક્સ્ટનો અંગ્રેજીમાં અનુવાદ કરો અને પછી તેનો સારાંશ આપો:\n\n'ભારતમાં ટેક્નોલોજી ઉદ્યોગ ઝડપથી વિકસી રહ્યો છે. યુવા સ્ટાર્ટઅપ્સ નવી સમસ્યાઓ ઉકેલવા માટે આર્ટિફિશિયલ ઇન્ટેલિજન્સ અને મશીન લર્નિંગનો ઉપયોગ કરી રહ્યા છે.'",
+  "eval_criteria": "correct English translation, accurate summary, handles Gujarati script",
+  "timestamp": "2026-05-15T11:32:33.438493",
+  "success": true,
+  "response": "<think>\nOkay, let's tackle this query. The user wants me to translate a Gujarati text into English and then provide a summary. First, I need to make sure I understand the Gujarati text correctly. The original text is: \"ભારતમાં ટેક્નોલોજી ઉદ્યોગ ઝડપથી વિકસી રહ્યો છે. યુવા સ્ટાર્ટઅપ્સ નવી સમસ્યાઓ ઉકેલવા માટે આર્ટિફિશિયલ ઇન્ટેલિજન્સ અને મશીન લર્નિંગનો ઉપયોગ કરી રહ્યા છે.\"\n\nTranslating this into English, the first sentence would be \"The technology industry in India is rapidly developing.\" The second sentence: \"Young startups are using artificial intelligence and machine learning to solve new problems.\"\n\nNow, for the summary. The main points are the rapid growth of India's tech industry and the use of AI and ML by startups to address new challenges. The summary should be concise, capturing both elements without extra details. Maybe something like: \"India's technology sector is growing rapidly, with young startups leveraging artificial intelligence and machine learning to address emerging challenges.\"\n\nWait, let me check if \"ઝડપથી વિકસી રહ્યો છે\" is correctly translated as \"rapidly developing.\" Yes, that's accurate. Also, \"યુવા સ્ટાર્ટઅપ્સ\" is \"young startups,\" which makes sense. The second sentence's structure is correct. The summary combines both sentences into a single statement, highlighting the key points. I think that's good. Let me make sure there's no loss of meaning. The original emphasizes the speed of development and the specific technologies being used by startups. The translation and summary both capture that. Alright, that should do it.\n</think>\n\n**Translation:**  \n\"The technology industry in India is rapidly developing. Young startups are using artificial intelligence and machine learning to solve new problems.\"  \n\n**Summary:**  \nIndia's technology sector is growing rapidly, with young startups leveraging artificial intelligence and machine learning to address emerging challenges.",
+  "ttft_ms": 438.12,
+  "latency_ms": 1381.32,
+  "tokens_per_second": 204.88,
+  "input_tokens": 33,
+  "output_tokens": 283,
+  "response_length": 1922,
+  "cost_usd": 0.00011994,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 9,
+    "clarity": 8,
+    "completeness": 9,
+    "overall": 9
+  }
+}

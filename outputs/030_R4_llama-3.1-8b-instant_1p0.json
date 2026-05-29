@@ -1,0 +1,30 @@
+{
+  "run_id": "030_R4_llama-3.1-8b-instant_1p0",
+  "run_number": 30,
+  "prompt_id": "R4",
+  "category": "reasoning",
+  "difficulty": "medium",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 1.0,
+  "prompt": "A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost? Show your work.",
+  "eval_criteria": "correct answer ($0.05), not the intuitive wrong answer ($0.10)",
+  "timestamp": "2026-05-15T08:53:39.821667",
+  "success": true,
+  "response": "Let's denote the cost of the ball as 'b'. \n\nThe bat costs $1.00 more than the ball, so the cost of the bat is 'b + $1.00'. \n\nThe total cost of both the bat and the ball together is $1.10. This can be represented as the equation: \nb + (b + $1.00) = $1.10\n\nNow, let's simplify the equation: \nb + b + $1.00 = $1.10\nCombine like terms:\n2b + $1.00 = $1.10\n\nTo isolate the variable 'b' on one side, we'll subtract $1.00 from both sides of the equation:\n2b = $1.10 - $1.00\n2b = $0.10\n\nNow, divide both sides by 2 to find the value of 'b': \nb = $0.10 / 2\nb = $0.05\n\nTherefore, the cost of the ball is $0.05.",
+  "ttft_ms": 271.64,
+  "latency_ms": 478.17,
+  "tokens_per_second": 265.6,
+  "input_tokens": 26,
+  "output_tokens": 127,
+  "response_length": 599,
+  "cost_usd": 1.146e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "run_id": "036_R4_openai_gpt-oss-120b_1p0",
+  "run_number": 36,
+  "prompt_id": "R4",
+  "category": "reasoning",
+  "difficulty": "medium",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 1.0,
+  "prompt": "A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost? Show your work.",
+  "eval_criteria": "correct answer ($0.05), not the intuitive wrong answer ($0.10)",
+  "timestamp": "2026-05-15T08:54:03.381537",
+  "success": true,
+  "response": "**Answer:** The ball costs **\\$0.05** (five cents).  \n\nBelow is a step‑by‑step algebraic solution that shows exactly how we get that number.\n\n---\n\n## 1. Define the variables  \n\nLet  \n\n* \\(B\\) = price of the **ball** (in dollars)  \n* \\(T\\) = price of the **bat** (in dollars)\n\n---\n\n## 2. Translate the word problem into equations  \n\n1. “The bat and a ball cost \\$1.10 in total.”  \n   \\[\n   T + B = 1.10 \\tag{1}\n   \\]\n\n2. “The bat costs \\$1.00 more than the ball.”  \n   \\[\n   T = B + 1.00 \\tag{2}\n   \\]\n\n---\n\n## 3. Substitute (2) into (1)\n\nReplace \\(T\\) in equation (1) with the expression from equation (2):\n\n\\[\n(B + 1.00) + B = 1.10\n\\]\n\nCombine like terms:\n\n\\[\n2B + 1.00 = 1.10\n\\]\n\n---\n\n## 4. Solve for \\(B\\)\n\nSubtract \\$1.00 from both sides:\n\n\\[\n2B = 1.10 - 1.00 = 0.10\n\\]\n\nDivide by 2:\n\n\\[\nB = \\frac{0.10}{2} = 0.05\n\\]\n\nSo the ball costs **\\$0.05** (five cents).\n\n---\n\n## 5. Verify the solution  \n\nIf \\(B = \\$0.05\\), then using (2):\n\n\\[\nT = B + 1.00 = 0.05 + 1.00 = 1.05\n\\]\n\nCheck the total:\n\n\\[\nT + B = 1.05 + 0.05 = 1.10 \\quad \\checkmark\n\\]\n\nBoth conditions of the problem are satisfied, confirming the answer is correct.\n\n---\n\n### Quick sanity check (why the “\\$0.10” answer is wrong)\n\nA common mistake is to think the ball costs \\$0.10, making the bat \\$1.10 (since it would then be \\$1.00 more). That would give a total of\n\n\\[\n0.10 + 1.10 = 1.20,\n\\]\n\nwhich is **\\$0.10 too high**. The algebra above shows the correct values.\n\n---\n\n**Conclusion:**  \n- Ball: **\\$0.05**  \n- Bat: **\\$1.05**  \n\nThese prices satisfy both statements in the problem.",
+  "ttft_ms": 288.12,
+  "latency_ms": 1452.77,
+  "tokens_per_second": 200.31,
+  "input_tokens": 26,
+  "output_tokens": 291,
+  "response_length": 1550,
+  "cost_usd": 0.001824,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

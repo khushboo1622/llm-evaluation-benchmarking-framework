@@ -1,0 +1,30 @@
+{
+  "run_id": "107_S2_openai_gpt-oss-120b_0p5",
+  "run_number": 107,
+  "prompt_id": "S2",
+  "category": "structured_output",
+  "difficulty": "medium",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.5,
+  "prompt": "Analyze the sentiment of these 3 reviews and return ONLY a JSON array. Each item should have: review_id, sentiment (positive/negative/neutral), confidence (0.0-1.0), key_phrase.\n\nReview 1: 'Absolutely loved the product, fast delivery!'\nReview 2: 'Worst experience ever, never buying again.'\nReview 3: 'It was okay, nothing special.'",
+  "eval_criteria": "valid JSON array, 3 items, correct sentiments, confidence is float",
+  "timestamp": "2026-05-15T08:58:20.002572",
+  "success": true,
+  "response": "[\n  {\n    \"review_id\": 1,\n    \"sentiment\": \"positive\",\n    \"confidence\": 0.99,\n    \"key_phrase\": \"loved the product\"\n  },\n  {\n    \"review_id\": 2,\n    \"sentiment\": \"negative\",\n    \"confidence\": 0.99,\n    \"key_phrase\": \"worst experience ever\"\n  },\n  {\n    \"review_id\": 3,\n    \"sentiment\": \"neutral\",\n    \"confidence\": 0.85,\n    \"key_phrase\": \"It was okay\"\n  }\n]",
+  "ttft_ms": 355.39,
+  "latency_ms": 612.18,
+  "tokens_per_second": 62.07,
+  "input_tokens": 46,
+  "output_tokens": 38,
+  "response_length": 359,
+  "cost_usd": 0.000366,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

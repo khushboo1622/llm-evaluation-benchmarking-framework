@@ -1,0 +1,30 @@
+{
+  "run_id": "037_R5_llama-3.1-8b-instant_0p0",
+  "run_number": 37,
+  "prompt_id": "R5",
+  "category": "reasoning",
+  "difficulty": "hard",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.0,
+  "prompt": "You are in a room with two doors. One leads to freedom, one to death. There are two guards — one always lies, one always tells the truth. You don't know which is which. You can ask ONE guard ONE question. What do you ask?",
+  "eval_criteria": "correct classic solution: ask either guard what the other would say, then take the opposite door",
+  "timestamp": "2026-05-15T08:54:04.815799",
+  "success": true,
+  "response": "To solve this classic puzzle, you need to ask a question that will give you the information you need to make a decision, regardless of which guard you ask.\n\nHere's the question I would ask:\n\n\"If I were to ask the other guard which door leads to freedom, what would they say?\"\n\nThink about it for a moment. If you ask the truthful guard, they will tell you what the lying guard would say, which would be the opposite of the truth. So, the truthful guard would point you to the door that leads to death.\n\nOn the other hand, if you ask the lying guard, they will lie about what the truthful guard would say. So, the lying guard would also point you to the door that leads to death.\n\nIn either case, the guard you ask will point you to the door that leads to death. So, you can safely assume the opposite door is the one that leads to freedom.\n\nThis question works because it doesn't matter which guard you ask; the answer will always give you the information you need to make a decision.",
+  "ttft_ms": 272.62,
+  "latency_ms": 547.41,
+  "tokens_per_second": 343.44,
+  "input_tokens": 45,
+  "output_tokens": 188,
+  "response_length": 984,
+  "cost_usd": 1.729e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 9,
+    "completeness": 10,
+    "overall": 10
+  }
+}

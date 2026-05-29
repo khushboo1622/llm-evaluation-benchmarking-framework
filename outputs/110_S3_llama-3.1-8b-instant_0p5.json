@@ -1,0 +1,30 @@
+{
+  "run_id": "110_S3_llama-3.1-8b-instant_0p5",
+  "run_number": 110,
+  "prompt_id": "S3",
+  "category": "structured_output",
+  "difficulty": "hard",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.5,
+  "prompt": "Return ONLY valid JSON for a task management item. Schema must be exactly:\n{\n  \"task_id\": \"string (uuid format)\",\n  \"title\": \"string\",\n  \"priority\": \"low | medium | high | critical\",\n  \"tags\": [\"array of strings\"],\n  \"estimated_hours\": number,\n  \"subtasks\": [{\"id\": \"string\", \"description\": \"string\", \"done\": boolean}]\n}\n\nTask: Build a REST API for a todo application with authentication.",
+  "eval_criteria": "valid JSON, matches schema exactly, uuid-like id, no hallucinated fields",
+  "timestamp": "2026-05-15T08:58:35.051453",
+  "success": true,
+  "response": "**Task Management API with Authentication**\n\nWe will use Node.js, Express.js, and MongoDB to create a REST API with authentication. We will also use JSON Web Tokens (JWT) for authentication.\n\n### Dependencies\n\n```bash\nnpm install express mongoose jsonwebtoken bcryptjs\n```\n\n### Database Setup\n\n```javascript\n// models/task.js\nconst mongoose = require('mongoose');\n\nconst taskSchema = new mongoose.Schema({\n  task_id: String,\n  title: String,\n  priority: String,\n  tags: [String],\n  estimated_hours: Number,\n  subtasks: [\n    {\n      id: String,\n      description: String,\n      done: Boolean\n    }\n  ]\n});\n\nconst Task = mongoose.model('Task', taskSchema);\n\nmodule.exports = Task;\n```\n\n### API Endpoints\n\n#### Task Endpoints\n\n```javascript\n// routes/task.js\nconst express = require('express');\nconst router = express.Router();\nconst Task = require('../models/task');\nconst jwt = require('jsonwebtoken');\nconst bcrypt = require('bcryptjs');\n\n// GET /tasks\nrouter.get('/tasks', authenticate, async (req, res) => {\n  try {\n    const tasks = await Task.find().populate('subtasks');\n    res.json(tasks);\n  } catch (err) {\n    console.error(err);\n    res.status(500).json({ message: 'Error fetching tasks' });\n  }\n});\n\n// GET /tasks/:id\nrouter.get('/tasks/:id', authenticate, async (req, res) => {\n  try {\n    const task = await Task.findById(req.params.id).populate('subtasks');\n    if (!task) {\n      res.status(404).json({ message: 'Task not found' });\n    } else {\n      res.json(task);\n    }\n  } catch (err) {\n    console.error(err);\n    res.status(500).json({ message: 'Error fetching task' });\n  }\n});\n\n// POST /tasks\nrouter.post('/tasks', authenticate, async (req, res) => {\n  try {\n    const task = new Task({\n      task_id: req.body.task_id,\n      title: req.body.title,\n      priority: req.body.priority,\n      tags: req.body.tags,\n      estimated_hours: req.body.estimated_hours,\n      subtasks: req.body.subtasks\n    });\n    await task.save();\n    res.json(task);\n  } catch (err) {\n    console.error(err);\n    res.status(500).json({ message: 'Error creating task' });\n  }\n});\n\n// PUT /tasks/:id\nrouter.put('/tasks/:id', authenticate, async (req, res) => {\n  try {\n    const task = await Task.findById(req.params.id);\n    if (!task) {\n      res.status(404).json({ message: 'Task not found' });\n    } else {\n      task.title = req.body.title;\n      task.priority = req.body.priority;\n      task.tags = req.body.tags;\n      task.estimated_hours = req.body.estimated_hours;\n      task.subtasks = req.body.subtasks;\n      await task.save();\n      res.json(task);\n    }\n  } catch (err) {\n    console.error(err);\n    res.status(500).json({ message: 'Error updating task' });\n  }\n});\n\n// DELETE /tasks/:id\nrouter.delete('/tasks/:id', authenticate, async (req, res) => {\n  try {\n    await Task.findByIdAndRemove(req.params.id);\n    res.json({ message: 'Task deleted' });\n  } catch (err) {\n    console.error(err);\n    res.status(500).json({ message: 'Error deleting task' });\n  }\n});\n\nmodule.exports = router;\n```\n\n#### Authentication Endpoints\n\n```javascript\n// routes/auth.js\nconst express = require('express');\nconst router = express.Router();\nconst jwt = require('jsonwebtoken');\nconst bcrypt = require('bcryptjs');\nconst User = require('../models/user');\n\n// POST /login\nrouter.post('/login', async (req, res) => {\n  try {\n    const user = await User.findOne({ username: req.body.username });\n    if (!user) {\n      res.status(401).json({ message: 'Invalid username or password' });\n    } else {\n      const isValidPassword = await bcrypt.compare(req.body.password, user.password);\n      if (!isValidPassword) {\n        res.status(401).json({ message: 'Invalid username or password' });\n      } else {\n        const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn: '1h' });\n        res.json({ token });\n      }\n    }\n  } catch (err) {\n    console.error(err);\n    res.status(500).json({ message: 'Error logging in' });\n  }\n});\n\n// POST /register\nrouter.post('/register', async (req, res) => {\n  try {\n    const hashedPassword = await bcrypt.hash(req.body.password, 10);\n    const user = new User({ username: req.body.username, password:",
+  "ttft_ms": 151.21,
+  "latency_ms": 1471.76,
+  "tokens_per_second": 315.27,
+  "input_tokens": 53,
+  "output_tokens": 464,
+  "response_length": 4163,
+  "cost_usd": 3.977e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 0,
+    "instruction_following": 0,
+    "clarity": 0,
+    "completeness": 0,
+    "overall": 0
+  }
+}

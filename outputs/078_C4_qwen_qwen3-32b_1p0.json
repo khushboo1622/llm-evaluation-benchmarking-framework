@@ -1,0 +1,30 @@
+{
+  "run_id": "078_C4_qwen_qwen3-32b_1p0",
+  "run_number": 78,
+  "prompt_id": "C4",
+  "category": "coding",
+  "difficulty": "hard",
+  "model": "qwen/qwen3-32b",
+  "temperature": 1.0,
+  "prompt": "Implement a simple LRU (Least Recently Used) cache in Python with get and put operations. The cache should have a max capacity. Use only built-in Python.",
+  "eval_criteria": "correct LRU logic, handles capacity limit, O(1) operations preferred",
+  "timestamp": "2026-05-15T08:56:39.537980",
+  "success": true,
+  "response": "<think>\nOkay, I need to implement a simple LRU cache in Python using only built-in features. Hmm, let's think about how an LRU cache works. The main idea is that when the cache is full and we need to add a new item, we remove the least recently used item. For both get and put operations, accessing an item (either retrieving or adding) makes it the most recently used.\n\nSo, how do I track the usage order? Oh right, one common approach is to use an ordered data structure. Wait, in Python 3.7 and above, regular dicts maintain insertion order. But maybe for an LRU cache, I need something that can efficiently move accessed items to the end or keep track of the least recently used. Oh right, perhaps using an OrderedDict from the collections module. Wait, but the user said to use only built-in Python. Oh wait, OrderedDict is part of the standard library but not a built-in; you have to import it. Oh, but the user specified to use only built-in Python, which might mean using only the standard library. Hmm, maybe there's a way without OrderedDict?\n\nAlternatively, maybe I can use a dictionary to store the cache and a separate list or something to track the order. But lists can be slow for certain operations. Let's think. For an LRU cache, when you get an item, it becomes the most recently used. When you put an item, if it exists, it's updated and becomes MRU. If not, we add it, possibly evicting the LRU.\n\nSo for data structures, one approach is to use a dictionary for O(1) lookups, and a doubly linked list to track the order of use. But implementing a doubly linked list in Python with only built-ins might be tedious. Alternatively, maybe using two dictionaries? Or perhaps using a combination of a dictionary and a list to track order, but that could be inefficient for large caches.\n\nAlternatively, since Python 3.7 has insertion-ordered dicts, perhaps we can use that. Let me check. For example, when an item is accessed (via get), we can delete it from the dict and reinsert it, which would move it to the end. Similarly for put operations. Then, when the cache is full, we can pop the first item (the least recently used) from the dict. But in Python, for 3.7+, the dict's popitem() method with last=False would pop the first inserted item. So maybe that's manageable.\n\nSo the plan is: use a regular dict, and whenever we get a key, we delete it and reinsert it to update its position. For put, if the key exists, we delete and reinsert. When adding a new item, if over capacity, remove the first item.\n\nSo, the steps:\n\nCreate a Cache class with max capacity. Initialize a dictionary. Also, maybe track the size?\n\nWait, but the size is len(dict), but perhaps tracking size separately could be helpful to avoid calling len each time.\n\nBut for the purposes of this problem, maybe not necessary. Let's outline the methods.\n\nFor get(key):\n\n- If key is in the cache, return the value, and move the key to the end (by deleting and reinserting).\n\nFor put(key, value):\n\n- If the key is present, delete it (to update the order) and reinsert.\n- Else, add the key-value pair. If the length exceeds capacity, remove the least recently used item (the first item in the dict, using popitem(last=False)).\n\nBut how to handle the order correctly?\n\nLet me think of an example. Suppose the cache has capacity 2.\n\nAdd a:1, then add b:2. Now the dict is {a:1, b:2} (assuming insertion order). Now get a. So we delete a and reinsert it. Now the order is b, a. Wait, no. Wait, when you delete a key from a dict, the insertion order is preserved except for the deleted key. When you reinsert the key, it's added to the end. So, in Python's dict, yes. So for example:\n\n>>> d = {'a':1, 'b':2}\n>>> d.pop('a')\n1\n>>> d['a'] = 1\n>>> d\n{'b':2, 'a':1}\n\nWait, no. Wait, after popping 'a' from d, which was inserted first. Then adding 'a' again would put it at the end. So in that case, the next insertion would make 'a' the last. So in a cache, when you access a key, you move it to the end by deleting and reinserting. Then when you need to evict, you remove the first element (the LRU).\n\nSo the code could look like this.\n\nIn the Cache class:\n\ndef __init__(self, capacity):\n    self.capacity = capacity\n    self.cache =",
+  "ttft_ms": 5384.62,
+  "latency_ms": 8834.85,
+  "tokens_per_second": 86.02,
+  "input_tokens": 26,
+  "output_tokens": 760,
+  "response_length": 4208,
+  "cost_usd": 0.00030394,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 8,
+    "instruction_following": 6,
+    "clarity": 7,
+    "completeness": 9,
+    "overall": 7
+  }
+}

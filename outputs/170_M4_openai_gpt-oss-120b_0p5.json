@@ -1,0 +1,30 @@
+{
+  "run_id": "170_M4_openai_gpt-oss-120b_0p5",
+  "run_number": 170,
+  "prompt_id": "M4",
+  "category": "multilingual",
+  "difficulty": "hard",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.5,
+  "prompt": "A user writes to you in Hinglish (Hindi + English mix): 'Bhai, mujhe ek Python script chahiye jo CSV file read kare aur uska data clean kare — nulls remove karo aur duplicates bhi. Please help!'\n\nRespond naturally in Hinglish and provide the Python code.",
+  "eval_criteria": "natural Hinglish response, correct Python code for CSV cleaning, friendly tone",
+  "timestamp": "2026-05-15T12:05:49.514778",
+  "success": true,
+  "response": "Sure bhai! 😎  \nAise kaam ke liye **pandas** library sabse aasan hoti hai. Niche ek simple script diya hai jo:\n\n1. CSV file ko read karta hai  \n2. Saare rows jisme koi `NaN` (null) value ho, unko drop karta hai  \n3. Duplicate rows ko remove karta hai (by default sab columns ko compare karta hai)  \n4. Cleaned data ko wapas ek nayi CSV file mein save karta hai  \n\n```python\n#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n\n\"\"\"\nCSV Cleaner\n~~~~~~~~~~\nRead a CSV, drop nulls & duplicates, and write the cleaned data back.\n\nUsage:\n    python csv_cleaner.py input_file.csv [output_file.csv]\n\nIf output_file is not given, it will be saved as <input_file>_cleaned.csv\n\"\"\"\n\nimport sys\nimport os\nimport pandas as pd\n\ndef clean_csv(input_path: str, output_path: str = None) -> None:\n    # 1️⃣ Read CSV\n    try:\n        df = pd.read_csv(input_path)\n        print(f\"✅ Loaded '{input_path}' with {len(df)} rows and {len(df.columns)} columns.\")\n    except Exception as e:\n        print(f\"❌ Error reading file: {e}\")\n        sys.exit(1)\n\n    # 2️⃣ Drop rows with any null value\n    before_null = len(df)\n    df_clean = df.dropna()\n    after_null = len(df_clean)\n    print(f\"🧹 Dropped {before_null - after_null} rows containing nulls.\")\n\n    # 3️⃣ Drop duplicate rows\n    before_dup = len(df_clean)\n    df_clean = df_clean.drop_duplicates()\n    after_dup = len(df_clean)\n    print(f\"🔁 Removed {before_dup - after_dup} duplicate rows.\")\n\n    # 4️⃣ Prepare output path\n    if not output_path:\n        base, ext = os.path.splitext(input_path)\n        output_path = f\"{base}_cleaned{ext}\"\n\n    # 5️⃣ Save cleaned CSV\n    try:\n        df_clean.to_csv(output_path, index=False)\n        print(f\"💾 Cleaned file saved as '{output_path}' ({len(df_clean)} rows).\")\n    except Exception as e:\n        print(f\"❌ Error writing file: {e}\")\n        sys.exit(1)\n\n\nif __name__ == \"__main__\":\n    # Command line arguments handling\n    if len(sys.argv) < 2:\n        print(\"Usage: python csv_cleaner.py <input_csv> [output_csv]\")\n        sys.exit(1)\n\n    input_file = sys.argv[1]\n    output_file = sys.argv[2] if len(sys.argv) > 2 else None\n\n    # Make sure pandas is installed\n    try:\n        import pandas as pd   # already imported, just a sanity check\n    except ImportError:\n        print(\"⚠️  pandas library not found. Install it with:\")\n        print(\"     pip install pandas\")\n        sys.exit(1)\n\n    clean_csv(input_file, output_file)\n```\n\n### How to run it\n\n1. **Pandas install karo** (agar pehle se nahi hai):\n   ```bash\n   pip install pandas\n   ```\n\n2. Script ko `csv_cleaner.py` naam se save karo.\n\n3. Terminal/Command Prompt se chalayo:\n   ```bash\n   python csv_cleaner.py my_data.csv\n   ```\n   Ya agar output ka naam customize karna ho:\n   ```bash\n   python csv_cleaner.py my_data.csv cleaned_data.csv\n   ```\n\n### Quick notes\n\n- `dropna()` default behaviour **any** column mein NaN ho to poora row hata deta hai. Agar sirf specific columns ko check karna ho, to `df.dropna(subset=['col1','col2'])` use kar sakte ho.\n- `drop_duplicates()` sab columns ko compare karta hai. Agar sirf kuch columns ke basis pe duplicate check karna ho, to `df.drop_duplicates(subset=['colA','colB'])` likho.\n- Output file automatically `<original>_cleaned.csv` naam se ban jayegi, jab tak aap manually koi naam nahi dete.\n\nBas, ab tumhara CSV clean ho gaya! 🚀  \nKoi aur tweak chahiye ho ya koi error aaye, toh bata dena. Happy coding!",
+  "ttft_ms": 248.17,
+  "latency_ms": 2182.48,
+  "tokens_per_second": 207.1,
+  "input_tokens": 45,
+  "output_tokens": 452,
+  "response_length": 3393,
+  "cost_usd": 0.002847,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 10,
+    "clarity": 9,
+    "completeness": 10,
+    "overall": 9
+  }
+}

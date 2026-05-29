@@ -1,0 +1,30 @@
+{
+  "run_id": "031_R4_qwen_qwen3-32b_0p0",
+  "run_number": 31,
+  "prompt_id": "R4",
+  "category": "reasoning",
+  "difficulty": "medium",
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.0,
+  "prompt": "A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost? Show your work.",
+  "eval_criteria": "correct answer ($0.05), not the intuitive wrong answer ($0.10)",
+  "timestamp": "2026-05-15T08:53:42.899742",
+  "success": true,
+  "response": "<think>\nOkay, let's see. There's this problem about a bat and a ball costing $1.10 together, and the bat is $1.00 more expensive than the ball. I need to figure out how much the ball costs. Hmm, sounds straightforward, but I remember sometimes these problems can be tricky because of how the wording is set up. Let me think step by step.\n\nFirst, let me assign variables to the problem. Let me call the cost of the ball \"x\" dollars. Then, since the bat costs $1.00 more than the ball, the bat would be \"x + 1.00\" dollars. Right? So if the ball is, say, $0.10, then the bat would be $1.10. But wait, the total is supposed to be $1.10. Wait, if the ball is $0.10 and the bat is $1.10, then together they would be $1.20. That's too much. So that can't be right. So maybe my initial thought is wrong.\n\nLet me write down the equations. Let me define:\n\nLet x = cost of the ball\n\nThen the bat is x + 1.00\n\nTotal cost is x + (x + 1.00) = 1.10\n\nSo combining like terms: 2x + 1.00 = 1.10\n\nSubtract 1.00 from both sides: 2x = 0.10\n\nDivide both sides by 2: x = 0.05\n\nSo the ball is $0.05, and the bat is $1.05. Let me check that. 0.05 + 1.05 = 1.10. Yes, that adds up. And the bat is exactly $1.00 more than the ball (1.05 - 0.05 = 1.00). So that works.\n\nWait, but why did I initially think maybe $0.10? Because the problem says the bat is $1.00 more than the ball. If the ball was $0.10, then the bat would be $1.10, which is $1.00 more. But then total would be $1.20. But the total is supposed to be $1.10. So that's conflicting. So my first instinct was wrong because I misread the problem? Or maybe because of the way the problem is phrased, it's easy to jump to the conclusion that the ball is $0.10. But solving the equation shows it's $0.05.\n\nLet me verify again. If the ball is $0.05, then the bat is $1.05. The difference between the bat and the ball is $1.00, which satisfies the condition. The total is $1.10. Yep, that works. So the answer is 5 cents.\n\nBut why does this problem trick people? Because when you hear \"the bat is $1.00 more than the ball,\" you might think, okay, total is $1.10, so split into $1.00 and $0.10. But that's not how the math works here. The key is that the difference is $1.00, not that the bat is $1.00. So the equations have to reflect that the bat is x + 1.00, not just 1.00. So solving it algebraically is the way to go.\n\nAnother way to think about it: Let me subtract the $1.00 difference first. If the bat is $1.00 more, then if we take that $1.00 out of the total, we have $1.10 - $1.00 = $0.10 left. That $0.10 is split between the bat and the ball. Since they are now equal in price (after accounting for the $1.00 difference), each would be half of $0.10, which is $0.05. Therefore, the ball is $0.05 and the bat is $0.05 + $1.00 = $1.05. That also makes sense. So that's another way to visualize it without equations.\n\nSo yeah, the answer is definitely 5 cents. I think the confusion comes from the way the problem is worded, making it seem like the bat is $1.00 and the ball is something else, but actually, the bat is $1.00 more than the ball. So the equations have to represent that relationship correctly.\n</think>\n\nThe problem states that a bat and a ball together cost $1.10, with the",
+  "ttft_ms": 169.91,
+  "latency_ms": 2140.48,
+  "tokens_per_second": 293.86,
+  "input_tokens": 26,
+  "output_tokens": 629,
+  "response_length": 3227,
+  "cost_usd": 0.00025285,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 9,
+    "completeness": 10,
+    "overall": 9
+  }
+}

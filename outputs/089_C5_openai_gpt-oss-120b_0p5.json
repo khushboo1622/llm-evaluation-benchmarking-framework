@@ -1,0 +1,30 @@
+{
+  "run_id": "089_C5_openai_gpt-oss-120b_0p5",
+  "run_number": 89,
+  "prompt_id": "C5",
+  "category": "coding",
+  "difficulty": "medium",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.5,
+  "prompt": "Write a FastAPI endpoint that accepts a JSON body with 'name' and 'age' fields, validates that age is between 0 and 120, and returns a greeting message.",
+  "eval_criteria": "correct FastAPI syntax, Pydantic validation, proper response",
+  "timestamp": "2026-05-15T08:57:30.950841",
+  "success": true,
+  "response": "Below is a **complete, runnable FastAPI example** that defines an endpoint `/greet` which:\n\n1. Accepts a JSON body containing `name` (string) and `age` (integer).  \n2. Validates that `age` is between **0** and **120** (inclusive).  \n3. Returns a friendly greeting if the data is valid, otherwise FastAPI automatically returns a **422 Unprocessable Entity** response with details about the validation error.\n\n```python\n# file: main.py\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, Field, validator\n\napp = FastAPI(title=\"Greeting API\")\n\n\nclass Person(BaseModel):\n    name: str = Field(..., description=\"The person's name\")\n    age: int = Field(\n        ...,\n        ge=0,               # greater than or equal to 0\n        le=120,             # less than or equal to 120\n        description=\"Age in years (0‑120)\",\n    )\n\n    # Optional extra validation if you want a custom error message\n    @validator(\"age\")\n    def age_must_be_reasonable(cls, v):\n        if not (0 <= v <= 120):\n            raise ValueError(\"age must be between 0 and 120\")\n        return v\n\n\n@app.post(\"/greet\", response_model=str, summary=\"Return a greeting\")\nasync def greet(person: Person):\n    \"\"\"\n    Return a greeting message for the supplied `name` and `age`.\n\n    - **name**: any non‑empty string\n    - **age**: integer between 0 and 120 (inclusive)\n    \"\"\"\n    greeting = f\"Hello, {person.name}! You are {person.age} years old.\"\n    return greeting\n```\n\n### How to run it\n\n```bash\n# 1. (optional) create a virtual environment\npython -m venv .venv\nsource .venv/bin/activate   # on Windows: .venv\\Scripts\\activate\n\n# 2. Install FastAPI and an ASGI server (uvicorn)\npip install fastapi uvicorn\n\n# 3. Run the app\nuvicorn main:app --reload\n```\n\nThe server will start at `http://127.0.0.1:8000`.  \n\n### Test the endpoint\n\nYou can test it with **curl**, **httpie**, **Postman**, or directly from the interactive Swagger UI that FastAPI provides at `http://127.0.0.1:8000/docs`.\n\n#### Example request (valid)\n\n```bash\ncurl -X POST \"http://127.0.0.1:8000/greet\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\"name\": \"Alice\", \"age\": 30}'\n```\n\n**Response**\n\n```json\n\"Hello, Alice! You are 30 years old.\"\n```\n\n#### Example request (invalid age)\n\n```bash\ncurl -X POST \"http://127.0.0.1:8000/greet\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\"name\": \"Bob\", \"age\": 150}'\n```\n\n**Response (422)**\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\"body\", \"age\"],\n      \"msg\": \"ensure this value is less than or equal to 120\",\n      \"type\": \"value_error.number.not_le\",\n      \"ctx\": {\"limit_value\": 120}\n    }\n  ]\n}\n```\n\n### What’s happening under the hood?\n\n* **Pydantic** (`Person` model) parses and validates the incoming JSON automatically.\n* The `ge` (greater‑equal) and `le` (less‑equal) arguments on `Field` enforce the numeric range.\n* If validation fails, FastAPI returns a **422** response with a clear error payload.\n* The endpoint function receives a fully‑validated `Person` instance, so you can safely use `person.name` and `person.age`.\n\nFeel free to extend this skeleton (e.g., add more fields, custom error handling, authentication, etc.) as your application grows. Happy coding!",
+  "ttft_ms": 239.55,
+  "latency_ms": 2161.81,
+  "tokens_per_second": 198.91,
+  "input_tokens": 27,
+  "output_tokens": 430,
+  "response_length": 3202,
+  "cost_usd": 0.002661,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

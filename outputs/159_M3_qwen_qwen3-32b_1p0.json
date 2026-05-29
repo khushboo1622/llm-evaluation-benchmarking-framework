@@ -1,0 +1,30 @@
+{
+  "run_id": "159_M3_qwen_qwen3-32b_1p0",
+  "run_number": 159,
+  "prompt_id": "M3",
+  "category": "multilingual",
+  "difficulty": "medium",
+  "model": "qwen/qwen3-32b",
+  "temperature": 1.0,
+  "prompt": "Answer this question in Hindi only:\n\nआर्टिफिशियल इंटेलिजेंस और मशीन लर्निंग में क्या अंतर है? सरल भाषा में समझाइए।",
+  "eval_criteria": "response entirely in Hindi, correct explanation, clear and simple language",
+  "timestamp": "2026-05-15T12:03:01.560683",
+  "success": true,
+  "response": "<think>\nOkay, so I need to explain the difference between Artificial Intelligence and Machine Learning in simple Hindi. Let me start by recalling what I know. \n\nAI is like the big picture concept where machines can do tasks that humans usually do, like problem-solving or learning. Machine Learning is a part of AI. I remember ML involves algorithms that improve with experience. Wait, how does that fit into AI?\n\nSo AI is the broader idea of machines performing intelligent tasks. ML is a subset of AI that focuses on building systems that learn from data. For example, AI could be a robot that plays chess (which uses ML algorithms to learn strategies from past games). But not all AI requires ML. Maybe traditional programming can also be part of AI. Like if a robot is programmed with hard-coded rules to solve chess without learning, that's AI but not ML.\n\nLet me think of examples. A self-driving car uses AI for navigation, object detection, etc. The part where it learns from driving data to improve over time would be ML. So AI includes ML but also other techniques like rule-based systems. ML is a method to achieve AI by learning from data.\n\nI should make sure not to mix them up. Also, some people confuse AI and ML, thinking they are the same. But ML is just a part of AI. Maybe use simple terms: AI is like a big umbrella, and ML is one of the tools under that umbrella that lets machines learn from data instead of explicit programming.\n\nAnother point: AI could do things without learning, like following strict rules, but ML needs data to train models. So, AI is the goal, and ML is one of the paths to reach that goal. Examples will help. Chess robot (AI), with or without ML. If it uses pre-programmed rules, that's AI without ML. If it learns from past games, that's AI using ML.\n\nI need to structure this in simple Hindi, using everyday examples. Maybe use a comparison table in mind. AI is broader, includes ML, NLP, robotics, etc. ML is a subset focusing on learning from data. Conclude that AI is the big idea, ML is a part of it.\n</think>\n\nआर्टिफिशियल इंटेलिजेंस (AI) और मशीन लर्निंग (ML) में अंतर कम-से-कम इस प्रकार है:\n\n1. **आर्टिफिशियल इंटेलीजेंस (AI):**  \n   AI हमलोगों के आसपास उन चीज़ों को संदर्भित करता है जो कंप्यूटर या मशीनें हमारा काम कर सकती हैं, जैसे चेहरा पहचानना, सवालों के जवाब देना, या कार चलाना। हर क्रिया हमारे जिंदगी में कभी-कभी आइकन भी हो सकती है।\n\n2. **मशीन लर्निंग (ML):**  \n   ML AI का एक हिस्सा है, जिसमें कंप्यूटर हमारे पहले के डेटा से सीखते हैं और परिस्थितियों के आधार पर फैसले लेते हैं। उदाहरण के लिए, यदि आप एक ऐप बनाते हैं जो आपकी तस्वीरें डोम से मैच कर दिखाता है, तो यह हाइपरपराम के माध्यम से सीखता है।\n\n3. **मुख्य अंतर:**  \n   - AI सारा विचार है कि मशीनें कैसे हमारे खाने किसी",
+  "ttft_ms": 283.88,
+  "latency_ms": 2607.82,
+  "tokens_per_second": 190.58,
+  "input_tokens": 19,
+  "output_tokens": 497,
+  "response_length": 2731,
+  "cost_usd": 0.00019934,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 8,
+    "instruction_following": 6,
+    "clarity": 7,
+    "completeness": 8,
+    "overall": 7
+  }
+}

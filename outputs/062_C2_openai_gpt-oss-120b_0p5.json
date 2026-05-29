@@ -1,0 +1,30 @@
+{
+  "run_id": "062_C2_openai_gpt-oss-120b_0p5",
+  "run_number": 62,
+  "prompt_id": "C2",
+  "category": "coding",
+  "difficulty": "medium",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.5,
+  "prompt": "Write a Python decorator that measures and prints the execution time of any function it wraps. Show an example usage.",
+  "eval_criteria": "correct decorator syntax, uses time module, example included",
+  "timestamp": "2026-05-15T08:55:40.458370",
+  "success": true,
+  "response": "Below is a small, self‑contained example of a **timing decorator**.  \nIt works with any callable (regular functions, methods, class‑methods, etc.) and prints how long the wrapped function took to run each time it is invoked.\n\n```python\nimport time\nimport functools\n\ndef timed(func):\n    \"\"\"\n    Decorator that measures and prints the execution time of *func*.\n    \"\"\"\n    @functools.wraps(func)               # preserve name, docstring, etc.\n    def wrapper(*args, **kwargs):\n        start = time.perf_counter()      # high‑resolution timer\n        try:\n            return func(*args, **kwargs) # call the original function\n        finally:\n            # `finally` guarantees the timing is printed even if the\n            # wrapped function raises an exception.\n            elapsed = time.perf_counter() - start\n            print(f\"[{func.__name__}] executed in {elapsed:.6f} s\")\n    return wrapper\n```\n\n### Example usage\n\n```python\n@timed\ndef slow_sum(n: int) -> int:\n    \"\"\"Sum the numbers from 1 to n, deliberately sleeping a bit.\"\"\"\n    total = 0\n    for i in range(1, n + 1):\n        total += i\n        time.sleep(0.001)   # simulate work\n    return total\n\n\n@timed\ndef quick_pow(x, y):\n    \"\"\"Raise x to the power y.\"\"\"\n    return x ** y\n\n\nif __name__ == \"__main__\":\n    # This will print the result *and* the timing information.\n    print(\"Result:\", slow_sum(10))\n\n    # No sleep here, so the timing will be very short.\n    print(\"Result:\", quick_pow(2, 10))\n```\n\n#### Sample output\n\n```\nResult: 55\n[slow_sum] executed in 0.010542 s\nResult: 1024\n[quick_pow] executed in 0.000001 s\n```\n\n### How it works\n1. **`@functools.wraps`** copies the original function’s metadata (name, docstring, etc.) to the wrapper so tools like `help()` still see the right information.\n2. **`time.perf_counter()`** provides the most precise timer available on the platform, ideal for measuring short intervals.\n3. The wrapper records the start time, calls the original function, and then (in a `finally` block) computes the elapsed time and prints it. Using `finally` ensures the timing message appears even if the wrapped function raises an exception.\n\nYou can now drop `@timed` on any function you want to profile without changing its implementation. 🎉",
+  "ttft_ms": 336.34,
+  "latency_ms": 1500.65,
+  "tokens_per_second": 206.58,
+  "input_tokens": 20,
+  "output_tokens": 310,
+  "response_length": 2238,
+  "cost_usd": 0.00192,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

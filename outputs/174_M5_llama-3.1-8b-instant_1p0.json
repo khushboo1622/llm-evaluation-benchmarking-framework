@@ -1,0 +1,30 @@
+{
+  "run_id": "174_M5_llama-3.1-8b-instant_1p0",
+  "run_number": 174,
+  "prompt_id": "M5",
+  "category": "multilingual",
+  "difficulty": "hard",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 1.0,
+  "prompt": "Translate this technical paragraph into simple Gujarati that a non-technical person can understand:\n\n'A neural network is a computational model inspired by the human brain. It consists of layers of interconnected nodes that process data and learn patterns through a training process called backpropagation.'",
+  "eval_criteria": "accurate Gujarati translation, simplified for non-technical audience, no jargon",
+  "timestamp": "2026-05-15T12:05:58.210562",
+  "success": true,
+  "response": "એક જ્ઞાનનું નેટવર્ક (અથવા નવર્નેટવર્ક) એ વ્યવહારિક ધોરણે મનુષ્યના મનને દર્શાવતી એક કમ્પ્યુટર રચના છે. તેમાં આવર્જમથી જોડાયેલા મોટા શેર હોય છે, જે ડેટાને પ્રક્રિયા કરે છે અને તેની રચના તરીકે શીખવાની પ્રક્રિયા હોય છે જેને બેક-પ્રોપાગેશન કહેવાય છે.",
+  "ttft_ms": 273.0,
+  "latency_ms": 1047.01,
+  "tokens_per_second": 37.25,
+  "input_tokens": 44,
+  "output_tokens": 39,
+  "response_length": 245,
+  "cost_usd": 5.32e-06,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 8,
+    "instruction_following": 9,
+    "clarity": 7,
+    "completeness": 8,
+    "overall": 8
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "run_id": "048_C1_llama-3.1-8b-instant_1p0",
+  "run_number": 48,
+  "prompt_id": "C1",
+  "category": "coding",
+  "difficulty": "easy",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 1.0,
+  "prompt": "Write a Python function that takes a list of integers and returns the two numbers that add up to a given target. Example: [2, 7, 11, 15], target=9 → [2, 7].",
+  "eval_criteria": "correct logic, handles edge cases, clean code",
+  "timestamp": "2026-05-15T08:54:39.222292",
+  "success": true,
+  "response": "**Two Sum Problem Solution**\n\nHere's a simple and efficient solution using Python. This function uses a dictionary to store the numbers we have seen so far and their indices. We then iterate through the list, checking if the difference between the target and the current number is in the dictionary. If it is, we return the pair.\n\n```python\ndef two_sum(nums, target):\n    \"\"\"\n    Returns a list of two numbers that add up to the target.\n\n    Args:\n        nums (list): A list of integers.\n        target (int): The target sum.\n\n    Returns:\n        list: A list of two numbers that add up to the target, or an empty list if no such pair is found.\n    \"\"\"\n    num_dict = {}\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in num_dict:\n            return [complement, num]\n        num_dict[num] = i\n    return []\n\n# Example usage:\nnums = [2, 7, 11, 15]\ntarget = 9\nprint(two_sum(nums, target))  # Output: [2, 7]\n```\n\n**Time complexity:** O(n), where n is the number of elements in the input list.\n\n**Space complexity:** O(n), where n is the number of elements in the input list.\n\nThis function works by iterating through the list once, using the dictionary to store the numbers we have seen so far and their indices. This way, we avoid the need to iterate through the list multiple times, making the function efficient even for large inputs. If we find a pair that adds up to the target, we return it immediately. If we don't find any pair, we return an empty list.",
+  "ttft_ms": 115.32,
+  "latency_ms": 662.87,
+  "tokens_per_second": 381.67,
+  "input_tokens": 31,
+  "output_tokens": 253,
+  "response_length": 1505,
+  "cost_usd": 2.179e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

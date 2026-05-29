@@ -1,0 +1,30 @@
+{
+  "run_id": "088_C5_openai_gpt-oss-120b_0p0",
+  "run_number": 88,
+  "prompt_id": "C5",
+  "category": "coding",
+  "difficulty": "medium",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.0,
+  "prompt": "Write a FastAPI endpoint that accepts a JSON body with 'name' and 'age' fields, validates that age is between 0 and 120, and returns a greeting message.",
+  "eval_criteria": "correct FastAPI syntax, Pydantic validation, proper response",
+  "timestamp": "2026-05-15T08:57:25.723560",
+  "success": true,
+  "response": "Below is a **minimal, self‑contained FastAPI application** that defines an endpoint `/greet` which:\n\n1. Accepts a JSON body containing `name` (string) and `age` (int).  \n2. Validates that `age` is between **0** and **120** (inclusive).  \n3. Returns a friendly greeting that includes the supplied name and age.\n\nYou can copy‑paste the whole file into `main.py`, install the required dependencies, and run it with `uvicorn`.\n\n```python\n# main.py\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, Field, validator\n\napp = FastAPI()\n\n\nclass Person(BaseModel):\n    name: str = Field(..., description=\"The person's name\")\n    age: int = Field(..., description=\"The person's age (0‑120)\")\n\n    @validator(\"age\")\n    def age_must_be_reasonable(cls, v: int) -> int:\n        \"\"\"Ensure age is within the allowed range.\"\"\"\n        if not 0 <= v <= 120:\n            raise ValueError(\"age must be between 0 and 120\")\n        return v\n\n\n@app.post(\"/greet\", response_model=dict)\nasync def greet(person: Person):\n    \"\"\"\n    Return a greeting message for the supplied name and age.\n\n    Example request body:\n    {\n        \"name\": \"Alice\",\n        \"age\": 30\n    }\n    \"\"\"\n    # If we reach this point the data is already validated by Pydantic.\n    greeting = f\"Hello, {person.name}! You are {person.age} years old.\"\n    return {\"message\": greeting}\n```\n\n### How to run\n\n```bash\n# 1. (optional) create a virtual environment\npython -m venv venv\nsource venv/bin/activate   # on Windows: venv\\Scripts\\activate\n\n# 2. Install FastAPI and an ASGI server (uvicorn)\npip install fastapi uvicorn\n\n# 3. Start the server\nuvicorn main:app --reload\n```\n\nThe API will be available at `http://127.0.0.1:8000`.\n\n### Test it\n\nYou can test the endpoint with **cURL**, **httpie**, **Postman**, or directly via the automatically generated Swagger UI at `http://127.0.0.1:8000/docs`.\n\n#### cURL example\n\n```bash\ncurl -X POST \"http://127.0.0.1:8000/greet\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\"name\": \"Bob\", \"age\": 45}'\n```\n\n**Response**\n\n```json\n{\n  \"message\": \"Hello, Bob! You are 45 years old.\"\n}\n```\n\n#### Validation error example\n\n```bash\ncurl -X POST \"http://127.0.0.1:8000/greet\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\"name\": \"Eve\", \"age\": 150}'\n```\n\n**Response**\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\"body\", \"age\"],\n      \"msg\": \"age must be between 0 and 120\",\n      \"type\": \"value_error\"\n    }\n  ]\n}\n```\n\n### What’s happening under the hood?\n\n* **Pydantic** (`Person` model) parses the incoming JSON and runs the `age_must_be_reasonable` validator.  \n* If validation fails, FastAPI automatically returns a `422 Unprocessable Entity` response with a clear error payload.  \n* When validation succeeds, the endpoint builds a greeting string and returns it as JSON.\n\nFeel free to extend the model (e.g., add more fields, custom validation, etc.) or adjust the response schema to suit your application’s needs. Happy coding!",
+  "ttft_ms": 414.58,
+  "latency_ms": 2366.83,
+  "tokens_per_second": 171.11,
+  "input_tokens": 27,
+  "output_tokens": 405,
+  "response_length": 2955,
+  "cost_usd": 0.002511,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

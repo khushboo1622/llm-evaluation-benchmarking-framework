@@ -1,0 +1,30 @@
+{
+  "run_id": "150_M2_qwen_qwen3-32b_1p0",
+  "run_number": 150,
+  "prompt_id": "M2",
+  "category": "multilingual",
+  "difficulty": "medium",
+  "model": "qwen/qwen3-32b",
+  "temperature": 1.0,
+  "prompt": "નીચેના ગુજરાતી ટેક્સ્ટનો અંગ્રેજીમાં અનુવાદ કરો અને પછી તેનો સારાંશ આપો:\n\n'ભારતમાં ટેક્નોલોજી ઉદ્યોગ ઝડપથી વિકસી રહ્યો છે. યુવા સ્ટાર્ટઅપ્સ નવી સમસ્યાઓ ઉકેલવા માટે આર્ટિફિશિયલ ઇન્ટેલિજન્સ અને મશીન લર્નિંગનો ઉપયોગ કરી રહ્યા છે.'",
+  "eval_criteria": "correct English translation, accurate summary, handles Gujarati script",
+  "timestamp": "2026-05-15T11:32:40.151689",
+  "success": true,
+  "response": "<think>\nOkay, let's start by translating the given Gujarati text into English. The original text is: \"ભારતમાં ટેક્નોલોજી ઉદ્યોગ ઝડપથી વિકસી રહ્યો છે. યુવા સ્ટાર્ટઅપ્સ નવી સમસ્યાઓ ઉકેલવા માટે આર્ટિફિશિયલ ઇન્ટેલિજન્સ અને મશીન લર્નિંગનો ઉપયોગ કરી રહ્યા છે.\"\n\nFirst, translating sentence by sentence. The first sentence: \"ભારતમાં ટેક્નોલોજી ઉદ્યોગ ઝડપથી વિકસી રહ્યો છે.\" That would be \"The technology industry in India is rapidly developing.\" I need to check the structure here. \"ઝડપથી\" is \"rapidly\" or \"quickly.\" \"વિકસી રહ્યો છે\" is \"is developing\" or \"is expanding.\"\n\nSecond sentence: \"યુવા સ્ટાર્ટઅપ્સ નવી સમસ્યાઓ ઉકેલવા માટે આર્ટિફિશિયલ ઇન્ટેલિજન્સ અને મશીન લર્નિંગનો ઉપયોગ કરી રહ્યા છે.\" Translates to \"Young startups are using Artificial Intelligence and Machine Learning to solve new problems.\" Let me verify each word. \"યુવા\" is \"young\" or \"youth,\" here it's referring to the startups, so \"young startups.\" \"ઉકેલવા માટે\" is \"to solve\" or \"to address.\" \n\nNow, after translating, the summary needs to be concise. The main points are India's tech industry growing rapidly, and young startups using AI and ML for new problem-solving. The summary should capture both elements without extra details. Maybe something like: \"India's technology sector is growing swiftly, with youth startups employing AI and ML to tackle emerging challenges.\" That's a bit long, let me shorten it. \"India's tech industry rapidly expands as young startups utilize AI and Machine Learning to address new problems.\" That's better. Make sure it's a single coherent sentence that highlights both the growth of the industry and the application of the technologies by startups.\n</think>\n\n**English Translation:**  \n\"The technology industry in India is developing rapidly. Young startups are using Artificial Intelligence and Machine Learning to solve new problems.\"\n\n**Summary:**  \nIndia's tech sector is growing quickly, with young startups leveraging AI and Machine Learning to address emerging challenges.",
+  "ttft_ms": 299.28,
+  "latency_ms": 1520.93,
+  "tokens_per_second": 193.3,
+  "input_tokens": 33,
+  "output_tokens": 294,
+  "response_length": 1980,
+  "cost_usd": 0.00012423,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 9,
+    "clarity": 8,
+    "completeness": 9,
+    "overall": 9
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "run_id": "002_R1_llama-3.1-8b-instant_0p5",
+  "run_number": 2,
+  "prompt_id": "R1",
+  "category": "reasoning",
+  "difficulty": "medium",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.5,
+  "prompt": "A farmer has 17 sheep. All but 9 die. How many sheep are left? Explain your reasoning step by step.",
+  "eval_criteria": "correct answer (9), clear step-by-step explanation",
+  "timestamp": "2026-05-15T08:52:11.764715",
+  "success": true,
+  "response": "To find out how many sheep are left, we need to understand the information given. \n\n1. The farmer initially has 17 sheep.\n2. All but 9 sheep die. \n\nThe phrase 'all but 9' means that 9 sheep do not die. In other words, 9 sheep are left.\n\nSo, we don't need to subtract the number of dead sheep from the initial number of sheep. Instead, we can directly conclude that 9 sheep are left.",
+  "ttft_ms": 194.3,
+  "latency_ms": 300.64,
+  "tokens_per_second": 246.14,
+  "input_tokens": 20,
+  "output_tokens": 74,
+  "response_length": 382,
+  "cost_usd": 6.92e-06,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "run_id": "063_C2_openai_gpt-oss-120b_1p0",
+  "run_number": 63,
+  "prompt_id": "C2",
+  "category": "coding",
+  "difficulty": "medium",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 1.0,
+  "prompt": "Write a Python decorator that measures and prints the execution time of any function it wraps. Show an example usage.",
+  "eval_criteria": "correct decorator syntax, uses time module, example included",
+  "timestamp": "2026-05-15T08:55:43.028222",
+  "success": true,
+  "response": "Below is a tiny, self‑contained decorator that measures how long a function takes to run and prints the result.  \nIt works for regular functions as well as for methods, and it preserves the wrapped function’s metadata (name, doc‑string, etc.) by using `functools.wraps`.\n\n```python\nimport time\nimport functools\n\ndef timeit(func):\n    \"\"\"\n    Decorator that measures and prints the execution time of *func*.\n\n    Usage\n    -----\n    @timeit\n    def my_func(...):\n        ...\n\n    When called, it prints:\n        <function_name> executed in 0.00123 seconds\n    \"\"\"\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        start = time.perf_counter()          # high‑resolution timer\n        try:\n            return func(*args, **kwargs)     # run the original function\n        finally:\n            elapsed = time.perf_counter() - start\n            print(f\"{func.__name__} executed in {elapsed:.6f} seconds\")\n    return wrapper\n```\n\n### Example usage\n\n```python\n@timeit\ndef slow_sum(n: int) -> int:\n    \"\"\"Return the sum of 0 … n‑1 using a tiny sleep to simulate work.\"\"\"\n    total = 0\n    for i in range(n):\n        total += i\n        time.sleep(0.0001)   # pretend each iteration does something costly\n    return total\n\n\n@timeit\ndef quick_pow(x, y):\n    \"\"\"Raise x to the power y.\"\"\"\n    return x ** y\n\n\n# Running the functions\nresult1 = slow_sum(500)   # ← prints execution time\nprint(\"Result:\", result1)\n\nresult2 = quick_pow(2, 20)   # ← prints execution time\nprint(\"Result:\", result2)\n```\n\n**Sample output**\n\n```\nslow_sum executed in 0.053214 seconds\nResult: 124750\nquick_pow executed in 0.000001 seconds\nResult: 1048576\n```\n\n### How it works\n1. `time.perf_counter()` gives the most precise wall‑clock timer available on the platform.\n2. The decorator records the start time, runs the wrapped function, then records the end time inside a `finally` block.  \n   Using `finally` guarantees that the elapsed time is printed even if the wrapped function raises an exception.\n3. `functools.wraps` copies `__name__`, `__doc__`, etc., from the original function to the wrapper, so tools like `help()` or debuggers still see the correct metadata.\n\nYou can drop the `timeit` decorator onto any callable (functions, class methods, static methods, etc.) and instantly get timing information without touching the function’s internal code.",
+  "ttft_ms": 317.41,
+  "latency_ms": 1516.77,
+  "tokens_per_second": 207.02,
+  "input_tokens": 20,
+  "output_tokens": 314,
+  "response_length": 2339,
+  "cost_usd": 0.001944,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

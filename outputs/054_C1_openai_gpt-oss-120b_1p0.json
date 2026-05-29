@@ -1,0 +1,30 @@
+{
+  "run_id": "054_C1_openai_gpt-oss-120b_1p0",
+  "run_number": 54,
+  "prompt_id": "C1",
+  "category": "coding",
+  "difficulty": "easy",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 1.0,
+  "prompt": "Write a Python function that takes a list of integers and returns the two numbers that add up to a given target. Example: [2, 7, 11, 15], target=9 → [2, 7].",
+  "eval_criteria": "correct logic, handles edge cases, clean code",
+  "timestamp": "2026-05-15T08:55:10.456260",
+  "success": true,
+  "response": "Here’s a clean, well‑commented implementation of the classic **Two‑Sum** problem.  \nThe function receives a list of integers (`nums`) and an integer `target`.  \nIt returns a list containing the **first** pair of numbers it finds whose sum equals the target (or `None` if no such pair exists).\n\n```python\ndef two_sum(nums, target):\n    \"\"\"\n    Find two numbers in `nums` that add up to `target`.\n\n    Parameters\n    ----------\n    nums : list[int]\n        The list of integers to search.\n    target : int\n        The desired sum of the two numbers.\n\n    Returns\n    -------\n    list[int] | None\n        A list with the two numbers that sum to `target`, e.g. [2, 7],\n        or None if no such pair exists.\n\n    Example\n    -------\n    >>> two_sum([2, 7, 11, 15], 9)\n    [2, 7]\n    \"\"\"\n    # A dictionary that maps a needed complement → the index (or value) that provides it.\n    # As we scan the list, we store the numbers we have seen so far.\n    complements = {}\n\n    for num in nums:\n        # The value we would need to reach the target when added to the current number.\n        needed = target - num\n\n        # If we have already seen the complement, we have our answer.\n        if needed in complements:\n            return [needed, num]\n\n        # Otherwise remember this number for future iterations.\n        # Storing the number itself (instead of its index) makes the return value simple.\n        complements[num] = True\n\n    # No pair found.\n    return None\n```\n\n### How It Works\n1. **Hash‑map (`complements`)** – While iterating through `nums`, we keep track of every number we have already processed.\n2. For each `num`, we compute the *complement* (`target - num`).  \n   - If that complement is already in the hash‑map, the current `num` together with the stored complement form the required pair.\n   - If not, we store `num` for later checks.\n3. Because dictionary look‑ups are O(1) on average, the whole algorithm runs in **O(n)** time and uses **O(n)** extra space.\n\n### Quick Test\n\n```python\nif __name__ == \"__main__\":\n    # Basic test cases\n    print(two_sum([2, 7, 11, 15], 9))        # → [2, 7]\n    print(two_sum([1, 5, 3, 4, 2], 6))      # → [2, 4] (or another valid pair)\n    print(two_sum([0, -1, 2, -3, 5], 2))    # → [0, 2]\n    print(two_sum([1, 2, 3], 7))            # → None\n```\n\nFeel free to adapt the return format (e.g., return indices instead of values) by storing the index in `complements` rather than a boolean flag.",
+  "ttft_ms": 275.62,
+  "latency_ms": 1666.97,
+  "tokens_per_second": 232.76,
+  "input_tokens": 31,
+  "output_tokens": 388,
+  "response_length": 2448,
+  "cost_usd": 0.002421,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

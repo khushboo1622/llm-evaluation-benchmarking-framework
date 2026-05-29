@@ -1,0 +1,30 @@
+{
+  "run_id": "153_M2_openai_gpt-oss-120b_1p0",
+  "run_number": 153,
+  "prompt_id": "M2",
+  "category": "multilingual",
+  "difficulty": "medium",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 1.0,
+  "prompt": "નીચેના ગુજરાતી ટેક્સ્ટનો અંગ્રેજીમાં અનુવાદ કરો અને પછી તેનો સારાંશ આપો:\n\n'ભારતમાં ટેક્નોલોજી ઉદ્યોગ ઝડપથી વિકસી રહ્યો છે. યુવા સ્ટાર્ટઅપ્સ નવી સમસ્યાઓ ઉકેલવા માટે આર્ટિફિશિયલ ઇન્ટેલિજન્સ અને મશીન લર્નિંગનો ઉપયોગ કરી રહ્યા છે.'",
+  "eval_criteria": "correct English translation, accurate summary, handles Gujarati script",
+  "timestamp": "2026-05-15T11:32:53.172397",
+  "success": true,
+  "response": "**English Translation**\n\n*“The technology industry in India is growing rapidly. Young startups are using artificial intelligence and machine‑learning to solve new problems.”*  \n\n---\n\n**Summary**\n\nIndia’s tech sector is expanding at a fast pace, and emerging startups are harnessing AI and machine‑learning technologies to tackle novel challenges.",
+  "ttft_ms": 486.8,
+  "latency_ms": 620.44,
+  "tokens_per_second": 74.14,
+  "input_tokens": 33,
+  "output_tokens": 46,
+  "response_length": 346,
+  "cost_usd": 0.000375,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 9
+  }
+}

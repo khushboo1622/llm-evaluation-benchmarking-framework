@@ -1,0 +1,30 @@
+{
+  "run_id": "175_M5_qwen_qwen3-32b_0p0",
+  "run_number": 175,
+  "prompt_id": "M5",
+  "category": "multilingual",
+  "difficulty": "hard",
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.0,
+  "prompt": "Translate this technical paragraph into simple Gujarati that a non-technical person can understand:\n\n'A neural network is a computational model inspired by the human brain. It consists of layers of interconnected nodes that process data and learn patterns through a training process called backpropagation.'",
+  "eval_criteria": "accurate Gujarati translation, simplified for non-technical audience, no jargon",
+  "timestamp": "2026-05-15T12:06:02.147562",
+  "success": true,
+  "response": "<think>\nOkay, let's see. The user wants me to translate a technical paragraph about neural networks into simple Gujarati. The target audience is non-technical people, so I need to make sure the language is easy to understand without any jargon.\n\nFirst, I'll break down the original paragraph. The key points are: neural network is a computational model inspired by the human brain, it has layers of interconnected nodes, processes data, learns patterns through backpropagation training.\n\nNow, translating \"neural network\" into Gujarati. The direct translation might be \"ન્યૂરલ નેટવર્ક\", but maybe using a more descriptive term would help. Perhaps \"એક કમ્પ્યુટેશનલ મોડેલ\" (a computational model) and then explaining it's inspired by the human brain.\n\n\"Layers of interconnected nodes\" – \"જોડાયેલા નોડ્સના પડ\" – but \"નોડ્સ\" might not be familiar. Maybe \"સંકળાયેલા બિંદુઓ\" (connected points) is better.\n\n\"Process data and learn patterns\" – \"ડેટા પ્રક્રિયા કરે છે અને પ્રણાલીઓ શીખે છે\" – using \"પ્રણાલીઓ\" for patterns.\n\n\"Backpropagation\" is a technical term. Maybe explain it as \"એક પ્રક્રિયા જેમાં તે ભૂલોને સુધારે છે અને સુધારો કરે છે\" (a process where it corrects errors and improves). That way, even if the term isn't translated directly, the concept is clear.\n\nPutting it all together in simple Gujarati, making sure sentences are short and clear. Avoid complex structures. Check for any technical terms that might need simplification. Ensure the flow is logical, explaining each part step by step. Maybe read it aloud to see if it sounds natural in Gujarati. Also, confirm that the translation accurately reflects the original meaning without adding or omitting information.\n</think>\n\n\"ન્યૂરલ નેટવર્ક એ એક કમ્પ્યુટેશનલ મોડેલ છે જે માનવ મગજ પર આધારિત છે. તેમાં ડેટા પ્રક્રિયા કરવા માટે જોડાયેલા બિંદુઓના પડ હોય છે અને તે પ્રણાલીઓ શીખે છે. આ શીખવાની પ્રક્રિયા બેકપ્રોપેગેશન કહેવાય છે, જેમાં તે ભૂલોને સુધારીને સુધારો કરે છે.\"",
+  "ttft_ms": 112.05,
+  "latency_ms": 2792.77,
+  "tokens_per_second": 107.78,
+  "input_tokens": 44,
+  "output_tokens": 301,
+  "response_length": 1924,
+  "cost_usd": 0.00013015,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 8,
+    "instruction_following": 9,
+    "clarity": 8,
+    "completeness": 8,
+    "overall": 8
+  }
+}

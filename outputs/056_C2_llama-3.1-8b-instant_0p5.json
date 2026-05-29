@@ -1,0 +1,30 @@
+{
+  "run_id": "056_C2_llama-3.1-8b-instant_0p5",
+  "run_number": 56,
+  "prompt_id": "C2",
+  "category": "coding",
+  "difficulty": "medium",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.5,
+  "prompt": "Write a Python decorator that measures and prints the execution time of any function it wraps. Show an example usage.",
+  "eval_criteria": "correct decorator syntax, uses time module, example included",
+  "timestamp": "2026-05-15T08:55:13.629964",
+  "success": true,
+  "response": "**Timing Decorator**\n=====================\n\nHere's a simple Python decorator that measures and prints the execution time of any function it wraps:\n\n```python\nimport time\nfrom functools import wraps\n\ndef timer_decorator(func):\n    \"\"\"\n    Decorator that measures and prints the execution time of a function.\n    \"\"\"\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        start_time = time.time()\n        result = func(*args, **kwargs)\n        end_time = time.time()\n        execution_time = end_time - start_time\n        print(f\"Function '{func.__name__}' executed in {execution_time:.4f} seconds.\")\n        return result\n    return wrapper\n\n# Example usage\n@timer_decorator\ndef my_function():\n    \"\"\"\n    Example function that simulates some work.\n    \"\"\"\n    time.sleep(2)  # Simulate some work\n    print(\"Function executed.\")\n\n@timer_decorator\ndef another_function():\n    \"\"\"\n    Another example function that simulates some work.\n    \"\"\"\n    time.sleep(1)  # Simulate some work\n    print(\"Another function executed.\")\n\n# Test the functions\nmy_function()\nanother_function()\n```\n\nIn this code:\n\n1.  We define a decorator `timer_decorator` that takes a function `func` as an argument.\n2.  Inside the decorator, we use the `wraps` function from the `functools` module to preserve the original function's metadata (name, docstring, etc.).\n3.  We define a `wrapper` function that measures the execution time of the original function using `time.time()`.\n4.  We print the execution time in seconds with four decimal places.\n5.  We apply the `timer_decorator` to two example functions `my_function` and `another_function`.\n6.  We test the functions by calling them.\n\nWhen you run this code, it will print the execution time of each function.",
+  "ttft_ms": 316.32,
+  "latency_ms": 628.25,
+  "tokens_per_second": 351.77,
+  "input_tokens": 20,
+  "output_tokens": 221,
+  "response_length": 1740,
+  "cost_usd": 1.868e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

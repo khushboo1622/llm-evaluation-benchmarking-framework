@@ -1,0 +1,30 @@
+{
+  "run_id": "035_R4_openai_gpt-oss-120b_0p5",
+  "run_number": 35,
+  "prompt_id": "R4",
+  "category": "reasoning",
+  "difficulty": "medium",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.5,
+  "prompt": "A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost? Show your work.",
+  "eval_criteria": "correct answer ($0.05), not the intuitive wrong answer ($0.10)",
+  "timestamp": "2026-05-15T08:54:01.130152",
+  "success": true,
+  "response": "**Let’s solve it step‑by‑step with algebra.**\n\n---\n\n### 1. Define the unknown\n\nLet  \n\n\\[\nx = \\text{price of the ball (in dollars)}\n\\]\n\nThe problem tells us two things:\n\n1. **Total cost:**  \n   \\[\n   \\text{bat} + \\text{ball} = \\$1.10\n   \\]\n\n2. **Relationship between bat and ball:**  \n   \\[\n   \\text{bat} = \\text{ball} + \\$1.00\n   \\]\n\n---\n\n### 2. Write the equations\n\nFrom (2) we can express the bat’s price in terms of \\(x\\):\n\n\\[\n\\text{bat} = x + 1.00\n\\]\n\nPlug this into the total‑cost equation (1):\n\n\\[\n(x + 1.00) + x = 1.10\n\\]\n\n---\n\n### 3. Solve for \\(x\\)\n\nCombine like terms:\n\n\\[\n2x + 1.00 = 1.10\n\\]\n\nSubtract \\$1.00 from both sides:\n\n\\[\n2x = 0.10\n\\]\n\nDivide by 2:\n\n\\[\nx = \\frac{0.10}{2} = 0.05\n\\]\n\n---\n\n### 4. Check the answer\n\n- Ball = \\$0.05  \n- Bat = ball + \\$1.00 = \\$0.05 + \\$1.00 = \\$1.05  \n\nTotal = \\$0.05 + \\$1.05 = \\$1.10 ✔️\n\n---\n\n## **Result**\n\n\\[\n\\boxed{\\text{The ball costs } \\$0.05\\text{ (five cents).}}\n\\]\n\n---\n\n### Why people often get the wrong answer\n\nA common “quick‑guess” answer is \\$0.10 for the ball and \\$1.00 for the bat.  \nBut that would make the bat only **\\$0.90 more** than the ball, not the required **\\$1.00 more**. The algebra above shows the correct relationship.",
+  "ttft_ms": 255.2,
+  "latency_ms": 1177.17,
+  "tokens_per_second": 185.19,
+  "input_tokens": 26,
+  "output_tokens": 218,
+  "response_length": 1199,
+  "cost_usd": 0.001386,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

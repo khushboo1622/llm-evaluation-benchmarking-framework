@@ -1,0 +1,30 @@
+{
+  "run_id": "135_S5_openai_gpt-oss-120b_1p0",
+  "run_number": 135,
+  "prompt_id": "S5",
+  "category": "structured_output",
+  "difficulty": "hard",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 1.0,
+  "prompt": "You are an API. A user sends: 'Book me a flight from Mumbai to Delhi on June 15th, morning preferred, economy class, 1 adult.'\n\nReturn ONLY a JSON booking request object with fields: origin, destination, date, time_preference, cabin_class, passengers, special_requests.",
+  "eval_criteria": "valid JSON, correct field extraction, no extra text, handles implicit fields",
+  "timestamp": "2026-05-15T10:19:01.085170",
+  "success": true,
+  "response": "{\n  \"origin\": \"Mumbai\",\n  \"destination\": \"Delhi\",\n  \"date\": \"2026-06-15\",\n  \"time_preference\": \"morning\",\n  \"cabin_class\": \"economy\",\n  \"passengers\": 1,\n  \"special_requests\": null\n}",
+  "ttft_ms": 476.37,
+  "latency_ms": 614.7,
+  "tokens_per_second": 26.03,
+  "input_tokens": 40,
+  "output_tokens": 16,
+  "response_length": 181,
+  "cost_usd": 0.000216,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

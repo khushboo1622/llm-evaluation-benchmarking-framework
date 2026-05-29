@@ -1,0 +1,30 @@
+{
+  "run_id": "101_S2_llama-3.1-8b-instant_0p5",
+  "run_number": 101,
+  "prompt_id": "S2",
+  "category": "structured_output",
+  "difficulty": "medium",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.5,
+  "prompt": "Analyze the sentiment of these 3 reviews and return ONLY a JSON array. Each item should have: review_id, sentiment (positive/negative/neutral), confidence (0.0-1.0), key_phrase.\n\nReview 1: 'Absolutely loved the product, fast delivery!'\nReview 2: 'Worst experience ever, never buying again.'\nReview 3: 'It was okay, nothing special.'",
+  "eval_criteria": "valid JSON array, 3 items, correct sentiments, confidence is float",
+  "timestamp": "2026-05-15T08:58:03.616038",
+  "success": true,
+  "response": "```json\n[\n  {\n    \"review_id\": 1,\n    \"sentiment\": \"positive\",\n    \"confidence\": 1.0,\n    \"key_phrase\": \"Absolutely loved the product, fast delivery!\"\n  },\n  {\n    \"review_id\": 2,\n    \"sentiment\": \"negative\",\n    \"confidence\": 1.0,\n    \"key_phrase\": \"Worst experience ever, never buying again.\"\n  },\n  {\n    \"review_id\": 3,\n    \"sentiment\": \"neutral\",\n    \"confidence\": 1.0,\n    \"key_phrase\": \"It was okay, nothing special.\"\n  }\n]\n```\n\nNote: The sentiment analysis is based on the text content of the reviews. The confidence score is assumed to be 1.0 for each review since the sentiment is clear and unambiguous. The key_phrase is the full text of the review, which in this case is the same as the review itself. In a real-world application, you would likely use a natural language processing (NLP) library or service to perform the sentiment analysis and extract key phrases.",
+  "ttft_ms": 144.58,
+  "latency_ms": 743.46,
+  "tokens_per_second": 166.79,
+  "input_tokens": 46,
+  "output_tokens": 124,
+  "response_length": 877,
+  "cost_usd": 1.222e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

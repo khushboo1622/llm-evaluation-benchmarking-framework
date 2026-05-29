@@ -1,0 +1,30 @@
+{
+  "run_id": "008_R1_openai_gpt-oss-120b_0p5",
+  "run_number": 8,
+  "prompt_id": "R1",
+  "category": "reasoning",
+  "difficulty": "medium",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.5,
+  "prompt": "A farmer has 17 sheep. All but 9 die. How many sheep are left? Explain your reasoning step by step.",
+  "eval_criteria": "correct answer (9), clear step-by-step explanation",
+  "timestamp": "2026-05-15T08:52:26.611203",
+  "success": true,
+  "response": "**Answer: 9 sheep are left.**\n\n**Step‑by‑step reasoning**\n\n1. **Start with the total number of sheep.**  \n   The farmer originally has **17 sheep**.\n\n2. **Interpret the phrase “all but 9 die.”**  \n   - “All but 9” means *every one except nine* of the sheep die.  \n   - In other words, the nine that are *not* included in “all” survive.\n\n3. **Determine how many survive.**  \n   Since the only sheep that do **not** die are those nine, the number of surviving sheep is **9**.\n\n4. **Check the math (optional).**  \n   - Sheep that die = total sheep – surviving sheep = 17 – 9 = 8.  \n   - So 8 die and 9 remain, which matches the statement “all but 9 die.”\n\nTherefore, after the event, the farmer has **9 sheep left**.",
+  "ttft_ms": 362.36,
+  "latency_ms": 791.89,
+  "tokens_per_second": 156.59,
+  "input_tokens": 20,
+  "output_tokens": 124,
+  "response_length": 713,
+  "cost_usd": 0.000804,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

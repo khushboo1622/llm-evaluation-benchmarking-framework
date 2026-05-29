@@ -1,0 +1,30 @@
+{
+  "run_id": "083_C5_llama-3.1-8b-instant_0p5",
+  "run_number": 83,
+  "prompt_id": "C5",
+  "category": "coding",
+  "difficulty": "medium",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.5,
+  "prompt": "Write a FastAPI endpoint that accepts a JSON body with 'name' and 'age' fields, validates that age is between 0 and 120, and returns a greeting message.",
+  "eval_criteria": "correct FastAPI syntax, Pydantic validation, proper response",
+  "timestamp": "2026-05-15T08:56:57.980169",
+  "success": true,
+  "response": "**FastAPI Endpoint for Greeting**\n================================\n\nBelow is an example of a FastAPI endpoint that accepts a JSON body with 'name' and 'age' fields, validates the age, and returns a greeting message.\n\n### Installation\n\nBefore running the code, make sure to install the required packages using pip:\n\n```bash\npip install fastapi uvicorn\n```\n\n### Code\n\n```python\nfrom fastapi import FastAPI, Body\nfrom pydantic import BaseModel, validator\n\napp = FastAPI()\n\nclass User(BaseModel):\n    name: str\n    age: int\n\n    @validator('age')\n    def age_must_be_between_zero_and_120(cls, v):\n        if not 0 <= v <= 120:\n            raise ValueError('Age must be between 0 and 120')\n        return v\n\n@app.post(\"/greet\")\nasync def greet(user: User = Body(...)):\n    return f\"Hello, {user.name}! You are {user.age} years old.\"\n```\n\n### Explanation\n\n*   We define a `User` class using Pydantic's `BaseModel`. This class has two fields: `name` and `age`.\n*   We use the `@validator` decorator to define a custom validation for the `age` field. If the age is not between 0 and 120, it raises a `ValueError`.\n*   In the `greet` endpoint, we use the `Body` parameter to expect a JSON body with the `User` schema.\n*   We return a greeting message with the user's name and age.\n\n### Running the Code\n\nTo run the code, execute the following command:\n\n```bash\nuvicorn main:app --reload\n```\n\nReplace `main` with the actual name of the Python file containing the code.\n\n### Testing the Endpoint\n\nYou can test the endpoint using a tool like `curl` or a REST client like Postman. Here's an example using `curl`:\n\n```bash\ncurl -X POST \\\n  http://localhost:8000/greet \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"name\": \"John Doe\", \"age\": 30}'\n```\n\nThis should return a greeting message with John Doe's name and age. If you try to submit an invalid age, it will raise a `ValueError`.",
+  "ttft_ms": 321.09,
+  "latency_ms": 1219.71,
+  "tokens_per_second": 235.3,
+  "input_tokens": 27,
+  "output_tokens": 287,
+  "response_length": 1874,
+  "cost_usd": 2.431e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

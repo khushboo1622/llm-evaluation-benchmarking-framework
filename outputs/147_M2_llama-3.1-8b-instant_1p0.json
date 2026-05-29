@@ -1,0 +1,30 @@
+{
+  "run_id": "147_M2_llama-3.1-8b-instant_1p0",
+  "run_number": 147,
+  "prompt_id": "M2",
+  "category": "multilingual",
+  "difficulty": "medium",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 1.0,
+  "prompt": "નીચેના ગુજરાતી ટેક્સ્ટનો અંગ્રેજીમાં અનુવાદ કરો અને પછી તેનો સારાંશ આપો:\n\n'ભારતમાં ટેક્નોલોજી ઉદ્યોગ ઝડપથી વિકસી રહ્યો છે. યુવા સ્ટાર્ટઅપ્સ નવી સમસ્યાઓ ઉકેલવા માટે આર્ટિફિશિયલ ઇન્ટેલિજન્સ અને મશીન લર્નિંગનો ઉપયોગ કરી રહ્યા છે.'",
+  "eval_criteria": "correct English translation, accurate summary, handles Gujarati script",
+  "timestamp": "2026-05-15T10:20:13.623448",
+  "success": true,
+  "response": "ગુજરાતી ટેક્સ્ટનો અંગ્રેજીમાં અનુવાદ:\n\n'The technology industry in India is rapidly growing. Young startups are utilizing artificial intelligence and machine learning to solve new problems.'\n\nસારાંશ:\n\nભારતના ટેક્નોલોજી ઉદ્યોગમાં ઝડપી વિકાસ પણ હાલમાં જોવા મળે છે. યુવા નવાં સ્ટાર્ટઅપ્સ મશીન શીખવણી અને આર્ટિફિશિયલ ઇન્ટેલિજન્સની મદદથી નવીન સમસ્યાઓ પર કામ કરી રહ્યા છે.",
+  "ttft_ms": 317.91,
+  "latency_ms": 716.12,
+  "tokens_per_second": 72.61,
+  "input_tokens": 33,
+  "output_tokens": 52,
+  "response_length": 366,
+  "cost_usd": 5.81e-06,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 2,
+    "instruction_following": 2,
+    "clarity": 4,
+    "completeness": 2,
+    "overall": 2
+  }
+}

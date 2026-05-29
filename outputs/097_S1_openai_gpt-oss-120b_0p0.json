@@ -1,0 +1,30 @@
+{
+  "run_id": "097_S1_openai_gpt-oss-120b_0p0",
+  "run_number": 97,
+  "prompt_id": "S1",
+  "category": "structured_output",
+  "difficulty": "easy",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.0,
+  "prompt": "Extract the following information from this text and return ONLY valid JSON, no explanation:\n\nText: 'John Smith, 34 years old, works as a software engineer at Google in Mountain View, California. He joined in 2019.'\n\nFields: name, age, job_title, company, location, year_joined",
+  "eval_criteria": "valid JSON, all fields present, correct values, no extra text",
+  "timestamp": "2026-05-15T08:57:55.830782",
+  "success": true,
+  "response": "{\n  \"name\": \"John Smith\",\n  \"age\": 34,\n  \"job_title\": \"software engineer\",\n  \"company\": \"Google\",\n  \"location\": \"Mountain View, California\",\n  \"year_joined\": 2019\n}",
+  "ttft_ms": 360.77,
+  "latency_ms": 415.7,
+  "tokens_per_second": 43.3,
+  "input_tokens": 42,
+  "output_tokens": 18,
+  "response_length": 164,
+  "cost_usd": 0.000234,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

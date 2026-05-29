@@ -1,0 +1,30 @@
+{
+  "run_id": "053_C1_openai_gpt-oss-120b_0p5",
+  "run_number": 53,
+  "prompt_id": "C1",
+  "category": "coding",
+  "difficulty": "easy",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.5,
+  "prompt": "Write a Python function that takes a list of integers and returns the two numbers that add up to a given target. Example: [2, 7, 11, 15], target=9 → [2, 7].",
+  "eval_criteria": "correct logic, handles edge cases, clean code",
+  "timestamp": "2026-05-15T08:55:07.997307",
+  "success": true,
+  "response": "**Solution Overview**\n\nThe classic “two‑sum” problem asks for two distinct elements in an array whose sum equals a given target value.  \nA linear‑time solution uses a hash table (Python `dict`) to remember the numbers we have already seen and, for each new number `x`, checks whether the complementary value `target‑x` is already in the table.\n\n* **Time complexity:** **O(n)** – each element is processed once.  \n* **Space complexity:** **O(n)** – in the worst case we store every element in the hash table.\n\nBelow is a clean, well‑documented implementation that:\n\n* Returns the **pair of numbers** (as a list) that satisfy the condition, preserving the order they appear in the input.\n* Returns an **empty list** when no such pair exists.\n* Raises a **`ValueError`** if the input list has fewer than two elements (the problem would be ill‑posed).\n\n```python\nfrom typing import List\n\ndef two_sum(nums: List[int], target: int) -> List[int]:\n    \"\"\"\n    Find two distinct numbers in `nums` that add up to `target`.\n\n    Parameters\n    ----------\n    nums : List[int]\n        List of integers to search.\n    target : int\n        Desired sum of the two returned numbers.\n\n    Returns\n    -------\n    List[int]\n        A list containing the two numbers that sum to `target`.\n        If no such pair exists, an empty list is returned.\n\n    Raises\n    ------\n    ValueError\n        If `nums` contains fewer than two elements.\n\n    Example\n    -------\n    >>> two_sum([2, 7, 11, 15], 9)\n    [2, 7]\n    \"\"\"\n    if len(nums) < 2:\n        raise ValueError(\"At least two numbers are required to form a pair.\")\n\n    # `seen` maps a number to its index in the original list.\n    # Storing the index allows us to preserve the original order when we return the pair.\n    seen = {}\n\n    for idx, x in enumerate(nums):\n        complement = target - x\n        if complement in seen:\n            # `seen[complement]` is the index of the earlier number.\n            # Return the numbers in the order they appear in the original list.\n            first = nums[seen[complement]]\n            second = x\n            return [first, second]\n        # Record the current number only if we haven't seen it before.\n        # (If duplicates are allowed, we could store a list of indices instead.)\n        if x not in seen:\n            seen[x] = idx\n\n    # No pair found\n    return []\n\n\n# ----------------------------------------------------------------------\n# Quick self‑test (run only when this file is executed directly)\n# ----------------------------------------------------------------------\nif __name__ == \"__main__\":\n    test_cases = [\n        ([2, 7, 11, 15], 9, [2, 7]),\n        ([3, 2, 4], 6, [2, 4]),\n        ([3, 3], 6, [3, 3]),\n        ([1, 2, 3, 4, 5], 10, []),          # no solution\n        ([-1, -2, -3, -4, 5], -5, [-2, -3]) # works with negatives\n    ]\n\n    for nums, tgt, expected in test_cases:\n        result = two_sum(nums, tgt)\n        assert result == expected, f\"Failed: {nums}, target={tgt} → got {result}, expected {expected}\"\n    print(\"All tests passed!\")\n```\n\n### How It Works\n\n1. **Iterate** through the list once.\n2. For each element `x`, compute the *complement* `target - x`.\n3. **Lookup** the complement in the dictionary `seen`.\n   * If it exists, we have already encountered the other number needed to reach the target → return the pair.\n   * If not, store `x` (and its index) in `seen` for future look‑ups.\n4. If the loop finishes without finding a match, return an empty list.\n\nThis implementation is concise, efficient, and easy to adapt (e.g., to return indices instead of values).",
+  "ttft_ms": 277.88,
+  "latency_ms": 2166.96,
+  "tokens_per_second": 247.35,
+  "input_tokens": 31,
+  "output_tokens": 536,
+  "response_length": 3592,
+  "cost_usd": 0.003309,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

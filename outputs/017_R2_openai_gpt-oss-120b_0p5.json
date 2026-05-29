@@ -1,0 +1,30 @@
+{
+  "run_id": "017_R2_openai_gpt-oss-120b_0p5",
+  "run_number": 17,
+  "prompt_id": "R2",
+  "category": "reasoning",
+  "difficulty": "hard",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.5,
+  "prompt": "Five people are in a race. Alice finishes before Bob. Charlie finishes after Dave but before Alice. Eve finishes last. What is the finishing order? Think step by step.",
+  "eval_criteria": "correct order: Dave, Charlie, Alice, Bob, Eve",
+  "timestamp": "2026-05-15T08:53:01.933182",
+  "success": true,
+  "response": "**Step 1 – Write down the given clues**\n\n1. *Alice finishes before Bob.* → **Alice < Bob**\n2. *Charlie finishes after Dave but before Alice.* → **Dave < Charlie < Alice**\n3. *Eve finishes last.* → **Eve = 5th place**\n\n**Step 2 – Combine the inequalities**\n\nFrom clue 2 we already have a chain:\n```\nDave < Charlie < Alice\n```\nAdd clue 1 (Alice < Bob) to the chain:\n```\nDave < Charlie < Alice < Bob\n```\nNow we have a strict ordering for four of the five runners.\n\n**Step 3 – Insert Eve**\n\nClue 3 tells us Eve is the very last finisher, i.e. 5th place.  \nSo Eve must come after everyone else.\n\n**Step 4 – Assign the positions**\n\nWe have four spots (1st–4th) left for the ordered group **Dave → Charlie → Alice → Bob**.\n\nThus the complete finishing order is:\n\n1. **Dave**  \n2. **Charlie**  \n3. **Alice**  \n4. **Bob**  \n5. **Eve**\n\nAll the conditions are satisfied:\n\n- Alice (3rd) is before Bob (4th).  \n- Charlie (2nd) is after Dave (1st) and before Alice (3rd).  \n- Eve is last (5th).  \n\n**Answer:** **Dave, Charlie, Alice, Bob, Eve**.",
+  "ttft_ms": 580.84,
+  "latency_ms": 1283.25,
+  "tokens_per_second": 147.28,
+  "input_tokens": 29,
+  "output_tokens": 189,
+  "response_length": 1032,
+  "cost_usd": 0.001221,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

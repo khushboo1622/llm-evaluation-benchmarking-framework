@@ -1,0 +1,30 @@
+{
+  "run_id": "055_C2_llama-3.1-8b-instant_0p0",
+  "run_number": 55,
+  "prompt_id": "C2",
+  "category": "coding",
+  "difficulty": "medium",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.0,
+  "prompt": "Write a Python decorator that measures and prints the execution time of any function it wraps. Show an example usage.",
+  "eval_criteria": "correct decorator syntax, uses time module, example included",
+  "timestamp": "2026-05-15T08:55:12.194265",
+  "success": true,
+  "response": "**Timing Decorator**\n=====================\n\nHere's a Python decorator that measures and prints the execution time of any function it wraps:\n\n```python\nimport time\nfrom functools import wraps\n\ndef timing_decorator(func):\n    \"\"\"\n    Decorator to measure and print the execution time of a function.\n    \n    Args:\n        func (function): The function to be decorated.\n    \n    Returns:\n        function: The decorated function.\n    \"\"\"\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        start_time = time.time()\n        result = func(*args, **kwargs)\n        end_time = time.time()\n        execution_time = end_time - start_time\n        print(f\"Function '{func.__name__}' executed in {execution_time:.4f} seconds.\")\n        return result\n    return wrapper\n\n# Example usage\n@timing_decorator\ndef example_function():\n    \"\"\"\n    An example function that simulates some work.\n    \"\"\"\n    time.sleep(2)  # Simulate some work\n\nexample_function()\n```\n\nIn this code:\n\n1.  We import the `time` module to measure the execution time and `functools.wraps` to preserve the original function's metadata.\n2.  We define the `timing_decorator` function, which takes a function `func` as an argument.\n3.  Inside the decorator, we define a `wrapper` function that measures the execution time by recording the start and end times using `time.time()`.\n4.  We print the execution time with four decimal places using an f-string.\n5.  We return the result of the original function.\n6.  We use the `@wraps` decorator from `functools` to preserve the original function's metadata, such as its name and docstring.\n7.  We demonstrate the usage of the decorator by decorating the `example_function` and calling it.\n\nWhen you run this code, it will print the execution time of the `example_function`, which is currently set to 2 seconds using `time.sleep(2)`.",
+  "ttft_ms": 130.61,
+  "latency_ms": 759.83,
+  "tokens_per_second": 321.12,
+  "input_tokens": 20,
+  "output_tokens": 244,
+  "response_length": 1838,
+  "cost_usd": 2.052e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

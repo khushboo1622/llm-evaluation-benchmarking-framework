@@ -1,0 +1,30 @@
+{
+  "run_id": "074_C4_llama-3.1-8b-instant_0p5",
+  "run_number": 74,
+  "prompt_id": "C4",
+  "category": "coding",
+  "difficulty": "hard",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.5,
+  "prompt": "Implement a simple LRU (Least Recently Used) cache in Python with get and put operations. The cache should have a max capacity. Use only built-in Python.",
+  "eval_criteria": "correct LRU logic, handles capacity limit, O(1) operations preferred",
+  "timestamp": "2026-05-15T08:56:17.835109",
+  "success": true,
+  "response": "**LRU Cache Implementation in Python**\n======================================\n\nHere's a simple implementation of an LRU cache in Python using built-in data structures. The cache will use a dictionary to store key-value pairs and a list to keep track of the order of access.\n\n```python\nfrom collections import OrderedDict\n\nclass LRUCache:\n    def __init__(self, capacity: int):\n        \"\"\"\n        Initialize the LRU cache with a given capacity.\n\n        :param capacity: The maximum number of items the cache can hold.\n        \"\"\"\n        self.capacity = capacity\n        self.cache = OrderedDict()\n\n    def get(self, key: int) -> int:\n        \"\"\"\n        Get the value associated with a given key from the cache.\n\n        :param key: The key to look up in the cache.\n        :return: The value associated with the key, or -1 if the key is not in the cache.\n        \"\"\"\n        if key in self.cache:\n            value = self.cache.pop(key)\n            self.cache[key] = value  # Move the key to the end to mark it as recently used\n            return value\n        else:\n            return -1\n\n    def put(self, key: int, value: int) -> None:\n        \"\"\"\n        Add a new key-value pair to the cache or update an existing one.\n\n        :param key: The key to add or update.\n        :param value: The value associated with the key.\n        \"\"\"\n        if key in self.cache:\n            self.cache.pop(key)\n        elif len(self.cache) >= self.capacity:\n            self.cache.popitem(last=False)  # Remove the least recently used item (first item in the order)\n        self.cache[key] = value\n\n# Example usage:\ncache = LRUCache(2)  # Create an LRU cache with a capacity of 2\n\ncache.put(1, 1)\ncache.put(2, 2)\nprint(cache.get(1))  # Returns 1\ncache.put(3, 3)  # Evicts key 2\nprint(cache.get(2))  # Returns -1 (not found)\ncache.put(4, 4)  # Evicts key 1\nprint(cache.get(1))  # Returns -1 (not found)\nprint(cache.get(3))  # Returns 3\nprint(cache.get(4))  # Returns 4\n```\n\nThis implementation uses an `OrderedDict` to store the key-value pairs, which automatically keeps track of the order of access. When a key is accessed, it's moved to the end of the order to mark it as recently used. When the cache is full and a new key-value pair is added, the least recently used item is removed (the first item in the order).",
+  "ttft_ms": 195.58,
+  "latency_ms": 825.83,
+  "tokens_per_second": 408.07,
+  "input_tokens": 26,
+  "output_tokens": 337,
+  "response_length": 2311,
+  "cost_usd": 2.826e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 9,
+    "clarity": 9,
+    "completeness": 9,
+    "overall": 9
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "run_id": "116_S3_openai_gpt-oss-120b_0p5",
+  "run_number": 116,
+  "prompt_id": "S3",
+  "category": "structured_output",
+  "difficulty": "hard",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.5,
+  "prompt": "Return ONLY valid JSON for a task management item. Schema must be exactly:\n{\n  \"task_id\": \"string (uuid format)\",\n  \"title\": \"string\",\n  \"priority\": \"low | medium | high | critical\",\n  \"tags\": [\"array of strings\"],\n  \"estimated_hours\": number,\n  \"subtasks\": [{\"id\": \"string\", \"description\": \"string\", \"done\": boolean}]\n}\n\nTask: Build a REST API for a todo application with authentication.",
+  "eval_criteria": "valid JSON, matches schema exactly, uuid-like id, no hallucinated fields",
+  "timestamp": "2026-05-15T08:59:03.574835",
+  "success": true,
+  "response": "{\n  \"task_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"title\": \"Build a REST API for a todo application with authentication\",\n  \"priority\": \"high\",\n  \"tags\": [\"api\", \"authentication\", \"todo\", \"backend\"],\n  \"estimated_hours\": 12,\n  \"subtasks\": [\n    {\"id\": \"1\", \"description\": \"Define API endpoints and data models\", \"done\": false},\n    {\"id\": \"2\", \"description\": \"Implement user registration and login with JWT\", \"done\": false},\n    {\"id\": \"3\", \"description\": \"Create CRUD operations for todo items\", \"done\": false},\n    {\"id\": \"4\", \"description\": \"Write unit and integration tests\", \"done\": false},\n    {\"id\": \"5\", \"description\": \"Document API with OpenAPI/Swagger\", \"done\": false},\n    {\"id\": \"6\", \"description\": \"Deploy to production environment\", \"done\": false}\n  ]\n}",
+  "ttft_ms": 1290.4,
+  "latency_ms": 1820.37,
+  "tokens_per_second": 48.89,
+  "input_tokens": 53,
+  "output_tokens": 89,
+  "response_length": 774,
+  "cost_usd": 0.000693,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

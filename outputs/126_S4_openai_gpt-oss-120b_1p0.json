@@ -1,0 +1,30 @@
+{
+  "run_id": "126_S4_openai_gpt-oss-120b_1p0",
+  "run_number": 126,
+  "prompt_id": "S4",
+  "category": "structured_output",
+  "difficulty": "medium",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 1.0,
+  "prompt": "Convert this unstructured resume text into a structured JSON object:\n\n'Priya Sharma. Email: priya@email.com. Skills: Python, React, AWS, Docker. Experience: 3 years at Infosys as Backend Developer, 2 years at TCS as Junior Developer. Education: B.Tech Computer Science, IIT Bombay 2019.'\n\nReturn ONLY JSON.",
+  "eval_criteria": "valid JSON, skills as array, experience as array of objects, education as object",
+  "timestamp": "2026-05-15T08:59:33.402901",
+  "success": true,
+  "response": "{\n  \"name\": \"Priya Sharma\",\n  \"email\": \"priya@email.com\",\n  \"skills\": [\n    \"Python\",\n    \"React\",\n    \"AWS\",\n    \"Docker\"\n  ],\n  \"experience\": [\n    {\n      \"company\": \"Infosys\",\n      \"role\": \"Backend Developer\",\n      \"duration_years\": 3\n    },\n    {\n      \"company\": \"TCS\",\n      \"role\": \"Junior Developer\",\n      \"duration_years\": 2\n    }\n  ],\n  \"education\": [\n    {\n      \"degree\": \"B.Tech\",\n      \"field\": \"Computer Science\",\n      \"institution\": \"IIT Bombay\",\n      \"graduation_year\": 2019\n    }\n  ]\n}",
+  "ttft_ms": 222.02,
+  "latency_ms": 625.14,
+  "tokens_per_second": 79.98,
+  "input_tokens": 44,
+  "output_tokens": 50,
+  "response_length": 509,
+  "cost_usd": 0.000432,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 9,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 9
+  }
+}

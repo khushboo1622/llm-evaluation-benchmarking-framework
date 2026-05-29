@@ -1,0 +1,30 @@
+{
+  "run_id": "128_S5_llama-3.1-8b-instant_0p5",
+  "run_number": 128,
+  "prompt_id": "S5",
+  "category": "structured_output",
+  "difficulty": "hard",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.5,
+  "prompt": "You are an API. A user sends: 'Book me a flight from Mumbai to Delhi on June 15th, morning preferred, economy class, 1 adult.'\n\nReturn ONLY a JSON booking request object with fields: origin, destination, date, time_preference, cabin_class, passengers, special_requests.",
+  "eval_criteria": "valid JSON, correct field extraction, no extra text, handles implicit fields",
+  "timestamp": "2026-05-15T10:00:08.941523",
+  "success": true,
+  "response": "```json\n{\n  \"booking_request\": {\n    \"origin\": \"Mumbai\",\n    \"destination\": \"Delhi\",\n    \"date\": \"2023-06-15\",\n    \"time_preference\": \"morning\",\n    \"cabin_class\": \"economy\",\n    \"passengers\": {\n      \"adult\": 1,\n      \"children\": 0,\n      \"infant\": 0\n    },\n    \"special_requests\": []\n  }\n}\n```\n\nNote: The date in the JSON object is set to 2023, you would want to set it to the current year or the year the user is traveling in.",
+  "ttft_ms": 138.28,
+  "latency_ms": 352.89,
+  "tokens_per_second": 161.52,
+  "input_tokens": 40,
+  "output_tokens": 57,
+  "response_length": 429,
+  "cost_usd": 6.56e-06,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 8,
+    "instruction_following": 9,
+    "clarity": 10,
+    "completeness": 9,
+    "overall": 9
+  }
+}

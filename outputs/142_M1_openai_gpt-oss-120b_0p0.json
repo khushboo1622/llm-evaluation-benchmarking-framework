@@ -1,0 +1,30 @@
+{
+  "run_id": "142_M1_openai_gpt-oss-120b_0p0",
+  "run_number": 142,
+  "prompt_id": "M1",
+  "category": "multilingual",
+  "difficulty": "easy",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.0,
+  "prompt": "Translate the following English text to Hindi:\n\n'Artificial intelligence is transforming the way we work and live. It is important to understand both its benefits and its limitations.'",
+  "eval_criteria": "accurate Hindi translation, natural language, correct grammar",
+  "timestamp": "2026-05-15T10:19:15.563883",
+  "success": true,
+  "response": "कृत्रिम बुद्धिमत्ता हमारे काम करने और जीने के तरीके को बदल रही है। इसके लाभों और सीमाओं दोनों को समझना महत्वपूर्ण है।",
+  "ttft_ms": 326.02,
+  "latency_ms": 381.34,
+  "tokens_per_second": 57.69,
+  "input_tokens": 28,
+  "output_tokens": 22,
+  "response_length": 117,
+  "cost_usd": 0.000216,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

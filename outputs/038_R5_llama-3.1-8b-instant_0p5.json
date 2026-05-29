@@ -1,0 +1,30 @@
+{
+  "run_id": "038_R5_llama-3.1-8b-instant_0p5",
+  "run_number": 38,
+  "prompt_id": "R5",
+  "category": "reasoning",
+  "difficulty": "hard",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.5,
+  "prompt": "You are in a room with two doors. One leads to freedom, one to death. There are two guards — one always lies, one always tells the truth. You don't know which is which. You can ask ONE guard ONE question. What do you ask?",
+  "eval_criteria": "correct classic solution: ask either guard what the other would say, then take the opposite door",
+  "timestamp": "2026-05-15T08:54:06.176743",
+  "success": true,
+  "response": "To solve this classic puzzle, I would ask one of the guards: \"If I were to ask the other guard which door leads to freedom, what would they say?\"\n\nThis question is clever because it doesn't directly ask the guard to identify the door to freedom, but rather what the other guard would say if you asked them. \n\nHere's how it works:\n\n- If you ask the truth-teller, they will tell you what the liar would say, which is the wrong door (the door to death).\n- If you ask the liar, they will lie about what the truth-teller would say, which is also the wrong door (the door to death).\n\nIn either case, the guard you ask will point to the wrong door. So, you can safely assume the other door is the one to freedom.",
+  "ttft_ms": 318.12,
+  "latency_ms": 510.04,
+  "tokens_per_second": 268.61,
+  "input_tokens": 45,
+  "output_tokens": 137,
+  "response_length": 705,
+  "cost_usd": 1.321e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 9,
+    "completeness": 10,
+    "overall": 10
+  }
+}

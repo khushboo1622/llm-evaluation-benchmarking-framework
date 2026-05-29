@@ -1,0 +1,30 @@
+{
+  "run_id": "050_C1_qwen_qwen3-32b_0p5",
+  "run_number": 50,
+  "prompt_id": "C1",
+  "category": "coding",
+  "difficulty": "easy",
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.5,
+  "prompt": "Write a Python function that takes a list of integers and returns the two numbers that add up to a given target. Example: [2, 7, 11, 15], target=9 → [2, 7].",
+  "eval_criteria": "correct logic, handles edge cases, clean code",
+  "timestamp": "2026-05-15T08:54:52.023137",
+  "success": true,
+  "response": "<think>\nOkay, I need to write a Python function that takes a list of integers and a target value, then returns the two numbers that add up to the target. Let's think about how to approach this.\n\nThe example given is [2,7,11,15] with target 9. The answer is [2,7]. So the function needs to find two distinct elements whose sum is exactly the target.\n\nFirst, I should consider possible approaches. The brute-force way is to check every pair of elements. For each element, loop through the rest and see if they sum to the target. But that would be O(n^2) time, which isn't efficient for large lists. But maybe for a simple case, it's acceptable. However, there's probably a better way.\n\nAnother approach is to use a hash map (dictionary in Python) to store the values we've seen so far. For each number in the list, calculate the complement (target - current number). If the complement is already in the hash map, then we found the two numbers. Otherwise, add the current number to the hash map. This would be O(n) time, which is better.\n\nWait, but how does this work? Let me think. Let's say we iterate through the list. For each element x at index i, if there's a previous element in the list that equals target - x, then we return them. So, for example, in the given example, when we reach 7, the complement is 9-7=2. If 2 is already in the hash map (because 2 was processed before), then return [2,7]. This approach works, but we have to make sure that the elements are not the same element. Wait, but the problem says two numbers, which implies two distinct elements, right? So even if there's a case where target is 4 and list has [2, ...], but the list has only one 2, then that approach would not work. But assuming there is exactly one solution, as in the example.\n\nBut the problem might not specify that there's exactly one solution. But according to the problem statement, we can assume there's exactly one pair? Or do we need to handle multiple possibilities? The example returns a single pair. So perhaps the function can return any one valid pair. But the problem says \"the two numbers\"—so maybe there's exactly one, or we can return the first found one.\n\nSo the hash map approach is suitable here.\n\nLet me outline the steps:\n\nInitialize an empty dictionary.\n\nIterate over each number in the list:\n\n   compute complement = target - num\n\n   if complement is in the dictionary, return [complement, num]\n\n   else, add num to the dictionary with its index (though index may not be needed unless we need to return positions, which we don't here)\n\nWait, but in the example, for the list [3, 3], target 6, the correct answer would be [3,3]. But in that case, the hash map approach would check for 3's complement (3) in the dictionary before adding. So when the second 3 is processed, the first 3 is already in the dictionary. So it would return [3,3]. So that works.\n\nBut what if the list is [3, 2, 4], target 6. The correct answer is [2,4]. Let's see:\n\nProcess 3: complement is 3. Not in dict. Add 3.\n\nProcess 2: complement is 4. Not in dict. Add 2.\n\nProcess 4: complement is 2. Which is in the dict. So return [2,4]. Correct.\n\nSo this approach works.\n\nSo the function would look something like:\n\ndef two_sum(nums, target):\n\n    seen = {}\n\n    for num in nums:\n\n        complement = target - num\n\n        if complement in seen:\n\n            return [complement, num]\n\n        seen[num] = True\n\n    return []  # or raise an error if no solution found\n\nWait, but in this code, for the example [2,7,11,15], target 9. Let's walk through:\n\nFirst num is 2: complement is 7. Not in seen. Add 2.\n\nSecond num is 7: complement is 2. 2 is in seen, return [2,7]. Correct.\n\nYes. So that works.\n\nBut what about if the list is [7, 2, 11, 15], target 9. Then first element is 7. Complement is 2. Not there. Add 7. Then next element is 2. complement is 7, which is in seen. So returns [7,2]. Which is correct, but the order may not match the example. But the problem says to return the two numbers, order may not matter. But the example returns [2,7",
+  "ttft_ms": 4250.31,
+  "latency_ms": 7631.39,
+  "tokens_per_second": 95.4,
+  "input_tokens": 31,
+  "output_tokens": 728,
+  "response_length": 4036,
+  "cost_usd": 0.00029291,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 8,
+    "clarity": 7,
+    "completeness": 9,
+    "overall": 8
+  }
+}

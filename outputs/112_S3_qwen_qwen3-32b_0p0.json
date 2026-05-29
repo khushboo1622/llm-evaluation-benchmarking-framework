@@ -1,0 +1,30 @@
+{
+  "run_id": "112_S3_qwen_qwen3-32b_0p0",
+  "run_number": 112,
+  "prompt_id": "S3",
+  "category": "structured_output",
+  "difficulty": "hard",
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.0,
+  "prompt": "Return ONLY valid JSON for a task management item. Schema must be exactly:\n{\n  \"task_id\": \"string (uuid format)\",\n  \"title\": \"string\",\n  \"priority\": \"low | medium | high | critical\",\n  \"tags\": [\"array of strings\"],\n  \"estimated_hours\": number,\n  \"subtasks\": [{\"id\": \"string\", \"description\": \"string\", \"done\": boolean}]\n}\n\nTask: Build a REST API for a todo application with authentication.",
+  "eval_criteria": "valid JSON, matches schema exactly, uuid-like id, no hallucinated fields",
+  "timestamp": "2026-05-15T08:58:46.213192",
+  "success": true,
+  "response": "<think>\nOkay, let's tackle this. The user wants a JSON object for a task management item based on the given schema. The task is to build a REST API for a todo app with authentication.\n\nFirst, I need to generate a UUID for task_id. I'll use a UUID generator. Let's say it's \"123e4567-e89b-12d3-a456-426614174000\".\n\nTitle should be the task description: \"Build a REST API for a todo application with authentication.\"\n\nPriority is probably medium or high. Since authentication adds complexity, maybe high.\n\nTags could include \"API\", \"Authentication\", \"Todo App\", \"REST\".\n\nEstimated hours: Let's think. Building a REST API with auth might take a few days. Assuming 8 hours a day, maybe 20-30 hours. Let's go with 25.\n\nSubtasks: Need to break down the main task. Common subtasks would be designing the API, setting up authentication, implementing CRUD endpoints, testing, and documentation. Each subtask should have an id, description, and done status. All are not done yet, so false.\n\nCheck the schema again to make sure all required fields are there. UUID format, priority enum, tags as array, estimated_hours as number, subtasks array with objects. Looks good. Now structure the JSON accordingly.\n</think>\n\n```json\n{\n  \"task_id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"title\": \"Build a REST API for a todo application with authentication\",\n  \"priority\": \"high\",\n  \"tags\": [\"API\", \"Authentication\", \"Todo App\", \"REST\"],\n  \"estimated_hours\": 25,\n  \"subtasks\": [\n    {\n      \"id\": \"subtask_001\",\n      \"description\": \"Design API endpoints and data models\",\n      \"done\": false\n    },\n    {\n      \"id\": \"subtask_002\",\n      \"description\": \"Implement user authentication (JWT/OAuth)\",\n      \"done\": false\n    },\n    {\n      \"id\": \"subtask_003\",\n      \"description\": \"Create CRUD operations for todo items\",\n      \"done\": false\n    },\n    {\n      \"id\": \"subtask_004\",\n      \"description\": \"Write unit and integration tests\",\n      \"done\": false\n    },\n    {\n      \"id\": \"subtask_005\",\n      \"description\": \"Document API using Swagger/OpenAPI\",\n      \"done\": false\n    }\n  ]\n}\n```",
+  "ttft_ms": 418.43,
+  "latency_ms": 1657.21,
+  "tokens_per_second": 169.56,
+  "input_tokens": 53,
+  "output_tokens": 281,
+  "response_length": 2075,
+  "cost_usd": 0.00012496,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

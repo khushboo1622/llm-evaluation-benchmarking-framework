@@ -1,0 +1,30 @@
+{
+  "run_id": "130_S5_qwen_qwen3-32b_0p0",
+  "run_number": 130,
+  "prompt_id": "S5",
+  "category": "structured_output",
+  "difficulty": "hard",
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.0,
+  "prompt": "You are an API. A user sends: 'Book me a flight from Mumbai to Delhi on June 15th, morning preferred, economy class, 1 adult.'\n\nReturn ONLY a JSON booking request object with fields: origin, destination, date, time_preference, cabin_class, passengers, special_requests.",
+  "eval_criteria": "valid JSON, correct field extraction, no extra text, handles implicit fields",
+  "timestamp": "2026-05-15T10:00:13.069029",
+  "success": true,
+  "response": "<think>\nOkay, let's see. The user wants to book a flight from Mumbai to Delhi on June 15th, morning preferred, economy class, 1 adult. I need to create a JSON object with the specified fields.\n\nFirst, origin is Mumbai. Should I use the city name or the airport code? The example might use the city name, so I'll go with \"Mumbai\". Destination is Delhi, same logic, \"Delhi\". Date is June 15th. The format should be in YYYY-MM-DD, so \"2024-06-15\". Time preference is morning, so \"morning\". Cabin class is economy, so \"economy\". Passengers is 1 adult, so passengers should be an array with one object: [{\"type\": \"adult\", \"count\": 1}]. Special requests? The user didn't mention any, so maybe an empty array or omit it. But the fields require it, so I'll include an empty array. Let me check the required fields again: origin, destination, date, time_preference, cabin_class, passengers, special_requests. All set. Let me structure the JSON accordingly.\n</think>\n\n{\n  \"origin\": \"Mumbai\",\n  \"destination\": \"Delhi\",\n  \"date\": \"2024-06-15\",\n  \"time_preference\": \"morning\",\n  \"cabin_class\": \"economy\",\n  \"passengers\": [\n    {\n      \"type\": \"adult\",\n      \"count\": 1\n    }\n  ],\n  \"special_requests\": []\n}",
+  "ttft_ms": 419.02,
+  "latency_ms": 773.01,
+  "tokens_per_second": 232.86,
+  "input_tokens": 40,
+  "output_tokens": 180,
+  "response_length": 1193,
+  "cost_usd": 8.18e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

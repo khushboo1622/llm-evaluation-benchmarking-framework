@@ -1,0 +1,30 @@
+{
+  "run_id": "058_C2_qwen_qwen3-32b_0p0",
+  "run_number": 58,
+  "prompt_id": "C2",
+  "category": "coding",
+  "difficulty": "medium",
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.0,
+  "prompt": "Write a Python decorator that measures and prints the execution time of any function it wraps. Show an example usage.",
+  "eval_criteria": "correct decorator syntax, uses time module, example included",
+  "timestamp": "2026-05-15T08:55:18.743576",
+  "success": true,
+  "response": "<think>\nOkay, I need to create a Python decorator that measures and prints the execution time of a function. Let me think about how to approach this.\n\nFirst, I remember that a decorator is a function that wraps another function. So the basic structure would involve defining a decorator function that takes the target function as an argument. Then, inside the decorator, I can define a wrapper function that adds the timing functionality.\n\nTo measure the execution time, I should use the time module. The time.time() function gives the current time in seconds since the epoch. So I can record the start time before calling the function, then the end time after the function returns. Subtracting start from end gives the elapsed time.\n\nWait, but maybe using time.perf_counter() is better for performance measurements? Because it's more precise for short durations. Yeah, I think that's right. So I'll use time.perf_counter() instead of time.time().\n\nSo the steps are:\n\n1. Define a decorator function, maybe called timer.\n2. The decorator takes the function as an argument.\n3. Inside, define a wrapper function that does the timing.\n4. In the wrapper, record the start time.\n5. Call the original function with *args and **kwargs to handle any arguments.\n6. Record the end time.\n7. Calculate the elapsed time.\n8. Print the function name and the elapsed time.\n9. Return the result of the original function so that the decorated function behaves the same.\n\nWait, also need to make sure that the decorator returns the wrapper function.\n\nLet me sketch the code structure:\n\nimport time\n\ndef timer(func):\n    def wrapper(*args, **kwargs):\n        start = time.perf_counter()\n        result = func(*args, **kwargs)\n        end = time.perf_counter()\n        print(f\"Function {func.__name__} took {end - start:.6f} seconds\")\n        return result\n    return wrapper\n\nThen, an example usage would be:\n\n@timer\ndef example_function():\n    # some code here\n\nBut for the example, maybe create a function that does something with a noticeable delay. Like using time.sleep.\n\nFor example:\n\n@timer\ndef wait_a_bit(seconds):\n    time.sleep(seconds)\n\nThen, when we call wait_a_bit(1), it should print something like \"Function wait_a_bit took 1.00... seconds\".\n\nWait, but when printing, the f-string should format the time properly. Maybe format it to 6 decimal places as I wrote.\n\nTesting this code: Let me think if there are any issues. What about the order of operations? Yes, start the timer before executing the function, which is done.\n\nWhat if the function raises an exception? The current code doesn't handle that. But the problem statement says to measure and print the execution time. If the function raises an error, the decorator would still measure the time up to that point and print it before propagating the error. But maybe that's acceptable for now. The problem doesn't specify handling errors, so proceed.\n\nNow, the example usage. Let me write a sample function. Maybe:\n\n@timer\ndef sample_function():\n    print(\"Function started\")\n    time.sleep(2)\n    print(\"Function ended\")\n\nBut when you call sample_function(), it should print the timing. However, the output might have the printed messages mixed with the timing. Let me think. The decorator's print statement will output the time, and the function's print statements will be in between. But in the example, maybe better to show a function that does some computation.\n\nAlternatively, use the sleep function as an example. Let me show that.\n\nPutting it all together, the code would be:\n\nimport time\n\ndef timer(func):\n    def wrapper(*args, **kwargs):\n        start = time.perf_counter()\n        result = func(*args, **kwargs)\n        end = time.perf_counter()\n        print(f\"Function '{func.__name__}' took {end - start:.6f} seconds\")\n        return result\n    return wrapper\n\n@timer\ndef example_function(seconds):\n    time.sleep(seconds)\n\nif __name__ == \"__main__\":\n    example_function(1.5)\n\nWhen this runs, it should call example_function, which sleeps for 1.5 seconds, and the decorator prints the time taken. The printed time should be approximately 1.5 seconds, but maybe slightly more due to the time taken to execute the other code in the wrapper.\n\nWait, but the sleep time is 1.5 seconds. Let me test this in my mind. The output would be something like:\n\nFunction 'example_function' took 1.500... seconds.\n\nNow, the example is correct.\n\nBut what about the formatting? Using :.6f will show six decimal places. That's fine.\n\nSo the code seems correct. Let me check if there are any possible mistakes. Oh, in Python 3, print is a function, so that's okay. The code uses proper f-strings.\n\n",
+  "ttft_ms": 114.82,
+  "latency_ms": 2256.65,
+  "tokens_per_second": 310.64,
+  "input_tokens": 20,
+  "output_tokens": 701,
+  "response_length": 4643,
+  "cost_usd": 0.00027919,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 9,
+    "clarity": 8,
+    "completeness": 9,
+    "overall": 9
+  }
+}

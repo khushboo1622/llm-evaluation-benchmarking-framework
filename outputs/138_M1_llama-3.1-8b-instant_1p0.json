@@ -1,0 +1,30 @@
+{
+  "run_id": "138_M1_llama-3.1-8b-instant_1p0",
+  "run_number": 138,
+  "prompt_id": "M1",
+  "category": "multilingual",
+  "difficulty": "easy",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 1.0,
+  "prompt": "Translate the following English text to Hindi:\n\n'Artificial intelligence is transforming the way we work and live. It is important to understand both its benefits and its limitations.'",
+  "eval_criteria": "accurate Hindi translation, natural language, correct grammar",
+  "timestamp": "2026-05-15T10:19:05.629439",
+  "success": true,
+  "response": "प्राकृतिक बुद्धिमत्ता हमारा काम और जीवन करने के तरीके को बदल रही है।  यह समझना आवश्यक है कि इसके लाभ और सीमाएं दोनों ही क्या हैं।",
+  "ttft_ms": 147.31,
+  "latency_ms": 252.86,
+  "tokens_per_second": 102.82,
+  "input_tokens": 28,
+  "output_tokens": 26,
+  "response_length": 129,
+  "cost_usd": 3.48e-06,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 2,
+    "instruction_following": 2,
+    "clarity": 8,
+    "completeness": 8,
+    "overall": 4
+  }
+}

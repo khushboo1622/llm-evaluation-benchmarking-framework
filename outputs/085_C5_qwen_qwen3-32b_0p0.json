@@ -1,0 +1,30 @@
+{
+  "run_id": "085_C5_qwen_qwen3-32b_0p0",
+  "run_number": 85,
+  "prompt_id": "C5",
+  "category": "coding",
+  "difficulty": "medium",
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.0,
+  "prompt": "Write a FastAPI endpoint that accepts a JSON body with 'name' and 'age' fields, validates that age is between 0 and 120, and returns a greeting message.",
+  "eval_criteria": "correct FastAPI syntax, Pydantic validation, proper response",
+  "timestamp": "2026-05-15T08:57:08.665939",
+  "success": true,
+  "response": "<think>\nOkay, I need to create a FastAPI endpoint that accepts a JSON with 'name' and 'age' fields. The age has to be between 0 and 120. Then return a greeting message. Let me think about how to approach this.\n\nFirst, I remember that FastAPI uses Pydantic models for data validation. So maybe I should create a model with the required fields. The 'name' should be a string, and 'age' an integer. Also, need to add validators for the age range.\n\nWait, how to validate the age? Oh right, Pydantic allows using Field with validation parameters. Like, for the age field, I can specify a minimum and maximum value. Let me check: Field(..., ge=0, le=120) maybe? Or is it validators like @validator for more complex checks? Hmm, maybe for simple range checks, using the Field parameters is sufficient.\n\nSo the model would be something like:\n\nfrom pydantic import BaseModel, Field\n\nclass Person(BaseModel):\n    name: str\n    age: int = Field(..., ge=0, le=120)\n\nWait, does Field take those parameters? I think so. Or maybe it's in the new version of Pydantic. Since FastAPI uses Pydantic's Field for this.\n\nOnce the model is set up, the endpoint can use it as the request body. So the endpoint would be a POST, probably at '/' or '/greet' or something.\n\nThen, when the endpoint is hit, FastAPI will automatically validate the incoming JSON against the model. If the age is out of range, it will return an error.\n\nThen, once validated, the endpoint can generate a greeting message. Like \"Hello, {name}! You are {age} years old.\"\n\nPutting it all together:\n\nImport FastAPI, create the app, define the model, create a POST endpoint with the model as the request body.\n\nWait, let me outline the code:\n\n- Import FastAPI, BaseModel, Field, etc.\n- Create the app instance.\n- Define the model with name and age.\n- Create a POST endpoint that takes the model as a parameter.\n- Return a JSON response with the greeting.\n\nTesting edge cases: What if age is 0? Or 120? Should be allowed. If it's -1 or 121, the validation should fail.\n\nLet me write the code step by step.\n\nFirst, the imports:\n\nfrom fastapi import FastAPI\nfrom pydantic import BaseModel, Field\n\nThen the app:\n\napp = FastAPI()\n\nDefine the model:\n\nclass PersonInput(BaseModel):\n    name: str\n    age: int = Field(..., ge=0, le=120)\n\nThen the endpoint:\n\n@app.post(\"/greet\")\nasync def greet_person(person: PersonInput):\n    return {\"message\": f\"Hello, {person.name}! You are {person.age} years old.\"}\n\nWait, but what about the Field(...)? The ... means it's required. So that's correct.\n\nWait, in Pydantic, Field with default value? If I use Field(...), that means it's required. Since in the model, the age is required. So that's correct.\n\nSo this should work. Let me check if the syntax is correct. For the Field, the parameters are ge (greater than or equal) and le (less than or equal). So ge=0, le=120.\n\nYes, that should validate the age correctly.\n\nSo when someone sends a POST to /greet with JSON like {\"name\": \"Alice\", \"age\": 30}, it returns the greeting. If age is 130, it returns a validation error.\n\nI think that's all. Let me write the full code.\n</think>\n\nTo create a FastAPI endpoint that accepts a JSON body with `name` and `age` fields, validates that the `age` is between 0 and 120, and returns a greeting message, we can use Pydantic models for data validation and FastAPI's built-in request parsing.\n\nHere's a clean and well-documented implementation:\n\n---\n\n### ✅ Full Implementation\n\n```python\nfrom fastapi import FastAPI\nfrom pydantic import BaseModel, Field\n\n# Create FastAPI app\napp = FastAPI()\n\n# Define the Pydantic model for input validation\nclass PersonInput(BaseModel):\n    name: str\n    age: int = Field(..., ge=0, le=120)\n\n# Define the POST endpoint\n@app.post(\"/greet\")\nasync def greet_person(person: PersonInput):\n    return {\n        \"message\": f\"Hello, {person.name}! You are {person.age} years old.\"\n    }\n```\n\n---\n\n### 📌 Explanation\n\n- **`PersonInput` Model**:\n  - `name`: A required string field.\n  - `age`: A required integer field with validation constraints",
+  "ttft_ms": 226.58,
+  "latency_ms": 2452.14,
+  "tokens_per_second": 267.52,
+  "input_tokens": 27,
+  "output_tokens": 656,
+  "response_length": 4037,
+  "cost_usd": 0.00026367,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 8,
+    "clarity": 7,
+    "completeness": 9,
+    "overall": 8
+  }
+}

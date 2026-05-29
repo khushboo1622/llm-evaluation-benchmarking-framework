@@ -1,0 +1,30 @@
+{
+  "run_id": "114_S3_qwen_qwen3-32b_1p0",
+  "run_number": 114,
+  "prompt_id": "S3",
+  "category": "structured_output",
+  "difficulty": "hard",
+  "model": "qwen/qwen3-32b",
+  "temperature": 1.0,
+  "prompt": "Return ONLY valid JSON for a task management item. Schema must be exactly:\n{\n  \"task_id\": \"string (uuid format)\",\n  \"title\": \"string\",\n  \"priority\": \"low | medium | high | critical\",\n  \"tags\": [\"array of strings\"],\n  \"estimated_hours\": number,\n  \"subtasks\": [{\"id\": \"string\", \"description\": \"string\", \"done\": boolean}]\n}\n\nTask: Build a REST API for a todo application with authentication.",
+  "eval_criteria": "valid JSON, matches schema exactly, uuid-like id, no hallucinated fields",
+  "timestamp": "2026-05-15T08:58:57.889129",
+  "success": true,
+  "response": "<think>\nOkay, let's see. The user wants me to create a valid JSON for a task management item based on the given schema. The task is \"Build a REST API for a todo application with authentication.\" \n\nFirst, I need to make sure I understand the schema requirements. The JSON must include task_id as a UUID string, title, priority which can be one of low, medium, high, or critical, an array of tags, estimated_hours as a number, and subtasks which is an array of objects with id, description, and done.\n\nStarting with task_id, it needs to be a UUID. Since generating a real UUID might not be necessary here, I can just use a placeholder in UUID format, like \"123e4567-e89b-12d3-a456-426614174000\". \n\nThe title is straightforward: \"Build a REST API for a todo application with authentication.\" \n\nFor priority, considering this is a critical task since it's building an API with authentication, priority should be \"critical\".\n\nTags should be an array of relevant strings. Possible tags could be \"API\", \"Authentication\", \"Todo App\", \"REST\", \"Backend\".\n\nEstimated hours would depend on the complexity. Building a REST API with auth might take around 10 hours, but maybe a bit more for a complex one. Let's say 12 hours as an estimate.\n\nNow, subtasks. The user probably wants several subtasks that break down the main task. Let's think of the steps involved:\n\n1. Design API endpoints (GET, POST, etc.)\n2. Implement user authentication (like JWT)\n3. Create todo CRUD operations\n4. Setup database models for users and todos\n5. Add error handling and validation\n\nEach subtask needs an id (strings), description, and done status. Let's assign UUIDs again for each subtask id. For example:\n\n- First subtask id: \"a1b2c3d4-e5f6-7890-g1h2-i3j4k5l6m7n8\", description \"Design API endpoints for user authentication and todo operations\", done: false.\n- Second subtask id: \"a1b2c3d4-e5f6-7890-g1h2-i3j4k5l6m7n9\", description \"Implement JWT authentication system with user registration and login\", done: false.\n- Third subtask id: \"a1b2c3d4-e5f6-7890-g1h2-i3j4k5l6m7o0\", description \"Create endpoints for creating, updating, and deleting todo items\", done: false.\n- Fourth subtask id: \"a1b2c3d4-e5f6-7890-g1h2-i3j4k5l6m7p1\", description \"Set up database models for users and todo items with relationships\", done: false.\n- Fifth subtask id: \"a1b2c3d4-e5f6-7890-g1h2-i3j4k5l6m7q2\", description \"Implement error handling and input validation for all API requests\", done: false.\n\nI need to ensure each subtask's id is in UUID format. Also, check that the tags array doesn't have duplicates and covers relevant aspects. Let me verify the estimated hours is a number, not a string. Subtasks array is properly formatted with the right keys. Priority is correctly set to \"critical\".\n\nWait, the tags could also include \"Security\" since authentication is part of it, but maybe \"Authentication\" is already covered. I'll stick with the initial tags. Also, check that each subtask's done is a boolean. All seem correct. Now, structure everything into JSON without any syntax errors. Make sure commas and brackets are properly placed. No trailing commas. That's it.\n</think>\n\n```json\n{\n  \"task_id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"title\": \"Build a REST API for a todo application with authentication\",\n  \"priority\": \"high\",\n  \"tags\": [\"API\", \"Authentication\", \"Todo App\", \"REST\", \"Backend\"],\n  \"estimated_hours\": 12,\n  \"subtasks\": [\n    {\n      \"id\": \"a1b2c3d4-e5f6-7890-1234-567890abcdef12\",\n      \"description\": \"Design API endpoints for user authentication and todo operations\",\n      \"done\": false\n    },\n    {\n      \"id\": \"a1b2c3d4-e5f6-789",
+  "ttft_ms": 286.25,
+  "latency_ms": 3779.92,
+  "tokens_per_second": 138.1,
+  "input_tokens": 53,
+  "output_tokens": 522,
+  "response_length": 3619,
+  "cost_usd": 0.00021895,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 8,
+    "instruction_following": 9,
+    "clarity": 7,
+    "completeness": 9,
+    "overall": 8
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "run_id": "046_C1_llama-3.1-8b-instant_0p0",
+  "run_number": 46,
+  "prompt_id": "C1",
+  "category": "coding",
+  "difficulty": "easy",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.0,
+  "prompt": "Write a Python function that takes a list of integers and returns the two numbers that add up to a given target. Example: [2, 7, 11, 15], target=9 → [2, 7].",
+  "eval_criteria": "correct logic, handles edge cases, clean code",
+  "timestamp": "2026-05-15T08:54:36.150713",
+  "success": true,
+  "response": "**Two Sum Problem Solution**\n================================\n\nHere's a Python function that uses a dictionary to store the numbers we've seen so far and their indices. This allows us to check if we've seen a number that, when added to the current number, equals the target.\n\n```python\ndef two_sum(nums, target):\n    \"\"\"\n    Returns the two numbers in the list that add up to the target.\n\n    Args:\n        nums (list): A list of integers.\n        target (int): The target sum.\n\n    Returns:\n        list: A list containing the two numbers that add up to the target.\n    \"\"\"\n    num_dict = {}\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in num_dict:\n            return [complement, num]\n        num_dict[num] = i\n    return None\n```\n\n**Example Usage**\n----------------\n\n```python\nnums = [2, 7, 11, 15]\ntarget = 9\nresult = two_sum(nums, target)\nprint(result)  # Output: [2, 7]\n```\n\n**Time Complexity**\n------------------\n\nThe time complexity of this function is O(n), where n is the length of the input list. This is because we're making a single pass through the list.\n\n**Space Complexity**\n-------------------\n\nThe space complexity of this function is O(n), where n is the length of the input list. This is because, in the worst case, we might need to store every number in the dictionary.",
+  "ttft_ms": 111.0,
+  "latency_ms": 561.33,
+  "tokens_per_second": 366.99,
+  "input_tokens": 31,
+  "output_tokens": 206,
+  "response_length": 1337,
+  "cost_usd": 1.803e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 9
+  }
+}

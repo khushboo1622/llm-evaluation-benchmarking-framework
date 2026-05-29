@@ -1,0 +1,30 @@
+{
+  "run_id": "115_S3_openai_gpt-oss-120b_0p0",
+  "run_number": 115,
+  "prompt_id": "S3",
+  "category": "structured_output",
+  "difficulty": "hard",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.0,
+  "prompt": "Return ONLY valid JSON for a task management item. Schema must be exactly:\n{\n  \"task_id\": \"string (uuid format)\",\n  \"title\": \"string\",\n  \"priority\": \"low | medium | high | critical\",\n  \"tags\": [\"array of strings\"],\n  \"estimated_hours\": number,\n  \"subtasks\": [{\"id\": \"string\", \"description\": \"string\", \"done\": boolean}]\n}\n\nTask: Build a REST API for a todo application with authentication.",
+  "eval_criteria": "valid JSON, matches schema exactly, uuid-like id, no hallucinated fields",
+  "timestamp": "2026-05-15T08:59:00.961699",
+  "success": true,
+  "response": "{\n  \"task_id\": \"a1b2c3d4-5678-90ab-cdef-1234567890ab\",\n  \"title\": \"Build REST API for Todo application with authentication\",\n  \"priority\": \"high\",\n  \"tags\": [\"backend\", \"api\", \"authentication\", \"todo\"],\n  \"estimated_hours\": 24,\n  \"subtasks\": [\n    {\n      \"id\": \"b2c3d4e5-6789-0abc-def",
+  "ttft_ms": 2158.75,
+  "latency_ms": 2292.65,
+  "tokens_per_second": 11.34,
+  "input_tokens": 53,
+  "output_tokens": 26,
+  "response_length": 285,
+  "cost_usd": 0.000315,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 9,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 9
+  }
+}

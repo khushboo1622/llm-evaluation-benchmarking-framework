@@ -1,0 +1,30 @@
+{
+  "run_id": "149_M2_qwen_qwen3-32b_0p5",
+  "run_number": 149,
+  "prompt_id": "M2",
+  "category": "multilingual",
+  "difficulty": "medium",
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.5,
+  "prompt": "નીચેના ગુજરાતી ટેક્સ્ટનો અંગ્રેજીમાં અનુવાદ કરો અને પછી તેનો સારાંશ આપો:\n\n'ભારતમાં ટેક્નોલોજી ઉદ્યોગ ઝડપથી વિકસી રહ્યો છે. યુવા સ્ટાર્ટઅપ્સ નવી સમસ્યાઓ ઉકેલવા માટે આર્ટિફિશિયલ ઇન્ટેલિજન્સ અને મશીન લર્નિંગનો ઉપયોગ કરી રહ્યા છે.'",
+  "eval_criteria": "correct English translation, accurate summary, handles Gujarati script",
+  "timestamp": "2026-05-15T11:32:37.589449",
+  "success": true,
+  "response": "<think>\nOkay, I need to translate this Gujarati text into English and then summarize it. Let me start by reading the original text carefully.\n\nThe first sentence is \"ભારતમાં ટેક્નોલોજી ઉદ્યોગ ઝડપથી વિકસી રહ્યો છે.\" I think \"ભારતમાં\" means \"In India\". \"ટેક્નોલોજી ઉદ્યોગ\" is \"technology industry\". \"ઝડપથી વિકસી રહ્યો છે\" translates to \"is rapidly developing\". So the first sentence in English would be \"The technology industry in India is rapidly developing.\"\n\nNext sentence: \"યુવા સ્ટાર્ટઅપ્સ નવી સમસ્યાઓ ઉકેલવા માટે આર્ટિફિશિયલ ઇન્ટેલિજન્સ અને મશીન લર્નિંગનો ઉપયોગ કરી રહ્યા છે.\" Breaking this down: \"યુવા સ્ટાર્ટઅપ્સ\" is \"young startups\". \"નવી સમસ્યાઓ ઉકેલવા માટે\" means \"to solve new problems\". \"આર્ટિફિશિયલ ઇન્ટેલિજન્સ અને મશીન લર્નિંગનો ઉપયોગ કરી રહ્યા છે\" translates to \"are using artificial intelligence and machine learning\". So the second sentence would be \"Young startups are using artificial intelligence and machine learning to solve new problems.\"\n\nNow, putting it all together in English: \"The technology industry in India is rapidly developing. Young startups are using artificial intelligence and machine learning to solve new problems.\"\n\nFor the summary, I need to condense this into a concise statement. The key points are the rapid growth of the tech industry in India and the use of AI and ML by startups to address new challenges. So a possible summary could be: \"India's technology sector is growing rapidly, with startups leveraging AI and machine learning to tackle emerging issues.\"\n\nLet me double-check the translation for accuracy. \"ઝડપથી વિકસી રહ્યો છે\" is correctly translated as \"is rapidly developing\". \"યુવા સ્ટાર્ટઅપ્સ\" is \"young startups\", which makes sense. The summary captures the main ideas without extra details. I think that's all.\n</think>\n\n**Translation:**  \nThe technology industry in India is rapidly developing. Young startups are using artificial intelligence and machine learning to solve new problems.  \n\n**Summary:**  \nIndia's technology sector is growing quickly, with startups utilizing AI and machine learning to address emerging challenges.",
+  "ttft_ms": 296.84,
+  "latency_ms": 2714.57,
+  "tokens_per_second": 114.57,
+  "input_tokens": 33,
+  "output_tokens": 311,
+  "response_length": 2093,
+  "cost_usd": 0.00013086,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 10,
+    "clarity": 9,
+    "completeness": 10,
+    "overall": 9
+  }
+}

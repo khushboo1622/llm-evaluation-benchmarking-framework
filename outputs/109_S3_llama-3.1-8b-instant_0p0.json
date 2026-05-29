@@ -1,0 +1,30 @@
+{
+  "run_id": "109_S3_llama-3.1-8b-instant_0p0",
+  "run_number": 109,
+  "prompt_id": "S3",
+  "category": "structured_output",
+  "difficulty": "hard",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.0,
+  "prompt": "Return ONLY valid JSON for a task management item. Schema must be exactly:\n{\n  \"task_id\": \"string (uuid format)\",\n  \"title\": \"string\",\n  \"priority\": \"low | medium | high | critical\",\n  \"tags\": [\"array of strings\"],\n  \"estimated_hours\": number,\n  \"subtasks\": [{\"id\": \"string\", \"description\": \"string\", \"done\": boolean}]\n}\n\nTask: Build a REST API for a todo application with authentication.",
+  "eval_criteria": "valid JSON, matches schema exactly, uuid-like id, no hallucinated fields",
+  "timestamp": "2026-05-15T08:58:28.500723",
+  "success": true,
+  "response": "**Task Management API with Authentication**\n\n### API Endpoints\n\n#### 1. User Registration\n\n* **POST /users**\n\t+ Request Body: `{ \"username\": \"string\", \"password\": \"string\" }`\n\t+ Response: `{ \"token\": \"string\" }`\n\n#### 2. User Login\n\n* **POST /login**\n\t+ Request Body: `{ \"username\": \"string\", \"password\": \"string\" }`\n\t+ Response: `{ \"token\": \"string\" }`\n\n#### 3. Task Management\n\n* **GET /tasks**\n\t+ Response: `[{\"task_id\": \"string\", \"title\": \"string\", \"priority\": \"string\", \"tags\": [\"string\"], \"estimated_hours\": number, \"subtasks\": [{\"id\": \"string\", \"description\": \"string\", \"done\": boolean}]}]`\n* **POST /tasks**\n\t+ Request Body: `{ \"title\": \"string\", \"priority\": \"low | medium | high | critical\", \"tags\": [\"string\"], \"estimated_hours\": number, \"subtasks\": [{\"id\": \"string\", \"description\": \"string\", \"done\": boolean}] }`\n\t+ Response: `{ \"task_id\": \"string\" }`\n* **GET /tasks/{task_id}**\n\t+ Response: `{ \"task_id\": \"string\", \"title\": \"string\", \"priority\": \"string\", \"tags\": [\"string\"], \"estimated_hours\": number, \"subtasks\": [{\"id\": \"string\", \"description\": \"string\", \"done\": boolean}] }`\n* **PUT /tasks/{task_id}**\n\t+ Request Body: `{ \"title\": \"string\", \"priority\": \"low | medium | high | critical\", \"tags\": [\"string\"], \"estimated_hours\": number, \"subtasks\": [{\"id\": \"string\", \"description\": \"string\", \"done\": boolean}] }`\n\t+ Response: `{ \"task_id\": \"string\" }`\n* **DELETE /tasks/{task_id}**\n\t+ Response: `{ \"message\": \"Task deleted\" }`\n\n### API Implementation (Node.js and Express.js)\n\n```javascript\nconst express = require('express');\nconst app = express();\nconst bcrypt = require('bcrypt');\nconst jwt = require('jsonwebtoken');\nconst uuid = require('uuid');\n\n// Middleware\napp.use(express.json());\n\n// User Model\nconst users = {};\n\n// Function to hash password\nconst hashPassword = (password) => bcrypt.hash(password, 10);\n\n// Function to verify password\nconst verifyPassword = (password, hashedPassword) => bcrypt.compare(password, hashedPassword);\n\n// Function to generate token\nconst generateToken = (username) => jwt.sign({ username }, process.env.SECRET_KEY, { expiresIn: '1h' });\n\n// User Registration\napp.post('/users', (req, res) => {\n  const { username, password } = req.body;\n  if (!username || !password) {\n    return res.status(400).json({ message: 'Username and password are required' });\n  }\n  if (users[username]) {\n    return res.status(400).json({ message: 'Username already exists' });\n  }\n  const hashedPassword = hashPassword(password);\n  users[username] = { password: hashedPassword };\n  const token = generateToken(username);\n  res.json({ token });\n});\n\n// User Login\napp.post('/login', (req, res) => {\n  const { username, password } = req.body;\n  if (!username || !password) {\n    return res.status(400).json({ message: 'Username and password are required' });\n  }\n  if (!users[username]) {\n    return res.status(400).json({ message: 'Username does not exist' });\n  }\n  const hashedPassword = users[username].password;\n  const isValid = verifyPassword(password, hashedPassword);\n  if (!isValid) {\n    return res.status(400).json({ message: 'Invalid password' });\n  }\n  const token = generateToken(username);\n  res.json({ token });\n});\n\n// Task Management\nconst tasks = {};\n\n// Get all tasks\napp.get('/tasks', (req, res) => {\n  res.json(Object.values(tasks));\n});\n\n// Create a new task\napp.post('/tasks', (req, res) => {\n  const { title, priority, tags, estimated_hours, subtasks } = req.body;\n  if (!title || !priority || !tags || !estimated_hours || !subtasks) {\n    return res.status(400).json({ message: 'All fields are required' });\n  }\n  const taskId = uuid.v4();\n  tasks[taskId] = { title, priority, tags, estimated_hours, subtasks };\n  res.json({ task_id: taskId });\n});\n\n// Get a task by ID\napp.get('/tasks/:taskId', (req, res) => {\n  const taskId = req.params.taskId;\n  if (!tasks[taskId]) {\n",
+  "ttft_ms": 223.74,
+  "latency_ms": 1601.06,
+  "tokens_per_second": 302.3,
+  "input_tokens": 53,
+  "output_tokens": 484,
+  "response_length": 3830,
+  "cost_usd": 4.137e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 0,
+    "instruction_following": 0,
+    "clarity": 0,
+    "completeness": 0,
+    "overall": 0
+  }
+}

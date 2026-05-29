@@ -1,0 +1,30 @@
+{
+  "run_id": "177_M5_qwen_qwen3-32b_1p0",
+  "run_number": 177,
+  "prompt_id": "M5",
+  "category": "multilingual",
+  "difficulty": "hard",
+  "model": "qwen/qwen3-32b",
+  "temperature": 1.0,
+  "prompt": "Translate this technical paragraph into simple Gujarati that a non-technical person can understand:\n\n'A neural network is a computational model inspired by the human brain. It consists of layers of interconnected nodes that process data and learn patterns through a training process called backpropagation.'",
+  "eval_criteria": "accurate Gujarati translation, simplified for non-technical audience, no jargon",
+  "timestamp": "2026-05-15T12:06:08.284156",
+  "success": true,
+  "response": "<think>\nOkay, the user wants me to translate a technical paragraph about neural networks into simple Gujarati. First, I need to make sure I understand the original text correctly. The paragraph explains that a neural network is a computational model inspired by the human brain, made up of interconnected nodes in layers that process data and learn patterns via backpropagation.\n\nNow, translating this into Gujarati for a non-technical audience means avoiding jargon. Words like \"computational model\" might be too complex. I should simplify that. \"Neural network\" could be translated as \"છાત્ર જેવું નેટવર્ક\" (something like a student network) since \"neural\" relates to nervous system, but maybe \"ઉપચારકતાઓથી સજ્જ સંશોધન\" (research with processors) might not be the right approach. Let me think of simpler terms.\n\n\" કમ્પ્યુટેશનલ મોડેલ\" (computational model) could be replaced with \"કમ્પ્યુટર મોડેલ\" since \"એક કમ્પ્યુટરનો મોડેલ\" is more straightforward. The layers of interconnected nodes can be described as \"તેમાં પોતાની કેટલીક શ્રેણીઓમાં નોડ હોય છે\" (they have some groups of nodes). \"Backpropagation\" is a training process, which might be best translated as \"એક શીખવાની પ્રક્રિયા\" (a learning process) to keep it simple.\n\nI also need to check grammar and word order. Let me structure each sentence step by step. Start with the main idea: neural network is inspired by the brain, then explain layers and nodes, then processing data and learning through backpropagation. Avoid using technical terms that don't have direct translations. Use examples like \"ઇનપુટ હોય છે અને તેમનું પ્રોસેસ કરે\" (take input and process it) to make it relatable.\n\nWait, \"backpropagation\" specifically refers to adjusting the model based on errors. Maybe \"તેમને સામું નેતૃત્વ આપવાની\" isn't right. Perhaps \"એક પ્રક્રિયા એ છે કે જે તે નોડ પુનઃનિયંત્રિત કરે\" (a process that readjusts the nodes) could work. But the user might prefer a simpler term like \"શિક્ષણ પ્રક્રિયા\" (training process). Let me go with that to keep it simple.\n\nPutting it all together: Start with the model inspired by the brain, layers with nodes, processing data, learning through a training process called backpropagation. Make sure each part is in simple Gujarati. Check for any technical terms that a non-technical person wouldn't know and replace them. For example, \"બેકપ્રોપેગેશન છે\" might still be too technical, so maybe refer to it as \"શિક્ષણ પ્રક્રિયા\" instead of the direct translation. That should make the paragraph accessible.\n</think>\n\n\"નર્વસ નેટવર્ક એવું મોડેલ છે જે મનનું સન્મુખે રચાયે. તેમા",
+  "ttft_ms": 136.02,
+  "latency_ms": 2334.83,
+  "tokens_per_second": 170.46,
+  "input_tokens": 44,
+  "output_tokens": 398,
+  "response_length": 2557,
+  "cost_usd": 0.00016798,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 8,
+    "instruction_following": 9,
+    "clarity": 7,
+    "completeness": 6,
+    "overall": 7
+  }
+}

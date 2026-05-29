@@ -1,0 +1,30 @@
+{
+  "run_id": "102_S2_llama-3.1-8b-instant_1p0",
+  "run_number": 102,
+  "prompt_id": "S2",
+  "category": "structured_output",
+  "difficulty": "medium",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 1.0,
+  "prompt": "Analyze the sentiment of these 3 reviews and return ONLY a JSON array. Each item should have: review_id, sentiment (positive/negative/neutral), confidence (0.0-1.0), key_phrase.\n\nReview 1: 'Absolutely loved the product, fast delivery!'\nReview 2: 'Worst experience ever, never buying again.'\nReview 3: 'It was okay, nothing special.'",
+  "eval_criteria": "valid JSON array, 3 items, correct sentiments, confidence is float",
+  "timestamp": "2026-05-15T08:58:05.972566",
+  "success": true,
+  "response": "```json\n[\n  {\"review_id\": 1, \"sentiment\": \"positive\", \"confidence\": 0.95, \"key_phrase\": \"Absolutely loved\"},\n  {\"review_id\": 2, \"sentiment\": \"negative\", \"confidence\": 0.95, \"key_phrase\": \"Worst experience\"},\n  {\"review_id\": 3, \"sentiment\": \"neutral\", \"confidence\": 0.8, \"key_phrase\": \"nothing special\"}\n]\n```\n\nNote: Sentiment analysis was performed using a simple natural language processing technique. The `confidence` scores are approximate and may vary based on the specific algorithm used. For a more accurate sentiment analysis, consider using a pre-trained machine learning model or a dedicated natural language processing library.",
+  "ttft_ms": 415.33,
+  "latency_ms": 486.56,
+  "tokens_per_second": 158.25,
+  "input_tokens": 46,
+  "output_tokens": 77,
+  "response_length": 637,
+  "cost_usd": 8.46e-06,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

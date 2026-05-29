@@ -1,0 +1,30 @@
+{
+  "run_id": "059_C2_qwen_qwen3-32b_0p5",
+  "run_number": 59,
+  "prompt_id": "C2",
+  "category": "coding",
+  "difficulty": "medium",
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.5,
+  "prompt": "Write a Python decorator that measures and prints the execution time of any function it wraps. Show an example usage.",
+  "eval_criteria": "correct decorator syntax, uses time module, example included",
+  "timestamp": "2026-05-15T08:55:23.254555",
+  "success": true,
+  "response": "<think>\nOkay, I need to create a Python decorator that measures and prints the execution time of any function it wraps. Let me think about how to approach this.\n\nFirst, I remember that a decorator is a function that takes another function as an argument and extends its behavior without modifying it. So, the decorator function will need to wrap the target function.\n\nTo measure execution time, I should use the time module. The time.time() function gives the current time in seconds since the epoch. So, I can record the start time before the function runs, then the end time after it completes. Subtracting start from end gives the elapsed time.\n\nSo the steps for the decorator:\n\n1. Define a decorator function, maybe called timer, that takes a function as an argument.\n2. Inside the decorator, create a wrapper function that will do the timing.\n3. In the wrapper, record the start time.\n4. Call the original function, store its result.\n5. Record the end time.\n6. Calculate the elapsed time (end - start).\n7. Print the elapsed time, maybe with the function name.\n8. Return the result of the original function so that the decorated function behaves as expected.\n\nWait, also need to make sure that the decorator preserves the metadata of the original function. Oh right, using functools.wraps is important here. Otherwise, the wrapped function will lose its name and docstring.\n\nSo I should import functools and use @functools.wraps(func) inside the decorator.\n\nPutting that together:\n\nImport time and functools.\n\nDefine the decorator:\n\ndef timer(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        start = time.time()\n        result = func(*args, **kwargs)\n        end = time.time()\n        print(f\"Function {func.__name__} took {end - start:.4f} seconds to execute.\")\n        return result\n    return wrapper\n\nWait, but sometimes functions execute very quickly, so maybe formatting to 4 decimal places is okay. Or maybe 6? Well, the example can show 4.\n\nNow, example usage. Let's create a sample function that does something time-consuming, like a loop.\n\nFor example:\n\n@timer\ndef example_function(n):\n    count = 0\n    for i in range(n):\n        count += i\n    return count\n\nThen, when we call example_function(1000000), it should print the time taken.\n\nWait, but for very small n, the time might be negligible, but for demonstration purposes, maybe that's okay. Alternatively, use time.sleep to simulate a longer process. But the example can use a simple function.\n\nTesting this code: when the function is decorated, upon invocation, it should print the time.\n\nWait, but in Python, when you decorate a function with @timer, the wrapper replaces the original function, so the timing should work.\n\nNow, putting all together in code.\n\nBut also, when writing the decorator, need to make sure it handles functions with any arguments, which the *args and **kwargs handle.\n\nLet me check for possible errors. What about functions that have side effects? No problem. What about if the function raises an exception? Well, the current code doesn't handle that. The decorator will catch the time even if the function fails. But perhaps in a more robust version, we might want to handle exceptions, but the problem statement doesn't mention it, so proceed without.\n\nSo the example usage would be:\n\n@timer\ndef some_function():\n    # do something\n\nBut to make it concrete, let's use the example_function with a parameter.\n\nPutting it all together in code:\n\nImport statements, decorator definition, decorated function, and a call.\n\nSo the full code would be:\n\nimport time\nimport functools\n\ndef timer(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        start_time = time.time()\n        result = func(*args, **kwargs)\n        end_time = time.time()\n        elapsed_time = end_time - start_time\n        print(f\"Function '{func.__name__}' executed in {elapsed_time:.4f} seconds.\")\n        return result\n    return wrapper\n\n@timer\ndef example_function(n):\n    total = 0\n    for i in range(n):\n        total += i\n    return total\n\nif __name__ == \"__main__\":\n    example_function(1000000)\n\nWhen this runs, it should print the time taken for example_function to execute with n=1,000,000.\n\nWait, but for very large numbers, the loop might take some time, but it's acceptable for demonstration.\n\nTesting this code would show the output like:\n\nFunction 'example_function' executed in 0.0456 seconds.\n\nThe exact time isn't important, but the fact that it prints the time.\n\nSo that's the plan. That should work.\n</think>\n\nTo measure and print the execution time of any function",
+  "ttft_ms": 1402.54,
+  "latency_ms": 3472.81,
+  "tokens_per_second": 198.97,
+  "input_tokens": 20,
+  "output_tokens": 691,
+  "response_length": 4599,
+  "cost_usd": 0.00027529,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 8,
+    "clarity": 6,
+    "completeness": 9,
+    "overall": 8
+  }
+}

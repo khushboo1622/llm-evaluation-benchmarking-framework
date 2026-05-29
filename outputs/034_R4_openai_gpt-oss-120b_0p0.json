@@ -1,0 +1,30 @@
+{
+  "run_id": "034_R4_openai_gpt-oss-120b_0p0",
+  "run_number": 34,
+  "prompt_id": "R4",
+  "category": "reasoning",
+  "difficulty": "medium",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.0,
+  "prompt": "A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost? Show your work.",
+  "eval_criteria": "correct answer ($0.05), not the intuitive wrong answer ($0.10)",
+  "timestamp": "2026-05-15T08:53:58.774929",
+  "success": true,
+  "response": "Let  \n\n* \\(B\\) = price of the **ball** (in dollars)  \n* \\(T\\) = price of the **bat** (in dollars)\n\nThe problem gives us two relationships:\n\n1. **Total cost**  \n   \\[\n   B + T = 1.10\n   \\]\n\n2. **Bat is $1.00 more than the ball**  \n   \\[\n   T = B + 1.00\n   \\]\n\n---\n\n### Substitute the second equation into the first\n\nReplace \\(T\\) in the total‑cost equation with \\(B + 1.00\\):\n\n\\[\nB + (B + 1.00) = 1.10\n\\]\n\nCombine like terms:\n\n\\[\n2B + 1.00 = 1.10\n\\]\n\n---\n\n### Solve for \\(B\\)\n\nSubtract $1.00 from both sides:\n\n\\[\n2B = 1.10 - 1.00 = 0.10\n\\]\n\nDivide by 2:\n\n\\[\nB = \\frac{0.10}{2} = 0.05\n\\]\n\n---\n\n### Check\n\n* Ball = **$0.05**  \n* Bat = \\(0.05 + 1.00 = 1.05\\)\n\nTotal: \\(0.05 + 1.05 = 1.10\\) ✔️\n\n---\n\n**Answer:** The ball costs **$0.05** (five cents).",
+  "ttft_ms": 427.7,
+  "latency_ms": 1091.42,
+  "tokens_per_second": 134.69,
+  "input_tokens": 26,
+  "output_tokens": 147,
+  "response_length": 745,
+  "cost_usd": 0.00096,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

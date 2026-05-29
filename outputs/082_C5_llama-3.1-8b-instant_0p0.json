@@ -1,0 +1,30 @@
+{
+  "run_id": "082_C5_llama-3.1-8b-instant_0p0",
+  "run_number": 82,
+  "prompt_id": "C5",
+  "category": "coding",
+  "difficulty": "medium",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.0,
+  "prompt": "Write a FastAPI endpoint that accepts a JSON body with 'name' and 'age' fields, validates that age is between 0 and 120, and returns a greeting message.",
+  "eval_criteria": "correct FastAPI syntax, Pydantic validation, proper response",
+  "timestamp": "2026-05-15T08:56:55.007700",
+  "success": true,
+  "response": "Here's an example of a FastAPI endpoint that meets your requirements:\n\n```python\nfrom fastapi import FastAPI, Body\nfrom pydantic import BaseModel, validator\n\napp = FastAPI()\n\nclass User(BaseModel):\n    name: str\n    age: int\n\n    @validator('age')\n    def age_must_be_between_zero_and_120(cls, v):\n        if not 0 <= v <= 120:\n            raise ValueError('Age must be between 0 and 120')\n        return v\n\n@app.post(\"/greet\")\nasync def greet(user: User = Body(...)):\n    return {\"message\": f\"Hello, {user.name}! You are {user.age} years old.\"}\n```\n\nIn this code:\n\n- We define a `User` model using Pydantic's `BaseModel`. This model has two fields: `name` and `age`.\n- We use a validator to ensure that the `age` field is between 0 and 120. If the age is not within this range, a `ValueError` is raised.\n- We define a FastAPI endpoint at `/greet` that accepts a JSON body with a `User` object. The `Body` parameter is used to specify that the endpoint expects a JSON body.\n- When the endpoint is called, it returns a greeting message with the user's name and age.\n\nYou can test this endpoint using a tool like `curl` or a REST client like Postman. Here's an example `curl` command:\n\n```bash\ncurl -X POST \\\n  http://localhost:8000/greet \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"name\": \"John Doe\", \"age\": 30}'\n```\n\nThis should return a JSON response like this:\n\n```json\n{\n  \"message\": \"Hello, John Doe! You are 30 years old.\"\n}\n```",
+  "ttft_ms": 214.27,
+  "latency_ms": 561.74,
+  "tokens_per_second": 400.54,
+  "input_tokens": 27,
+  "output_tokens": 225,
+  "response_length": 1439,
+  "cost_usd": 1.935e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

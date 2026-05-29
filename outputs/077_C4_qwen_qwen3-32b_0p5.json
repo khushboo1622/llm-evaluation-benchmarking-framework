@@ -1,0 +1,30 @@
+{
+  "run_id": "077_C4_qwen_qwen3-32b_0p5",
+  "run_number": 77,
+  "prompt_id": "C4",
+  "category": "coding",
+  "difficulty": "hard",
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.5,
+  "prompt": "Implement a simple LRU (Least Recently Used) cache in Python with get and put operations. The cache should have a max capacity. Use only built-in Python.",
+  "eval_criteria": "correct LRU logic, handles capacity limit, O(1) operations preferred",
+  "timestamp": "2026-05-15T08:56:29.611250",
+  "success": true,
+  "response": "<think>\nOkay, I need to implement a simple LRU cache in Python using only built-in modules. Let me think about how to approach this. \n\nFirst, I remember that an LRU cache needs to track the usage of each item so that when the capacity is full, the least recently used item can be evicted. The main operations are get and put. When you get an item, it becomes the most recently used. When you put an item, if it's already there, you update it and mark it as recently used. If not, you add it, possibly evicting the LRU item.\n\nThe challenge is to efficiently track the usage order. Normally, this can be done with a combination of a hash map (dictionary) for O(1) lookups and a doubly linked list to maintain the order. However, since I can't use external libraries, I need to manage this with built-in data structures.\n\nWait, Python 3.7+ has insertion-ordered dictionaries (as part of the standard dict). Oh right, but for LRU, we need to track the most recently used and least recently used. So maybe I can use an OrderedDict? Oh, but the problem says to use only built-in Python. Oh right, OrderedDict is part of the collections module, which is a built-in module. Wait, but maybe the user wants to avoid using any external libraries beyond the standard ones. Wait, the user said \"use only built-in Python\", which includes standard libraries. So maybe using OrderedDict is allowed. However, perhaps there's a way to do it with regular dicts and some other structures.\n\nAlternatively, for Python 3.7+, the regular dict maintains insertion order. So maybe I can use that. Let me think. For example, when an item is accessed (get or put), we can move it to the end of the dict. But the dict itself doesn't have a move_to_end method. Oh, but OrderedDict does. So maybe using OrderedDict would be easier. Let me check if OrderedDict is allowed. Since it's part of the collections module, which is built-in, yes.\n\nBut perhaps the user wants to avoid using OrderedDict and implement it with basic data structures. Let me think. Let's try to proceed with OrderedDict first, as it has the necessary methods.\n\nAn OrderedDict has a move_to_end method, which is useful. For example, when we access a key, we can move it to the end to mark it as recently used. When inserting a new item, if the cache is over capacity, we can pop the first item (the least recently used).\n\nSo here's the plan:\n\n- Use an OrderedDict to store the cache.\n- On get: if the key exists, move it to end and return value. Else return -1.\n- On put: if the key exists, update the value and move to end. If not, add the key-value pair. If size exceeds capacity, pop the first item.\n\nBut the problem says \"use only built-in Python\". Wait, OrderedDict is in the collections module. So that's allowed. Let me proceed with that.\n\nWait, but maybe the user wants to implement it without using OrderedDict. Let me think of another approach.\n\nAnother approach is to use a dictionary and a doubly linked list. The dictionary maps keys to nodes in the linked list. Each node has a key, value, prev, and next. The linked list allows us to move nodes to the front (most recently used) and remove the tail (least recently used). However, implementing a doubly linked list from scratch with basic data structures (like dicts and lists) could be a bit tedious, but manageable.\n\nBut for the sake of time and simplicity, perhaps using OrderedDict is better. Let me check if the OrderedDict is available. Yes, from collections import OrderedDict. But since the user said to use built-in Python, and the code will have to import OrderedDict, but that's part of the standard library, so it's okay.\n\nSo let's proceed with that.\n\nNow, the code outline:\n\nImplement LRUCache class with __init__(self, capacity), get(self, key), put(self, key, value).\n\nIn __init__, set up the capacity and the ordered dict.\n\nFor get:\n\n- If key is in the ordered dict, move to end and return value.\n- Else return -1.\n\nFor put:\n\n- If key is present, delete it from the ordered dict (so that when we reinsert, it's at the end)\n- Or, maybe just update the value and move to end.\nWait, for OrderedDict, if we update a key, we can call move_to_end. For example:\n\nWhen putting a key that exists, we can update the value and move to end.\n\nSo steps for put:\n\nCheck if key exists. If yes, update value and move to end. If not, add to the ordered dict. Then, if the length exceeds capacity, popitem(last=False) which for OrderedDict removes the first inserted item (LRU).\n\nWait, OrderedDict's",
+  "ttft_ms": 399.41,
+  "latency_ms": 4051.07,
+  "tokens_per_second": 196.74,
+  "input_tokens": 26,
+  "output_tokens": 797,
+  "response_length": 4500,
+  "cost_usd": 0.00031837,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 8,
+    "instruction_following": 6,
+    "clarity": 4,
+    "completeness": 2,
+    "overall": 4
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "run_id": "090_C5_openai_gpt-oss-120b_1p0",
+  "run_number": 90,
+  "prompt_id": "C5",
+  "category": "coding",
+  "difficulty": "medium",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 1.0,
+  "prompt": "Write a FastAPI endpoint that accepts a JSON body with 'name' and 'age' fields, validates that age is between 0 and 120, and returns a greeting message.",
+  "eval_criteria": "correct FastAPI syntax, Pydantic validation, proper response",
+  "timestamp": "2026-05-15T08:57:37.197107",
+  "success": true,
+  "response": "Below is a minimal, self‑contained FastAPI example that:\n\n* defines a **Pydantic** model for the request body (`UserIn`);\n* validates that `age` is an integer between **0** and **120** (inclusive);\n* returns a friendly greeting that includes the supplied name and age.\n\nYou can copy‑paste the whole file, run it with `uvicorn`, and test it with `curl`/Postman/Swagger UI.\n\n```python\n# file: main.py\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, Field, validator\n\napp = FastAPI(title=\"Greeting API\", version=\"1.0.0\")\n\n\nclass UserIn(BaseModel):\n    \"\"\"Schema for the incoming JSON payload.\"\"\"\n    name: str = Field(..., min_length=1, description=\"The user's name\")\n    age: int = Field(\n        ...,\n        ge=0,\n        le=120,\n        description=\"The user's age – must be between 0 and 120 (inclusive)\",\n    )\n\n    @validator(\"name\")\n    def strip_name(cls, v: str) -> str:\n        \"\"\"Trim surrounding whitespace – optional but nice.\"\"\"\n        return v.strip()\n\n\n@app.post(\"/greet\", response_model=str, summary=\"Return a greeting\")\nasync def greet_user(payload: UserIn) -> str:\n    \"\"\"\n    Return a greeting that incorporates the supplied ``name`` and ``age``.\n\n    FastAPI will automatically:\n    * parse the JSON body,\n    * run the Pydantic validation (including the ``ge``/``le`` constraints on *age*),\n    * and generate OpenAPI documentation (visible at ``/docs``).\n    \"\"\"\n    # At this point ``payload`` is guaranteed to be valid.\n    return f\"Hello, {payload.name}! 🎉 You are {payload.age} years old.\"\n\n\n# ----------------------------------------------------------------------\n# Run with: uvicorn main:app --reload\n# ----------------------------------------------------------------------\n```\n\n### How it works\n\n| Piece | What it does |\n|-------|--------------|\n| `UserIn` | Declares the expected JSON structure (`name` & `age`). The `Field(..., ge=0, le=120)` clause tells Pydantic to enforce the age range. |\n| `@validator(\"name\")` | Strips extra whitespace from the name before using it (optional but handy). |\n| `@app.post(\"/greet\")` | Defines a POST endpoint at `/greet`. FastAPI automatically parses the request body into a `UserIn` instance and runs validation. |\n| `return f\"Hello, …\"` | Builds the greeting string that the client receives. |\n| `response_model=str` | Tells FastAPI the response type (a plain string) so the OpenAPI schema is accurate. |\n\n### Running the server\n\n```bash\n# Install dependencies (if you haven’t already)\npip install fastapi uvicorn\n\n# Start the API (auto‑reload enabled for development)\nuvicorn main:app --reload\n```\n\nThe API will be reachable at `http://127.0.0.1:8000`.  \nOpen `http://127.0.0.1:8000/docs` in a browser to see the automatically generated Swagger UI and try the endpoint interactively.\n\n### Example requests\n\n#### Successful request\n\n```bash\ncurl -X POST \"http://127.0.0.1:8000/greet\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\"name\": \"Alice\", \"age\": 30}'\n```\n\n**Response (200 OK)**\n\n```json\n\"Hello, Alice! 🎉 You are 30 years old.\"\n```\n\n#### Validation error (age out of range)\n\n```bash\ncurl -X POST \"http://127.0.0.1:8000/greet\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\"name\": \"Bob\", \"age\": 150}'\n```\n\n**Response (422 Unprocessable Entity)**\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\"body\", \"age\"],\n      \"msg\": \"ensure this value is less than or equal to 120\",\n      \"type\": \"value_error.number.not_le\",\n      \"ctx\": {\"limit_value\": 120}\n    }\n  ]\n}\n```\n\nFastAPI (via Pydantic) automatically returns a clear error payload when the validation fails, so the client knows exactly what’s wrong.",
+  "ttft_ms": 275.68,
+  "latency_ms": 2246.24,
+  "tokens_per_second": 212.8,
+  "input_tokens": 27,
+  "output_tokens": 478,
+  "response_length": 3620,
+  "cost_usd": 0.002949,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

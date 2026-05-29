@@ -1,0 +1,30 @@
+{
+  "run_id": "081_C4_openai_gpt-oss-120b_1p0",
+  "run_number": 81,
+  "prompt_id": "C4",
+  "category": "coding",
+  "difficulty": "hard",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 1.0,
+  "prompt": "Implement a simple LRU (Least Recently Used) cache in Python with get and put operations. The cache should have a max capacity. Use only built-in Python.",
+  "eval_criteria": "correct LRU logic, handles capacity limit, O(1) operations preferred",
+  "timestamp": "2026-05-15T08:56:53.573884",
+  "success": true,
+  "response": "**Solution Overview**\n\nWe implement an **LRU (Least‑Recently‑Used) cache** that supports two operations:\n\n| Operation | Description |\n|-----------|-------------|\n| `get(key)` | Return the value for `key` if it is present in the cache, otherwise return `-1`. The accessed key becomes the most‑recently‑used entry. |\n| `put(key, value)` | Insert a new key‑value pair or update the value of an existing key. The key becomes the most‑recently‑used entry. If the cache already holds `capacity` items, the least‑recently‑used entry is evicted first. |\n\nThe implementation uses only **standard library** components (no third‑party packages). The most convenient built‑in structure for an LRU is `collections.OrderedDict`, which maintains insertion order and provides O(1) moves to the end of the order.  \n\nIf you prefer a “pure‑dict + doubly‑linked‑list” implementation, a short alternative is provided at the end of the answer.\n\n---\n\n## 1. Code (using `OrderedDict`)\n\n```python\nfrom collections import OrderedDict\n\nclass LRUCache:\n    \"\"\"Simple LRU cache with O(1) get / put using only built‑in Python.\"\"\"\n\n    def __init__(self, capacity: int):\n        \"\"\"\n        Initialize the cache with a maximum number of entries.\n\n        Args:\n            capacity: Positive integer – the maximum number of key/value pairs.\n        \"\"\"\n        if capacity <= 0:\n            raise ValueError(\"capacity must be a positive integer\")\n        self.capacity = capacity\n        self.cache = OrderedDict()          # key -> value, order = LRU → MRU\n\n    def get(self, key):\n        \"\"\"\n        Return the value associated with *key* if present, otherwise -1.\n        The accessed key becomes the most‑recently‑used entry.\n        \"\"\"\n        if key not in self.cache:\n            return -1\n\n        # Move the key to the end (most‑recently‑used)\n        value = self.cache.pop(key)\n        self.cache[key] = value            # re‑insert at the end\n        return value\n\n    def put(self, key, value):\n        \"\"\"\n        Insert or update *key* with *value*. If the cache exceeds its capacity\n        the least‑recently‑used entry is evicted.\n        \"\"\"\n        if key in self.cache:\n            # Remove the old entry first – we will re‑insert it as MRU.\n            self.cache.pop(key)\n\n        self.cache[key] = value            # insert as most‑recently‑used\n\n        # Evict if we are over capacity.\n        if len(self.cache) > self.capacity:\n            # popitem(last=False) removes the first (least‑recently‑used) entry.\n            evicted_key, evicted_val = self.cache.popitem(last=False)\n            # (optional) you could log the eviction:\n            # print(f\"evicted ({evicted_key}: {evicted_val})\")\n\n    def __repr__(self):\n        \"\"\"Show cache contents from LRU → MRU – useful for debugging.\"\"\"\n        items = \", \".join(f\"{k}:{v}\" for k, v in self.cache.items())\n        return f\"<LRUCache capacity={self.capacity} [{items}]>\"\n```\n\n### How it works\n\n* `OrderedDict` keeps keys in the order they were **last inserted**.\n* When a key is accessed (`get`) we `pop` it and re‑insert it, which moves it to the right‑most (most‑recent) position.\n* When we add (`put`) a key we also insert it at the right‑most side.  \n  If the cache already contained that key we first delete the old entry to avoid duplicate entries.\n* When the size exceeds `capacity` we evict the left‑most entry (`popitem(last=False)`), which is the least‑recently‑used.\n\nAll operations are **amortized O(1)**.\n\n---\n\n## 2. Quick sanity test\n\n```python\nif __name__ == \"__main__\":\n    # Example from LeetCode problem 146\n    cache = LRUCache(2)\n\n    cache.put(1, 1)          # cache: {1=1}\n    cache.put(2, 2)          # cache: {1=1, 2=2}\n    assert cache.get(",
+  "ttft_ms": 402.83,
+  "latency_ms": 3683.18,
+  "tokens_per_second": 133.31,
+  "input_tokens": 26,
+  "output_tokens": 491,
+  "response_length": 3719,
+  "cost_usd": 0.003024,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

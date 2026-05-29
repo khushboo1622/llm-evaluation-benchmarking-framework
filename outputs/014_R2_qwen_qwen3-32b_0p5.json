@@ -1,0 +1,30 @@
+{
+  "run_id": "014_R2_qwen_qwen3-32b_0p5",
+  "run_number": 14,
+  "prompt_id": "R2",
+  "category": "reasoning",
+  "difficulty": "hard",
+  "model": "qwen/qwen3-32b",
+  "temperature": 0.5,
+  "prompt": "Five people are in a race. Alice finishes before Bob. Charlie finishes after Dave but before Alice. Eve finishes last. What is the finishing order? Think step by step.",
+  "eval_criteria": "correct order: Dave, Charlie, Alice, Bob, Eve",
+  "timestamp": "2026-05-15T08:52:41.455943",
+  "success": true,
+  "response": "<think>\nOkay, let's see. There are five people in a race: Alice, Bob, Charlie, Dave, and Eve. The problem gives some clues about their finishing order. I need to figure out the exact order step by step.\n\nFirst, let's list out all the given information:\n\n1. Alice finishes before Bob. So Alice is ahead of Bob. That means in the order, Alice comes before Bob. So Alice < Bob.\n\n2. Charlie finishes after Dave but before Alice. So Charlie is after Dave and before Alice. So Dave < Charlie < Alice.\n\n3. Eve finishes last. So Eve is the last one, meaning she is fifth.\n\nSo let's break this down.\n\nStarting with the third point: Eve is last. So the order ends with Eve.\n\nNow, looking at the second clue: Charlie is after Dave but before Alice. So Dave comes before Charlie, and Charlie comes before Alice. So Dave < Charlie < Alice.\n\nAlso, the first clue says Alice is before Bob. So combining that with the previous, we have Dave < Charlie < Alice < Bob.\n\nWait, but where does Eve fit in here? Eve is last. So Bob can't be last, so Bob must be before Eve. So putting that together, the order would be Dave, Charlie, Alice, Bob, Eve?\n\nBut let me check again. Let's make sure all the conditions are met.\n\nFirst, Alice before Bob: Yes, Alice is third and Bob is fourth here. That works.\n\nCharlie after Dave and before Alice: Dave is first, Charlie is second, Alice is third. That works.\n\nEve is last: fifth. Correct.\n\nBut wait, are there any other possibilities? Let me see if there's another way to arrange them.\n\nLet me think again. The key is to arrange all five people with the given constraints.\n\nLet me note the constraints again:\n\n- A < B (Alice before Bob)\n\n- D < C < A (Dave before Charlie, Charlie before Alice)\n\n- E is last.\n\nSo starting from the earliest, Dave must be before Charlie, who is before Alice, who is before Bob. And Eve is last.\n\nSo the order would be Dave, Charlie, Alice, Bob, Eve? But is there any other possible positions for someone else?\n\nWait, there are five people. Let me check if there's any other positions where someone else could be placed.\n\nLet me try to build the order step by step.\n\nWe know Eve is last: 5th place.\n\nNow, the rest are Alice, Bob, Charlie, Dave.\n\nFrom the constraints:\n\nDave < Charlie < Alice < Bob.\n\nSo Dave must come before Charlie, who comes before Alice, who comes before Bob. So the order among these four is Dave, Charlie, Alice, Bob. But since there are four people and four positions (since Eve is fifth), that would mean the first four positions are Dave, Charlie, Alice, Bob. Then Eve is fifth.\n\nSo the order is Dave, Charlie, Alice, Bob, Eve.\n\nBut let me check if there's any possibility that someone else could be in between. For example, could there be someone between Dave and Charlie? But the constraints say Dave is before Charlie, but there's no mention of others in that segment. However, the other people are Alice, Bob, and Eve. Eve is last. So between Dave and Charlie, there's no one else? Let me think.\n\nWait, the constraints are Dave < Charlie < Alice < Bob. So Dave must be before Charlie, and Charlie before Alice, and Alice before Bob. So Dave is first, then Charlie, then Alice, then Bob, then Eve. So that's the order.\n\nBut let me check if there's another possibility. For example, could Dave be in second place if someone else is first? Wait, but there's no information about others relative to Dave except that Charlie is after Dave. So if someone else is before Dave, would that be possible?\n\nBut we have only four people besides Eve: Alice, Bob, Charlie, Dave. The constraints are that Dave is before Charlie, Charlie before Alice, Alice before Bob. So Dave must be before Charlie, so Dave can't be after Charlie. Therefore, the earliest possible position for Dave is first. But could there be someone else before Dave? But there's no one else mentioned. The other people are Alice, Bob, Charlie, Dave. Since Dave has to be before Charlie, and Charlie before Alice, etc., if there was someone else before Dave, that someone would have to be one of the others. But the others are Alice, Bob, or Charlie. But Charlie is after Dave, so can't be before. Alice is after Charlie. Bob is after Alice. So the only possibility for someone before Dave would be... there isn't anyone, because all the others are after Dave in the constraints. Therefore, Dave must be first.\n\nTherefore, the order is Dave, Charlie, Alice, Bob, Eve.\n\nLet me verify each condition:\n\n1. Alice before Bob:",
+  "ttft_ms": 415.51,
+  "latency_ms": 2327.45,
+  "tokens_per_second": 346.73,
+  "input_tokens": 29,
+  "output_tokens": 807,
+  "response_length": 4454,
+  "cost_usd": 0.00032314,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 8,
+    "completeness": 10,
+    "overall": 9
+  }
+}

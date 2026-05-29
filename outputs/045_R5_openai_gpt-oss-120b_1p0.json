@@ -1,0 +1,30 @@
+{
+  "run_id": "045_R5_openai_gpt-oss-120b_1p0",
+  "run_number": 45,
+  "prompt_id": "R5",
+  "category": "reasoning",
+  "difficulty": "hard",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 1.0,
+  "prompt": "You are in a room with two doors. One leads to freedom, one to death. There are two guards — one always lies, one always tells the truth. You don't know which is which. You can ask ONE guard ONE question. What do you ask?",
+  "eval_criteria": "correct classic solution: ask either guard what the other would say, then take the opposite door",
+  "timestamp": "2026-05-15T08:54:34.714184",
+  "success": true,
+  "response": "**Ask either guard:**  \n\n> “If I asked the *other* guard which door leads to freedom, which door would he point to?”\n\nThen go through the opposite door.\n\n---\n\n### Why it works  \n\n| Guard you ask | What the other guard would say | What you hear | Correct door |\n|---------------|-------------------------------|---------------|--------------|\n| **Truth‑teller** | The liar would point to the **death** door. | He truthfully tells you “the liar would point to the left/right door.” | Choose the *other* door (the one he didn’t name). |\n| **Liar** | The truth‑teller would point to the **freedom** door. | The liar lies about that answer, so he also points to the **death** door. | Again, pick the opposite door. |\n\nIn either case the guard’s answer points to the deadly door, so you simply take the opposite one and you’ll reach freedom.",
+  "ttft_ms": 408.12,
+  "latency_ms": 825.45,
+  "tokens_per_second": 172.03,
+  "input_tokens": 45,
+  "output_tokens": 142,
+  "response_length": 835,
+  "cost_usd": 0.000987,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

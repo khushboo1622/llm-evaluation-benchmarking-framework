@@ -1,0 +1,30 @@
+{
+  "run_id": "010_R2_llama-3.1-8b-instant_0p0",
+  "run_number": 10,
+  "prompt_id": "R2",
+  "category": "reasoning",
+  "difficulty": "hard",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 0.0,
+  "prompt": "Five people are in a race. Alice finishes before Bob. Charlie finishes after Dave but before Alice. Eve finishes last. What is the finishing order? Think step by step.",
+  "eval_criteria": "correct order: Dave, Charlie, Alice, Bob, Eve",
+  "timestamp": "2026-05-15T08:52:29.679304",
+  "success": true,
+  "response": "To determine the finishing order, let's break down the information given step by step:\n\n1. Alice finishes before Bob: This means Alice is in the top half of the finishing order, and Bob is below her.\n\n2. Charlie finishes after Dave but before Alice: This means Dave and Charlie are in the top half of the finishing order, and Alice is above them. Since Charlie is above Dave, Charlie is above Alice in the finishing order.\n\n3. Eve finishes last: This means Eve is at the bottom of the finishing order.\n\nNow, let's combine the information:\n\n- Eve is at the bottom.\n- Charlie is above Dave, and both are above Alice.\n- Bob is below Alice.\n\nSo, the finishing order is: Eve, Dave, Charlie, Alice, Bob.",
+  "ttft_ms": 148.53,
+  "latency_ms": 373.46,
+  "tokens_per_second": 340.06,
+  "input_tokens": 29,
+  "output_tokens": 127,
+  "response_length": 697,
+  "cost_usd": 1.161e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 0,
+    "instruction_following": 8,
+    "clarity": 9,
+    "completeness": 9,
+    "overall": 2
+  }
+}

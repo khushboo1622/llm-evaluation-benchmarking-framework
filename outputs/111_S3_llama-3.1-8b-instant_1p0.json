@@ -1,0 +1,30 @@
+{
+  "run_id": "111_S3_llama-3.1-8b-instant_1p0",
+  "run_number": 111,
+  "prompt_id": "S3",
+  "category": "structured_output",
+  "difficulty": "hard",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 1.0,
+  "prompt": "Return ONLY valid JSON for a task management item. Schema must be exactly:\n{\n  \"task_id\": \"string (uuid format)\",\n  \"title\": \"string\",\n  \"priority\": \"low | medium | high | critical\",\n  \"tags\": [\"array of strings\"],\n  \"estimated_hours\": number,\n  \"subtasks\": [{\"id\": \"string\", \"description\": \"string\", \"done\": boolean}]\n}\n\nTask: Build a REST API for a todo application with authentication.",
+  "eval_criteria": "valid JSON, matches schema exactly, uuid-like id, no hallucinated fields",
+  "timestamp": "2026-05-15T08:58:41.606453",
+  "success": true,
+  "response": "**Task Management API using Node.js and Express**\n\n### Dependencies\n\n* `express`: A popular Node.js web framework\n* `mongoose`: An Object Data Modeling (ODM) library for MongoDB\n* `jsonwebtoken`: A json web token library for authentication\n* `body-parser`: A library to parse JSON data from request bodies\n\n### Directory Structure\n```plain\ntodo-api/\napp.js\nconfig/\ndatabase.js\nauth.js\nmodels/\ntask.js\nuser.js\nroutes/\ntask.js\nuser.js\ncontrollers/\ntaskController.js\nuserController.js\npackage.json\n```\n### Configs\n\n**`database.js`**\n```javascript\nconst mongoose = require('mongoose');\n\nmongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });\n\nconst db = mongoose.connection;\n\ndb.on('error', (err) => {\n  console.error(err);\n});\n\ndb.once('open', () => {\n  console.log('Connected to MongoDB');\n});\n\nmodule.exports = db;\n```\n\n**`auth.js`**\n```javascript\nconst jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const token = req.header('Authorization').replace('Bearer ', '');\n  const decoded = jwt.verify(token, process.env.JWT_SECRET);\n  req.user = decoded;\n  next();\n};\n\nmodule.exports = authenticate;\n```\n\n### Models\n\n**`task.js`**\n```javascript\nconst mongoose = require('mongoose');\n\nconst taskSchema = new mongoose.Schema({\n  task_id: { type: String, required: true, unique: true },\n  title: { type: String, required: true },\n  priority: { type: String, required: true, enum: ['low', 'medium', 'high', 'critical'] },\n  tags: { type: [String], required: true },\n  estimated_hours: { type: Number, required: true },\n  subtasks: [{ type: Object, required: true, subdocuments: true }]\n});\n\nconst Task = mongoose.model('Task', taskSchema);\n\nmodule.exports = Task;\n```\n\n**`user.js`**\n```javascript\nconst mongoose = require('mongoose');\n\nconst userSchema = new mongoose.Schema({\n  username: { type: String, required: true, unique: true },\n  password: { type: String, required: true }\n});\n\nconst User = mongoose.model('User', userSchema);\n\nmodule.exports = User;\n```\n\n### Routes\n\n**`task.js`**\n```javascript\nconst express = require('express');\nconst Task = require('../models/task');\nconst authenticate = require('../config/auth');\nconst taskController = require('../controllers/taskController');\n\nconst router = express.Router();\n\nrouter.get('/tasks', authenticate, taskController.getTasks);\nrouter.get('/tasks/:id', authenticate, taskController.getTask);\nrouter.post('/tasks', authenticate, taskController.createTask);\nrouter.put('/tasks/:id', authenticate, taskController.updateTask);\nrouter.delete('/tasks/:id', authenticate, taskController.deleteTask);\n\nmodule.exports = router;\n```\n\n**`user.js`**\n```javascript\nconst express = require('express');\nconst User = require('../models/user');\nconst authenticate = require('../config/auth');\nconst userController = require('../controllers/userController');\n\nconst router = express.Router();\n\nrouter.post('/register', userController.register);\nrouter.post('/login', userController.login);\n\nmodule.exports = router;\n```\n\n### Controllers\n\n**`taskController.js`**\n```javascript\nconst Task = require('../models/task');\n\nconst getTasks = async (req, res) => {\n  try {\n    const tasks = await Task.find().exec();\n    res.json(tasks);\n  } catch (err) {\n    res.status(500).json({ message: 'Error fetching tasks' });\n  }\n};\n\nconst getTask = async (req, res) => {\n  try {\n    const task = await Task.findById(req.params.id).exec();\n    if (!task) {\n      res.status(404).json({ message: 'Task not found' });\n    } else {\n      res.json(task);\n    }\n  } catch (err) {\n    res.status(500).json({ message: 'Error fetching task' });\n  }\n};\n\nconst createTask = async (req, res) => {\n  try {\n    const task = new Task(req.body);\n    await task.save();\n    res.json(task);\n  } catch (err) {\n    res.status(400).json({ message: 'Error creating task' });\n  }\n};\n\nconst updateTask = async (req, res) => {\n  try {\n    const task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true }).exec();\n    if (!task) {\n      res.status(404).json({ message: 'Task not found' });\n    } else {\n      res.json(task);\n    }\n  } catch (err) {\n    res.status(500).json({ message: 'Error updating task' });\n  }\n};\n\nconst deleteTask = async (req, res) => {\n ",
+  "ttft_ms": 168.79,
+  "latency_ms": 1509.75,
+  "tokens_per_second": 319.26,
+  "input_tokens": 53,
+  "output_tokens": 482,
+  "response_length": 4241,
+  "cost_usd": 4.121e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 0,
+    "instruction_following": 0,
+    "clarity": 0,
+    "completeness": 0,
+    "overall": 0
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "run_id": "027_R3_openai_gpt-oss-120b_1p0",
+  "run_number": 27,
+  "prompt_id": "R3",
+  "category": "reasoning",
+  "difficulty": "hard",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 1.0,
+  "prompt": "If you have a 3-liter jug and a 5-liter jug, and unlimited water, how do you measure exactly 4 liters? Provide step-by-step instructions.",
+  "eval_criteria": "correct solution, clear steps, logically valid",
+  "timestamp": "2026-05-15T08:53:35.528570",
+  "success": true,
+  "response": "**Goal:** End up with exactly **4 L** of water in one of the jugs using only a **3‑liter jug** and a **5‑liter jug** (and an unlimited supply of water and a place to dump water).\n\n---\n\n## Step‑by‑step procedure  \n\n| Step | Action | State after the step (3‑L jug | 5‑L jug) |\n|------|--------|-----------------------------------|\n| 1 | **Fill the 5‑L jug** completely from the water source. | (0 L | 5 L) |\n| 2 | **Pour from the 5‑L jug into the 3‑L jug** until the 3‑L jug is full. | (3 L | 2 L) |\n| 3 | **Empty the 3‑L jug** (pour the water away). | (0 L | 2 L) |\n| 4 | **Transfer the 2 L remaining in the 5‑L jug into the empty 3‑L jug**. | (2 L | 0 L) |\n| 5 | **Fill the 5‑L jug again** completely. | (2 L | 5 L) |\n| 6 | **Pour from the 5‑L jug into the 3‑L jug** until the 3‑L jug is full. The 3‑L jug already holds 2 L, so it can take only 1 L more. | (3 L | 4 L) |\n\nNow the **5‑liter jug contains exactly 4 L** of water, which is the desired amount.\n\n---\n\n### Quick recap (in plain language)\n\n1. Fill the big jug (5 L).  \n2. Use it to fill the small jug (3 L), leaving 2 L in the big jug.  \n3. Dump the water from the small jug.  \n4. Pour the 2 L that remain in the big jug into the empty small jug.  \n5. Re‑fill the big jug completely.  \n6. Top up the small jug (which already has 2 L) from the big jug; the big jug will now have 4 L left.\n\nThat’s it—exactly 4 L measured!",
+  "ttft_ms": 415.79,
+  "latency_ms": 1451.41,
+  "tokens_per_second": 208.07,
+  "input_tokens": 23,
+  "output_tokens": 302,
+  "response_length": 1379,
+  "cost_usd": 0.001881,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 10,
+    "instruction_following": 10,
+    "clarity": 10,
+    "completeness": 10,
+    "overall": 10
+  }
+}

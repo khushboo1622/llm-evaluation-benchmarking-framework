@@ -1,0 +1,30 @@
+{
+  "run_id": "060_C2_qwen_qwen3-32b_1p0",
+  "run_number": 60,
+  "prompt_id": "C2",
+  "category": "coding",
+  "difficulty": "medium",
+  "model": "qwen/qwen3-32b",
+  "temperature": 1.0,
+  "prompt": "Write a Python decorator that measures and prints the execution time of any function it wraps. Show an example usage.",
+  "eval_criteria": "correct decorator syntax, uses time module, example included",
+  "timestamp": "2026-05-15T08:55:35.237991",
+  "success": true,
+  "response": "<think>\nOkay, I need to create a Python decorator that measures the execution time of a function. Let me think about how decorators work. A decorator is a function that wraps another function, right? So I need to define a function that takes another function as an argument and returns a new function that adds some behavior—like timing.\n\nFirst, the decorator function. Let's call it something like timing_decorator. Inside, I need to define a wrapper function that will wrap the original function. The wrapper should record the start time, call the original function, record the end time, calculate the duration, and then print it.\n\nWait, how to measure time? Oh right, the time module has time.time() which gives the current time in seconds. So I can import time, then in the wrapper do start_time = time.time(), then after the function call, end_time = time.time(). The difference is end_time - start_time.\n\nBut I should make sure that the wrapper function returns the same result as the original function. So whatever the original function returns, the wrapper should return it. Otherwise, if the decorated function is supposed to return something, it would be lost.\n\nSo the structure would be:\n\ndef timing_decorator(func):\n    def wrapper(*args, **kwargs):\n        start = time.time()\n        result = func(*args, **kwargs)\n        end = time.time()\n        print(f\"Execution time: {end - start} seconds\")\n        return result\n    return wrapper\n\nThen, the user can apply this decorator to any function by using @timing_decorator above the function definition.\n\nLet me test this logic. Suppose I have a sample function, like adding two numbers or something that takes some time. Maybe a loop to make the timing measurable. For example:\n\n@timing_decorator\ndef example_function(n):\n    count = 0\n    for i in range(n):\n        count += i\n    return count\n\nThen, when I call example_function(1000000), it should print the execution time.\n\nWait, but for small n, the time might be negligible, but the decorator should still work regardless.\n\nAlso, need to import time.\n\nWait, in the code, I have to import time, right? So in the decorator, the code will use time.time().\n\nSo putting it all together. Let me write the code.\n\nBut wait, the user wants an example. So in the answer, I should present the decorator code, then an example function, apply the decorator, and show how it's used.\n\nLet me check if there are any issues. What about functions with arguments? The wrapper uses *args and **kwargs, so it should handle any arguments passed to the function.\n\nYes, that's correct. The wrapper is defined with *args and **kwargs to accept any parameters, and then passes them to the original function.\n\nSo putting it all together:\n\nImport time.\n\nDefine the decorator.\n\nThen, an example function.\n\nSo here's the code:\n\nimport time\n\ndef timing_decorator(func):\n    def wrapper(*args, **kwargs):\n        start_time = time.time()\n        result = func(*args, **kwargs)\n        end_time = time.time()\n        print(f\"Function {func.__name__} executed in {end_time - start_time:.6f} seconds\")\n        return result\n    return wrapper\n\n@timing_decorator\ndef sample_function(n):\n    total = 0\n    for i in range(n):\n        total += i\n    return total\n\n# Example usage\nif __name__ == \"__main__\":\n    output = sample_function(100000)\n    print(\"Returned value:\", output)\n\nWait, in the print statement, maybe format the time to have 6 decimal places for better readability. Also, including the function name is helpful.\n\nTesting this code: when sample_function is called with 100,000, it loops and adds numbers. The decorator prints the time taken.\n\nI think that should work. Let me check for any possible errors. What if the function is a method inside a class? Well, the decorator as written should still work because it's using standard wrapping. But for methods, the first argument is self. But since the wrapper accepts *args, that's fine. The timing_decorator can handle methods too.\n\nBut in the example, it's a simple function.\n\nSo this should work.\n\nNow, when the user runs the example, the output will be something like:\n\nFunction sample_function executed in 0.001234 seconds\nReturned value: 4999950000\n\nThe exact time will vary depending on the system, but the decorator correctly measures the time.\n\nI think that's the correct approach. So the final code includes the decorator, the decorated function, and an example usage. Also, in the print statement, using :.6f to show six decimal places makes it more precise.\n\nAnother thing to note: The message includes the function's name using func.__name__, which is a",
+  "ttft_ms": 7441.48,
+  "latency_ms": 10826.22,
+  "tokens_per_second": 65.12,
+  "input_tokens": 20,
+  "output_tokens": 705,
+  "response_length": 4613,
+  "cost_usd": 0.00028075,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 9,
+    "clarity": 8,
+    "completeness": 10,
+    "overall": 9
+  }
+}

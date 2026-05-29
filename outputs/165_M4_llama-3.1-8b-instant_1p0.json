@@ -1,0 +1,30 @@
+{
+  "run_id": "165_M4_llama-3.1-8b-instant_1p0",
+  "run_number": 165,
+  "prompt_id": "M4",
+  "category": "multilingual",
+  "difficulty": "hard",
+  "model": "llama-3.1-8b-instant",
+  "temperature": 1.0,
+  "prompt": "A user writes to you in Hinglish (Hindi + English mix): 'Bhai, mujhe ek Python script chahiye jo CSV file read kare aur uska data clean kare — nulls remove karo aur duplicates bhi. Please help!'\n\nRespond naturally in Hinglish and provide the Python code.",
+  "eval_criteria": "natural Hinglish response, correct Python code for CSV cleaning, friendly tone",
+  "timestamp": "2026-05-15T12:05:31.485828",
+  "success": true,
+  "response": "Arre bhai, kya baat hai! Ek script banake dunga na.\n\nPython mein aapko pandas ki madad leni hogi, yeh ek library hai jo data operations, handling, cleanup, etc karegi. Ye code aapko CSV file ko read karne, null values ko remove karne, aur duplicates ko delete karne mein madad karega:\n\n```python\n# Required libraries import karenge\nimport pandas as pd\nfrom io import StringIO\n\n# CSV file ko path define karengay\ncsv_path = 'example.csv'  # replace 'example.csv' with aapki CSV file ki path\n\n# CSV file ko pandas mein read karenge\ndef csv_reader(csv_path):\n    try:\n        df = pd.read_csv(csv_path)\n        return df\n    except Exception as e:\n        print(f\"Error: {e}\")\n\n# Null values ko remove karenge\ndef remove_nulls(df):\n    return df.dropna()\n\n# Duplicates ko remove karenge\ndef remove_duplicates(df):\n    return df.drop_duplicates()\n\n# CSV data ko clean karenge\ndef clean_data(df):\n    return remove_nulls(remove_duplicates(df))\n\n# Ye function aapko csv data ko clean karne mein madad karegi\ndef csv_data_cleaner(csv_path):\n    df = csv_reader(csv_path)\n    if df is not None:\n        clean_df = clean_data(df)\n        print(clean_df.head()) # top records print honge\n        # To CSV file me save karna chahte hain to use yeh code apply karenge\n        # clean_df.to_csv('cleaned_example.csv', index=False)\n    else:\n        print(\"CSV file nahin mila\")\n\ncsv_data_cleaner(csv_path)\n```\n\nArre bhai, is code ko run karna na bhula! Aap CSV file ko replace karke path define karein aur use run karein.\n\nYad rakhna, yeh code basic hota hai, aapko phir se customize karna pad sakta hai.",
+  "ttft_ms": 288.41,
+  "latency_ms": 1023.31,
+  "tokens_per_second": 221.83,
+  "input_tokens": 45,
+  "output_tokens": 227,
+  "response_length": 1591,
+  "cost_usd": 2.041e-05,
+  "error": null,
+  "rate_limited": false,
+  "judge_scores": {
+    "correctness": 9,
+    "instruction_following": 9,
+    "clarity": 8,
+    "completeness": 9,
+    "overall": 9
+  }
+}
