@@ -1,10 +1,43 @@
 # LLM Evaluation & Benchmarking Framework
 
-A reusable framework to benchmark open-source LLMs across latency, throughput, response quality, structured output reliability, multilingual capability, and temperature sensitivity.
+> 🔴 **[Live Interactive Dashboard →](https://khushboo1622.github.io/llm-evaluation-benchmarking-framework/dashboard.html)**
+
+A reusable framework to benchmark open-source LLMs across latency, throughput, response quality, structured output reliability, multilingual capability, and temperature sensitivity — using the **LLM-as-a-Judge** evaluation paradigm.
 
 ---
 
-## Models Evaluated
+## Key Results
+
+| Model | Avg Latency | Avg TTFT | Avg TPS | Quality Score |
+|---|---|---|---|---|
+| `llama-3.1-8b-instant` | **667ms** ✅ | 219ms | **213 t/s** ✅ | 8.62/10 |
+| `qwen/qwen3-32b` | 3564ms ❌ | 1421ms | 201 t/s | 8.70/10 |
+| `openai/gpt-oss-120b` | 1248ms | 398ms | 130 t/s | **9.36/10** ✅ |
+
+### Quality by Category (Judge Score /10)
+
+| Category | Llama 3.1 8B | Qwen3 32B | GPT-OSS 120B |
+|---|---|---|---|
+| Reasoning | 8.27 | 8.87 | **10.00** |
+| Coding | **9.67** | 7.93 | **10.00** |
+| Structured Output | **10.00** | 9.67 | **10.00** |
+| Multilingual | 7.07 | 8.40 | **9.07** |
+| Safety | 8.67 | **8.80** | 8.13 |
+
+### Key Insights
+
+- **Fastest model**: Llama 3.1 8B at 667ms — 5.5× faster than Qwen3 32B
+- **Best quality**: GPT-OSS 120B with 9.36/10 overall judge score
+- **Structured output**: Llama 3.1 8B ties GPT-OSS at 10/10 while being 2× faster — best value pick for JSON tasks
+- **Multilingual**: GPT-OSS 120B leads, but Qwen3 32B (8.40) is a strong cheaper alternative
+- **Safety**: Qwen3 32B scores highest (8.80) — GPT-OSS lowest (8.13), counterintuitive finding
+- **Cost efficiency**: Llama 3.1 8B delivers 92% of GPT-OSS quality at a fraction of the cost
+
+---
+
+## Project Overview
+
+### Models Evaluated
 
 | Model | Provider | Role |
 |---|---|---|
@@ -12,42 +45,31 @@ A reusable framework to benchmark open-source LLMs across latency, throughput, r
 | `qwen/qwen3-32b` | Alibaba | Mid-size, reasoning + multilingual |
 | `openai/gpt-oss-120b` | OpenAI | Large, high-capability |
 
-All models run via **Groq API** (same LPU hardware = fair comparison).
+All models run via **Groq API** — same LPU hardware guarantees fair comparison.
 
----
-
-## Prompt Categories
+### Prompt Categories
 
 | Category | Prompts | What it tests |
 |---|---|---|
-| Reasoning | 5 | Logic, step-by-step thinking |
-| Coding | 5 | Python functions, APIs, algorithms |
-| Structured Output | 5 | JSON validity, schema adherence |
-| Multilingual | 5 | Hindi, Gujarati, Hinglish |
-| Safety / Adversarial | 5 | Jailbreak resistance, alignment |
+| Reasoning | 5 | Logic, step-by-step thinking, classic puzzles |
+| Coding | 5 | Python functions, decorators, algorithms, FastAPI |
+| Structured Output | 5 | JSON validity, schema adherence, extraction |
+| Multilingual | 5 | Hindi, Gujarati, Hinglish understanding |
+| Safety / Adversarial | 5 | Jailbreak resistance, prompt injection, manipulation |
 
-**Total: 25 prompts × 3 models × 3 temperatures = 225 runs**
+**25 prompts × 3 models × 3 temperatures = 225 total runs**
 
----
+### Metrics Collected
 
-## Metrics Collected
+**System Metrics**
+- TTFT — Time to first token (ms)
+- Total Latency — End-to-end response time (ms)
+- Tokens/sec — Inference throughput
+- Input/Output tokens + Cost estimate (USD)
 
-### System Metrics
-- **TTFT** — Time to first token (ms)
-- **Total Latency** — End-to-end response time (ms)
-- **Tokens/sec** — Inference throughput
-- **Input/Output tokens** — Token counts
-- **Cost estimate** — USD per API call
-
-### Quality Metrics (LLM-as-a-Judge)
-Judge model: `llama-3.3-70b-versatile` at temperature 0.0
-
-Scores each response 1–10 on:
-- Correctness
-- Instruction Following
-- Clarity
-- Completeness
-- Overall
+**Quality Metrics — LLM-as-a-Judge**
+- Judge model: `llama-3.3-70b-versatile` at temp=0.0
+- Scores 1–10 on: Correctness, Instruction Following, Clarity, Completeness, Overall
 
 ---
 
@@ -56,17 +78,17 @@ Scores each response 1–10 on:
 ```
 llm-eval-framework/
 │
-├── prompts.json          # 25 benchmark prompts (5 categories × 5 prompts)
-├── benchmark_runner.py   # Main async runner — generates all_results.json
-├── dashboard.html        # Interactive HTML dashboard (open in browser)
-├── requirements.txt      # Python dependencies
+├── prompts.json            # 25 benchmark prompts with eval criteria
+├── benchmark_runner.py     # Main runner — streams responses, judges, saves results
+├── dashboard.html          # Interactive dashboard (open directly in browser)
+├── requirements.txt        # Python dependencies
 ├── README.md
 │
-└── outputs/              # Auto-created by runner
-    ├── R1_llama_0p0.json # Individual run results
-    ├── R1_llama_0p5.json
-    ├── ...
-    └── all_results.json  # Full results bundle → load into dashboard
+└── outputs/
+    ├── 001_R1_llama-3.1-8b-instant_0p0.json   # Individual runs (sorted)
+    ├── 002_R1_llama-3.1-8b-instant_0p5.json
+    ├── ...225 files...
+    └── all_results.json    # Full bundle loaded by dashboard
 ```
 
 ---
@@ -78,9 +100,9 @@ llm-eval-framework/
 pip install -r requirements.txt
 ```
 
-### 2. Set your Groq API key
-```bash
-export GROQ_API_KEY=your_key_here
+### 2. Set Groq API key in `.env`
+```
+GROQ_API_KEY=your_key_here
 ```
 Get a free key at: https://console.groq.com
 
@@ -89,67 +111,27 @@ Get a free key at: https://console.groq.com
 python benchmark_runner.py
 ```
 
-This will:
-- Run all 225 evaluations (resumes if interrupted)
-- Print progress as it goes
-- Save each result individually to `outputs/`
-- Save full bundle to `outputs/all_results.json`
-
-Estimated time: ~15–30 minutes depending on rate limits.
+The runner auto-resumes if interrupted and stops immediately on rate limit errors without saving bad data.
 
 ### 4. View the dashboard
-1. Open `dashboard.html` in any browser
-2. Click **Upload Results JSON**
-3. Select `outputs/all_results.json`
-4. Explore charts, filters, and per-run responses
+Open `dashboard.html` in any browser — data loads automatically from `outputs/all_results.json`.
 
-Or click **Load Sample Data** to preview the dashboard instantly.
-
----
-
-## Dashboard Features
-
-- **Filter** by model, category, temperature
-- **Latency & TPS** bar charts per model
-- **Quality vs Speed** scatter plot (key insight chart)
-- **Temperature vs Score** line chart
-- **TTFT** comparison
-- **Cost estimation** per model
-- **Heatmap** — model × category quality scores
-- **Raw results table** with search + sort
-- **Response viewer** modal per run
-
----
-
-## Key Insights (to document in your report)
-
-Answer these from your results:
-
-1. **Which model is fastest?** → Latency + TPS charts
-2. **Which model has best quality?** → Judge score heatmap
-3. **Best quality/speed tradeoff?** → Scatter plot
-4. **Does temperature affect quality?** → Temp line chart
-5. **Which model handles multilingual best?** → Heatmap row
-6. **Which model is most cost-efficient?** → Cost chart
-7. **Which model resists jailbreaks best?** → Safety category scores
-
----
-
-## Resume Support
-
-If the runner is interrupted, re-run `benchmark_runner.py`. It checks for existing output files and **skips completed runs** automatically.
-
----
-
-## Judge Model Note
-
-The judge (`llama-3.3-70b-versatile`) is separate from the 3 evaluated models. It uses a fixed rubric and temperature=0.0 for deterministic, consistent scoring. This follows the **LLM-as-a-Judge** paradigm used in research.
+Or visit the live hosted version: **https://khushboo1622.github.io/llm-evaluation-benchmarking-framework/dashboard.html**
 
 ---
 
 ## Tech Stack
 
-- Python 3.10+
-- `httpx` — async HTTP client
-- Groq API — inference backend (free tier)
-- Vanilla HTML/CSS/JS + Chart.js — dashboard (no build step)
+| Tool | Purpose |
+|---|---|
+| Python 3.10+ | Runner |
+| `groq` SDK | API calls with streaming |
+| `python-dotenv` | Env management |
+| Chart.js | Dashboard charts |
+| Vanilla HTML/CSS/JS | Dashboard (zero build step) |
+
+---
+
+## Resume Description
+
+> Designed a reusable LLM benchmarking framework evaluating 3 open-source models (Llama 3.1 8B, Qwen3 32B, GPT-OSS 120B) across 225 runs using standardized prompt suites (5 task categories × 3 temperatures), streaming-based TTFT measurement, LLM-as-a-Judge scoring, and an interactive HTML dashboard — identifying optimal model selection criteria for latency, cost, and quality tradeoffs.
